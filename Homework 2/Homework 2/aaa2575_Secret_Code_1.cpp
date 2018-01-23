@@ -20,7 +20,7 @@ int main()
 	// Open the file to be read
 	ifstream myInputFile ("Words.txt"); // creates or opens the input file
 	string line;
-	string secretCode;
+	vector<char> secretCode;
 	string str;
 	double sumOfNumbers;
 	vector<string>  words;
@@ -45,13 +45,19 @@ int main()
 				c = str[j];
 				if(isupper(c))
 				{
-					secretCode = c;
+					secretCode.push_back(c);
 				}
 			}
 			
 		}
 		
-		cout << secretCode << endl;
+		for(int k = 0; k < secretCode.size(); k++)
+		{
+			cout << secretCode[k];
+			
+		}
+		
+		
 		
 		myInputFile.close();
 	}
