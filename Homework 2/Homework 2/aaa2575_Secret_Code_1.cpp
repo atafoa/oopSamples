@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 using namespace std;
@@ -15,7 +16,14 @@ int main()
 
 {
 	// Open the file to be read
-	ifstream myInputFile ("Words.txt");
-	cout << "Hello, World!\n";
+	ifstream myInputFile ("Words.txt"); // creates or opens the input file
+	string line;
+	if(myInputFile.is_open())
+	{
+		vector<string>  words;
+		words.push_back(line); //store each words in terminal
+	}
+	else
+		cout << "Unable to open file" << endl;
 	return 0;
 }
