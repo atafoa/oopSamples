@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <ctype.h>
+#include <stdio.h>
 
 
 using namespace std;
@@ -20,24 +21,37 @@ int main()
 	ifstream myInputFile ("Words.txt"); // creates or opens the input file
 	string line;
 	string secretCode;
+	string str;
 	double sumOfNumbers;
 	vector<string>  words;
-	char c
+	char c;
 	
 	if(myInputFile.is_open())
 	{
 		while(getline (myInputFile, line))
 		{
-			  //store each words in terminal
+			//store each words in vector
 			words.push_back(line);
 			cout << line << endl;
 		}
 		
+		
+		// iterates through vector and checks for uppercase letters
 		for(int i = 0; i < words.size(); i++)
 		{
-			words[i]
+			str = words[i];
+			for (int j = 0; j < str.size(); j++)
+			{
+				c = str[j];
+				if(isupper(c))
+				{
+					secretCode = c;
+				}
+			}
+			
 		}
 		
+		cout << secretCode << endl;
 		
 		myInputFile.close();
 	}
