@@ -22,7 +22,7 @@ int main()
 	string line;
 	vector<char> secretCode;
 	string str;
-	double sumOfNumbers;
+	int secretNumber = 0;
 	vector<string>  words;
 	char c;
 	
@@ -47,18 +47,30 @@ int main()
 				{
 					secretCode.push_back(c);
 				}
+				
+				if(isdigit(c))
+				{
+					secretNumber += (c -'0');
+				}
 			}
 			
 		}
-		
-		for(int k = 0; k < secretCode.size(); k++)
+
+		//Append to file
+		ofstream outfile;
+		outfile.open("Words.txt",ofstream::app);
+
+		cout << "\n" << "The Secret Code is: ";
+		outfile << "\n\n" << "The Secret Code is: ";
+		for(char c : secretCode)
 		{
-			cout << secretCode[k];
+			cout << c;
+			outfile << c;
 			
 		}
-		
-		
-		
+		cout << secretNumber << endl;
+		outfile << secretNumber << endl;
+
 		myInputFile.close();
 	}
 	else
