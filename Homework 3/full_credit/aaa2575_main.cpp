@@ -29,7 +29,7 @@ int main()
 			cin >> newTransaction;
 		}
 		allTransactions.push_back(temp);
-		cout << "\nDo you want to enter another transaction N for No: ";
+		cout << "\nDo you want to enter another transaction Enter N for No to stop: ";
 		cin >> addMonth;
 	}
 
