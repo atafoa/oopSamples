@@ -17,19 +17,21 @@ int main()
 	{
 		cout << "Please enter the name of the month: ";
 		cin >> month;
-		cout << endl;
 		Transaction_List temp{month};
+		
 		cout << "Enter your transactions below. Please enter -999 to stop. " <<endl;
 		cout << "Please enter a transaction: ";
-			cin >> newTransaction;
+		cin >> newTransaction;
+		
 		while ( newTransaction != -999)
 		{
 			temp.add_transaction (newTransaction);
 			cout << "Please enter a transaction: ";
 			cin >> newTransaction;
 		}
+		
 		allTransactions.push_back(temp);
-		cout << "\nDo you want to enter another transaction\n" << "Enter N for No to stop: ";
+		cout << "\nDo you want to enter another transaction Y for Yes and N for No: ";
 		cin >> addMonth;
 	}
 
@@ -38,6 +40,8 @@ int main()
 	{
 		cout << list.get_month() << ": " << list.average_transaction() << endl;
 	}
-
+	
 	return 0;
 }
+
+
