@@ -28,7 +28,7 @@ int main()
 	do
 	{
 		cout << "What would you like to do: ";
-		cin >> choice
+		cin >> choice;
 		cout << "You chose: " << choice;
 		switch (choice)
 		{
@@ -63,4 +63,27 @@ void printList()
 {
 	cout << "Now printing all transactions";
 	transactions.list_transactions();
+}
+
+void addTransactions()
+{
+
+	int y,m,d,h,min,sec;
+	
+	cout << "Before adding a new transaction I need a little more information";
+	cout <<  "What is the year the transaction was made: ";
+	cin >> y;
+	cout << "What is the month the transaction was made: ";
+	cin >> m;
+	cout << "What is the day the transaction was made: ";
+	cin >> d;
+	cout << "The hour the transaction was made: ";
+	cin >> h;
+	cout << "The minute the transaction was made: ";
+	cin >> min;
+	cout << "The second the transaction was made: ";
+	cin >> sec;
+
+	Date date{y,m,d,h,min,sec};
+	transactions
 }
