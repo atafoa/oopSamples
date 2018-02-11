@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <vector>
 #include "aaa2575_Transaction.h"
 #include "aaa2575_Date.h"
 

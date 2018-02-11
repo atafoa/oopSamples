@@ -59,8 +59,7 @@ ostream& operator<<(ostream& ost, const Transaction_List& trans_list_two)
 
 void Transaction_List:: delete_transaction_by_date(Date d);
 {
-	transactions.erase(d);
-	return transactions;
+	return transactions.erase(d);
 }
 
 void Transaction_List:: delete_transactions_by_name(string n);
@@ -70,9 +69,7 @@ void Transaction_List:: delete_transactions_by_name(string n);
 	{
 		if(it->first == n)
 		{
-			transactions.erase(it->second);
-			return transactions;
-
+			return transactions.erase(it->second);
 		}
 	}
 }

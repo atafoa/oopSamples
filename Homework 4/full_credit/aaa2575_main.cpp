@@ -1,18 +1,19 @@
-//#include "aaa2575_Transaction_List.h"
+#include "aaa2575_Transaction_List.h"
 #include <iostream>
 
 using namespace std;
 
 //function declarations
 void printList();
+void addTransactions();
+void deleteByDate();
+void deleteByEmployee();
 
-
-
-
+//global vairables
+Transaction_List transactions{};
 
 int main()
 {
-	Transaction_List transactions{};
 	cout << "\nWelcome to the Transaction List Managment Solution. \n";
 	cout << "Please make a selection from the following menu: \n";
 	cout << "1: Print all transactions\n";
@@ -36,13 +37,19 @@ int main()
 				printList();
 				break;
 			case 2:
-				//add a new transaction
+				addTransactions();
+				cout << "The list of transactions has been updated";
+				printList();
 				break;
 			case 3:
-				//delete transaction by date
+				deleteByDate();
+				cout << "The list of transactions has been updated";
+				printList();
 				break;
 			case 4:
-				//delete transaction by employee
+				deleteByEmployee();
+				cout << "The list of transactions has been updated";
+				printList();
 				break;
 			case 5:
 				// find average transaction;
@@ -67,9 +74,10 @@ void printList()
 
 void addTransactions()
 {
-
 	int y,m,d,h,min,sec;
-	
+	double p;
+	string n;
+
 	cout << "Before adding a new transaction I need a little more information";
 	cout <<  "What is the year the transaction was made: ";
 	cin >> y;
@@ -83,7 +91,47 @@ void addTransactions()
 	cin >> min;
 	cout << "The second the transaction was made: ";
 	cin >> sec;
+	cout << "Please enter the amount of the transaction: ";
+	cin >> p;
+	cout << "Please enter the employee that handled the transaction: ";
+	cin >> n;
 
 	Date date{y,m,d,h,min,sec};
-	transactions
+	Transaction transaction{p,n};
+
+	if(transactions.add_transaction(date, transaction))
+		cout << "Transaction added";
+}
+
+void deleteByDate()
+{
+	int y,m,d,h,min,sec;
+	cout << "Before deleting a new transaction I need a little more information";
+	cout << "In what year was the transaction made: ";
+	cin >> y;
+	cout << "In what month was the transaction  made: ";
+	cin >> m;
+	cout << "On what day was the transaction  made: ";
+	cin >> d;
+	cout << "What is the hour the transaction was made: ";
+	cin >> h;
+	cout << "What is the minute the transaction was made: ";
+	cin >> min;
+	cout << "What is the second the transaction was made: ";
+	cin >> sec;
+
+	Date d{y,m,d,h,min,sec};
+
+	if(transaction.delete_transaction_by_date(d))
+		cout << "Transaction deleted";
+}
+
+void deleteByEmployee()
+{
+	string employeeName;
+	cout << "What is the name of the Employee that handled the transaction: ";
+	cin >> employeeName;
+
+	if (transactions.delete_transactions_by_name(employeeName))
+		cout << "Transaction deleted";
 }
