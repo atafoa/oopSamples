@@ -9,8 +9,8 @@ class Transaction
 	Transaction(double p, string n);
 	double get_price();
 	string get_name();
-	string to_string();
-	ostream& operator<<(ostream& ost, const Transaction& trans_two);
+	string to_string() const;
+	friend ostream& operator<<(ostream& ost, const Transaction& trans_two);
 
 	private:
 	double price;

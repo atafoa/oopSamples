@@ -1,16 +1,9 @@
 #include "aaa2575_Transaction_List.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
-
-//function declarations
-void printList();
-void addTransactions();
-void deleteByDate();
-void deleteByEmployee();
-
-//global vairables
-Transaction_List transactions{};
 
 int main()
 {
@@ -21,41 +14,113 @@ int main()
 	cout << "3: Delete a transaction by date\n";
 	cout << "4: Delete all transactions by employee\n";
 	cout << "5: Average transaction value\n";
-	cout << "6: Find out who won the bonus\n"
-	cout << "0: Exit the program\n"<< endl;
+	cout << "6: Find out who won the bonus\n";
+	cout << "0: Exit the program\n" << endl;
 
-	int choice
+	Transaction_List transactions;
+	int choice;
+	string userInput;
+	stringstream ss;
+	char removeChar;
+	double average;
+	string winner;
+	int y; int m; int d; int h; int min; int sec; double p; string n;
+	Date date{0,0,0,0,0,0};
+	Transaction t{0,""};
+	string employeeName;
 
 	do
 	{
 		cout << "What would you like to do: ";
 		cin >> choice;
-		cout << "You chose: " << choice;
+
+		if( choice < 0 || choice > 6)
+		{
+			cout << "Input invalid please re-enter a value from 0 to 6: ";
+			cin >> choice;
+		}
+
 		switch (choice)
 		{
 			case 1:
-				printList();
+				cout << "Printing all transactions\n" << endl;
+				transactions.list_transactions();
 				break;
 			case 2:
-				addTransactions();
-				cout << "The list of transactions has been updated";
-				printList();
+				cout << "Before adding a new transaction I need a little more information \n";
+				cout << "Please enter the date the transaction was made in the form of mm/dd/yyyy" << endl;
+				cin >> userInput;
+				ss << userInput;
+				ss >> m;
+				ss >> removeChar;
+				ss >> d;
+				ss >> removeChar;
+				ss >> y;
+				ss >> removeChar;
+				ss.str("");
+				ss.clear();
+
+				cout << "Please enter the time the transaction occurred in the form hh:mm:ss" << endl;
+				cin >> userInput;
+				ss << userInput;
+				ss >> h;
+				ss >> removeChar;
+				ss >> min;
+				ss >> removeChar;
+				ss >> sec;
+				date = Date(y,m,d,h,min,sec);
+				ss.str("");
+				ss.clear();
+
+				cout << "What was the amount of the transaction: ";
+				cin >> p;
+				cout << "What is the name of the employee who handled the transaction: ";
+				cin >> n;
+				t = Transaction(p,n);
+				if(!transactions.add_transaction(date,t))
+					cout << "\nThe list of transactions could not be updated\n";
+				transactions.list_transactions();
+				cout << endl << endl;
 				break;
 			case 3:
-				deleteByDate();
-				cout << "The list of transactions has been updated";
-				printList();
+				cout << "Before deleting a new transaction I need a little more information" << endl;
+				cout << "Please enter the date the transaction was made in the form of mm/dd/yyyy hh:mm:ss" << endl;
+				cin >> userInput;
+				ss << userInput;
+				ss >> m;
+				ss >> removeChar;
+				ss >> d;
+				ss >> removeChar;
+				ss >> y;
+				ss >> removeChar;
+				ss >> h;
+				ss >> removeChar;
+				ss >> min;
+				ss >> removeChar;
+				ss >> sec;
+				ss.str("");
+				ss.clear();
+
+				date = Date(y,m,d,h,min,sec);
+				transactions.delete_transaction_by_date(date);
+				cout << endl <<  "The list of transactions has been updated\n" << endl;
+				transactions.list_transactions();
+				cout << endl << endl;
 				break;
 			case 4:
-				deleteByEmployee();
-				cout << "The list of transactions has been updated";
-				printList();
+				cout << "What is the name of the Employee that handled the transaction: ";
+				cin >> employeeName;
+				transactions.delete_transactions_by_name(employeeName);
+				cout << "\nThe list of transactions has been updated\n";
+				transactions.list_transactions();
+				cout << endl << endl;
 				break;
 			case 5:
-				// find average transaction;
+				average = transactions.get_average_transaction();
+				cout << "The average of all transactions is: " << average << endl;
 				break;
 			case 6:
-				//bonus
+				cout << "The winner of the bonus is: " << transactions.bonus() << endl;
 				break;
 			case 0:
 				cout << "Now exiting the program\n";
@@ -64,74 +129,4 @@ int main()
 		}
 
 	}while( choice != 0);
-}
-
-void printList()
-{
-	cout << "Now printing all transactions";
-	transactions.list_transactions();
-}
-
-void addTransactions()
-{
-	int y,m,d,h,min,sec;
-	double p;
-	string n;
-
-	cout << "Before adding a new transaction I need a little more information";
-	cout <<  "What is the year the transaction was made: ";
-	cin >> y;
-	cout << "What is the month the transaction was made: ";
-	cin >> m;
-	cout << "What is the day the transaction was made: ";
-	cin >> d;
-	cout << "The hour the transaction was made: ";
-	cin >> h;
-	cout << "The minute the transaction was made: ";
-	cin >> min;
-	cout << "The second the transaction was made: ";
-	cin >> sec;
-	cout << "Please enter the amount of the transaction: ";
-	cin >> p;
-	cout << "Please enter the employee that handled the transaction: ";
-	cin >> n;
-
-	Date date{y,m,d,h,min,sec};
-	Transaction transaction{p,n};
-
-	if(transactions.add_transaction(date, transaction))
-		cout << "Transaction added";
-}
-
-void deleteByDate()
-{
-	int y,m,d,h,min,sec;
-	cout << "Before deleting a new transaction I need a little more information";
-	cout << "In what year was the transaction made: ";
-	cin >> y;
-	cout << "In what month was the transaction  made: ";
-	cin >> m;
-	cout << "On what day was the transaction  made: ";
-	cin >> d;
-	cout << "What is the hour the transaction was made: ";
-	cin >> h;
-	cout << "What is the minute the transaction was made: ";
-	cin >> min;
-	cout << "What is the second the transaction was made: ";
-	cin >> sec;
-
-	Date d{y,m,d,h,min,sec};
-
-	if(transaction.delete_transaction_by_date(d))
-		cout << "Transaction deleted";
-}
-
-void deleteByEmployee()
-{
-	string employeeName;
-	cout << "What is the name of the Employee that handled the transaction: ";
-	cin >> employeeName;
-
-	if (transactions.delete_transactions_by_name(employeeName))
-		cout << "Transaction deleted";
 }
