@@ -23,7 +23,6 @@ int main()
 	stringstream ss;
 	char removeChar;
 	double average;
-	string winner;
 	int y; int m; int d; int h; int min; int sec; double p; string n;
 	Date date{0,0,0,0,0,0};
 	Transaction t{0,""};
