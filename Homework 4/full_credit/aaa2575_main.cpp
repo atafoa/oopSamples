@@ -35,8 +35,8 @@ int main()
 
 		if( choice < 0 || choice > 6)
 		{
-			cout << "Input invalid please re-enter a value from 0 to 6: ";
-			cin >> choice;
+			cout << "Input invalid Number has to be from 0 to 6" << endl;
+			return 0;
 		}
 
 		switch (choice)
@@ -78,12 +78,15 @@ int main()
 				t = Transaction(p,n);
 				if(!transactions.add_transaction(date,t))
 					cout << "\nThe list of transactions could not be updated\n";
+				else
+					cout << "\n Transaction List Updated\n";
+				cout << endl;
 				transactions.list_transactions();
-				cout << endl << endl;
+				cout << endl;
 				break;
 			case 3:
 				cout << "Before deleting a new transaction I need a little more information" << endl;
-				cout << "Please enter the date the transaction was made in the form of mm/dd/yyyy hh:mm:ss" << endl;
+				cout << "Please enter the date the transaction was made in the form of mm/dd/yyyy" << endl;
 				cin >> userInput;
 				ss << userInput;
 				ss >> m;
@@ -92,19 +95,24 @@ int main()
 				ss >> removeChar;
 				ss >> y;
 				ss >> removeChar;
+				ss.str("");
+				ss.clear();
+
+				cout << "Please enter the time the transaction occurred in the form hh:mm:ss" << endl;
+				cin >> userInput;
+				ss << userInput;
 				ss >> h;
 				ss >> removeChar;
 				ss >> min;
 				ss >> removeChar;
 				ss >> sec;
+				date = Date(y,m,d,h,min,sec);
 				ss.str("");
 				ss.clear();
-
-				date = Date(y,m,d,h,min,sec);
 				transactions.delete_transaction_by_date(date);
 				cout << endl <<  "The list of transactions has been updated\n" << endl;
 				transactions.list_transactions();
-				cout << endl << endl;
+				cout << endl;
 				break;
 			case 4:
 				cout << "What is the name of the Employee that handled the transaction: ";
@@ -112,7 +120,7 @@ int main()
 				transactions.delete_transactions_by_name(employeeName);
 				cout << "\nThe list of transactions has been updated\n";
 				transactions.list_transactions();
-				cout << endl << endl;
+				cout << endl;
 				break;
 			case 5:
 				average = transactions.get_average_transaction();
