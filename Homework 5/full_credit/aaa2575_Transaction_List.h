@@ -4,6 +4,8 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <fstream>
+#include <string.h>
 #include "aaa2575_Transaction.h"
 #include "aaa2575_Date.h"
 
@@ -22,6 +24,8 @@ class Transaction_List
 	friend ostream& operator<<(ostream& ost, const Transaction_List& trans_list_two);
 	void delete_transaction_by_date(Date d);
 	void delete_transactions_by_name(string n);
+	ofstream outFile;
+
 
 	private:
 	map<Date,Transaction> transactions;

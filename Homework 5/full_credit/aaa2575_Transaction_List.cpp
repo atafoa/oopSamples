@@ -22,13 +22,16 @@ void Transaction_List:: list_transactions()
 
 	Date d {0,0,0,0,0,0};
 	Transaction t {0, ""};
+	outFile.open("aaa2575_save_file.txt");
 	auto it = transactions.begin();
 	for(;it != transactions.end(); it++)
 	{
 		d = it->first;
 		t = it->second;
 		cout << d.to_string() << " " << t.to_string() << endl;
+		outFile << d.to_string() << " " << t.to_string() << endl;
 	}
+	outFile.close();
 }
 
 double Transaction_List:: get_average_transaction()
@@ -50,46 +53,32 @@ double Transaction_List:: get_average_transaction()
 
 string Transaction_List:: bonus()
 {
+	if(transactions.empty())
+	        return "No one";
+	    map<string, int> bonus_list;
+	    map<Date,Transaction>::iterator it = transactions.begin();
+	    for(;it != transactions.end(); it++)
+	    {
+	        if(bonus_list.count(it->second.get_name()) == 0)
+	            bonus_list.insert(make_pair(it->second.get_name(), 1));
+	        else
+	            bonus_list[it->second.get_name()] = bonus_list[it->second.get_name()] + 1;
+	    }
 
-		if(transactions.empty())
-			return 0;
+	    int max = 0;
+	    string bonus_winner = "";
 
-		auto i = transactions.begin();
-		auto j = transactions.begin();
-		double total = 0;
-		double previous = 0;
-		string winner;
-		vector<string> employees;
-		Transaction temp{0, ""};
+	    map<string, int>::iterator itt = bonus_list.begin();
+	    for(;itt != bonus_list.end(); itt++)
+	    {
+	        if(itt->second > max)
+	        {
+	            max = itt->second;
+	            bonus_winner = itt->first;
+	        }
+	    }
 
-		for(; i != transactions.end(); i++)
-		{
-			temp = i -> second;
-			if(find(employees.begin(), employees.end(), temp.get_name()) == employees.end())
-			{
-				employees.push_back(temp.get_name());
-			}
-		}
-
-		for(int k = 0; k < employees.size(); k++)
-		{
-			for(;j != transactions.end(); ++j)
-			{
-				temp = j -> second;
-				if(employees.at(k).compare(temp.get_name()) == 0)
-				{
-					total += temp.get_price();
-				}
-			}
-
-			if(total > previous)
-			{
-				previous = total;
-				winner = employees.at(k);
-			}
-			total = 0;
-		}
-		return winner;
+	    return bonus_winner;
 }
 
 string Transaction_List:: to_string() const

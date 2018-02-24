@@ -9,6 +9,10 @@ public:
 	void delete_transaction_by_date();
 	void input_transaction_date();
 
+
+
+
+
 private:
 	Transaction_List& transactions;
 	View& view;

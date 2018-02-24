@@ -23,6 +23,7 @@ void Controller:: execute_cmd(int cmd)
 	Transaction t{0,""};
 	string employeeName;
 
+
 	if( cmd < 0 || cmd > 6)
 	{
 		throw runtime_error("Input invalid Number has to be from 0 to 6");
@@ -37,17 +38,23 @@ void Controller:: execute_cmd(int cmd)
 		case 2:
 			cout << "Before adding a new transaction I need a little more information \n";
 			input_transaction_date();
+			cout <<view.view_all_transactions() << endl;
 			transactions.list_transactions();
 			cout << endl;
+
 			break;
 		case 3:
 			cout << "Before deleting a new transaction I need a little more information" << endl;
 			delete_transaction_by_date();
+			cout <<view.view_all_transactions() << endl;
+			transactions.list_transactions();
 			break;
 		case 4:
 			cout << view.prompt_for_employeeName();
 			cin >> employeeName;
 			transactions.delete_transactions_by_name(employeeName);
+			cout <<view.view_all_transactions() << endl;
+			transactions.list_transactions();
 			break;
 		case 5:
 			average = transactions.get_average_transaction();
