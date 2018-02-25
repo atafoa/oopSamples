@@ -1,3 +1,0 @@
-On: 12/12/12 at 12:12:12 Employee: A Price: 20.000000
-On: 13/13/13 at 13:13:13 Employee: A Price: 60.000000
-On: 14/14/14 at 14:14:14 Employee: B Price: 20.000000
