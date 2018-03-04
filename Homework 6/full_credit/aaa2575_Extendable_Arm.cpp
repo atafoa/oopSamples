@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Extendable_Arm:: Extendable_Arm(int mn, string n, int bl, int l, int wl,int el)
+Extendable_Arm::Extendable_Arm(int mn, string n, int bl, int l, int wl,int el)
 {
 	model_number = mn;
 	name = n;

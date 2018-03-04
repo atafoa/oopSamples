@@ -25,12 +25,10 @@ bool Arm_Robot::move(int x, int y)
 	}
 }
 
-bool Arm_Robot::pick_up()
+bool Arm_Robot::pick_up(int weight)
 {
 
-	int objectWeight;
-	cout << "What is the weight of the object you want me to lift: ";
-	cin >> objectWeight;
+	cout << "Picking up object" << endl;
 
 	if(is_holding == true)
 	{
@@ -40,7 +38,7 @@ bool Arm_Robot::pick_up()
 
 	else
 	{
-		if(objectWeight > weight_limit)
+		if(weight > weight_limit)
 		{
 			cout << "This object is too heavy I cannot carry it." << endl;
 			cout << "The weight limit is: " << weight_limit;
@@ -60,6 +58,9 @@ bool Arm_Robot::pick_up()
 
 bool Arm_Robot::Drop()
 {
+
+	cout << "Dropping object" << endl;
+	
 	if(is_holding == false)
 	{
 		cout << "There is no object to drop." << endl;
