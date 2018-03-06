@@ -2,13 +2,13 @@
 
 using namespace std;
 
-Powered_Arm::Powered_Arm(int mn, string n, int bl, int l, int wl, int ml)
+Powered_Arm::Powered_Arm(int mn, string n, int bl, int l, int wl, int ml):Arm_Robot(mn,n,bl,l,wl)
 {
 	model_number = mn;
 	name = n;
 	battery_life = bl;
 	battery_level =  bl;
-	position = (0,0);
+	position = make_pair(0,0);
 	length = l;
 	weight_limit = wl;
 	is_holding = false;
@@ -18,27 +18,12 @@ Powered_Arm::Powered_Arm(int mn, string n, int bl, int l, int wl, int ml)
 
 bool Powered_Arm::move(int x, int y)
 {
-double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
+	double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
 	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
 
 	if(distanceOrigin  > length)
-		return false
-	
-	if(distanceOrigin > length - extend_length)
-	{	
-		if(!is_extended)
-			if(!extend)
-				return false;
-			else
-				if(is_extended);
-					if(extend)
-						return true;
-	}
-
-
-	if((is_extended && battery_level - (2* distance) <= 0) || is_extended %% is_holding && battery_level - (3* distance) <= 0)
 		return false;
-
+	
 	if(Arm_Robot::move(x,y))
 	{
 		if(is_holding == true)
@@ -47,9 +32,9 @@ double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second
 			return true;
 		}
 
-		if(is_extended == true)
+		if(motor_on == true)
 		{
-			battery_level -=  distance;
+			battery_level -=  (2*distance);
 			return true;
 		}
 	}
@@ -62,12 +47,19 @@ bool Powered_Arm::pick_up(int weight)
 
 	cout << "Picking up object" << endl;
 
+	if(is_holding == true)
+	{
+		cout << "Already Holding another object." << endl;
+		return false;
+	}
+
 	if(weight > weight_limit)
 	{
 		cout << "This object is too heavy for me to lift." << endl;
 		cout << "The motor will be turned on to lift this." << endl;
 		is_holding = true;
 		power_on();
+		return true;
 	}
 
 }
@@ -76,6 +68,12 @@ bool Powered_Arm::drop()
 {
 
 	cout << "Dropping object" << endl;
+
+	if(is_holding == false)
+	{
+		cout << "There is no object to drop" << endl;
+		return false;
+	}
 
 	if(motor_on == true)
 	{

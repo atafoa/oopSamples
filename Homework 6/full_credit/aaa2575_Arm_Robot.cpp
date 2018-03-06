@@ -1,14 +1,15 @@
 #include "aaa2575_Arm_Robot.h"
 
-using namsepace std;
+using namespace std;
 
-Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl)
+Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl):Robot(mn, n, bl)
 {
+
 	model_number = mn;
 	name = n;
 	battery_life = bl;
 	battery_level = bl; //Max battery level is 100
-	position = (0,0);
+	position = make_pair(0,0);
 	length = l;
 	weight_limit = wl;
 	is_holding = false;
@@ -41,7 +42,7 @@ bool Arm_Robot::pick_up(int weight)
 		return false;
 	}
 
-	else if((battery_level - 1) != 0)
+	if((battery_level - 1) != 0)
 	{
 		if(weight > weight_limit)
 		{
@@ -50,7 +51,7 @@ bool Arm_Robot::pick_up(int weight)
 			is_holding = false;
 			return false;
 		}
-		else()
+		else
 		{
 			cout << "This object is under the weight limit."<< endl;
 			cout << "I can pick up this object" << endl;
@@ -63,7 +64,7 @@ bool Arm_Robot::pick_up(int weight)
 	return false;
 }
 
-bool Arm_Robot::Drop()
+bool Arm_Robot::drop()
 {
 
 	cout << "Dropping object" << endl;
@@ -73,7 +74,8 @@ bool Arm_Robot::Drop()
 		cout << "There is no object to drop." << endl;
 		return false;
 	}
-	else if((battery_level - 1) != 0)
+	
+	if((battery_level - 1) != 0)
 	{
 		
 		cout << "Dropping Object" << endl;

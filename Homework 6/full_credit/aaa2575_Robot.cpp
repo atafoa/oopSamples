@@ -8,7 +8,7 @@ Robot::Robot(int mn, string n, int bl)
 	name = n;
 	battery_life = bl;
 	battery_level = bl;	//max battery level is 100%
-	position = (0,0);
+	position = make_pair(0,0);
 
 }
 
@@ -26,7 +26,7 @@ bool Robot::move(int x, int y)
 	tempX = pow(tempX,2);
 	tempY = pow(tempY,2);
 
-	double distance = sqrt(tempX, tempY);
+	double distance = sqrt(tempX + tempY);
 	distance = ceil(distance);
 
 	if(battery_level - distance <= 0)

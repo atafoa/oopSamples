@@ -2,13 +2,13 @@
 
 using namespace std;
 
-Extendable_Arm::Extendable_Arm(int mn, string n, int bl, int l, int wl,int el)
+Extendable_Arm::Extendable_Arm(int mn, string n, int bl, int l, int wl,int el):Arm_Robot(mn,n,bl,l,wl)
 {
 	model_number = mn;
 	name = n;
 	battery_life = bl;
 	battery_level = bl;
-	position = (0,0);
+	position = make_pair(0,0);
 	length = l + el;
 	weight_limit = wl;
 	is_holding = false;
@@ -23,21 +23,26 @@ bool Extendable_Arm::move(int x, int y)
 	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
 
 	if(distanceOrigin  > length)
-		return false
+		return false;
 	
 	if(distanceOrigin > length - extend_length)
 	{	
 		if(!is_extended)
-			if(!extend)
-				return false;
+		{
+			if(!extend())
+				return false;	
+		}
+			
 			else
+			{
 				if(is_extended);
-					if(extend)
-						return true;
+					if(!retract())
+						return false;
+			}
 	}
 
 
-	if((is_extended && battery_level - (2* distance) <= 0) || is_extended %% is_holding && battery_level - (3* distance) <= 0)
+	if((is_extended && battery_level - (2* distance) <= 0) || is_extended && is_holding && battery_level - (3* distance) <= 0)
 		return false;
 
 	if(Arm_Robot::move(x,y))
