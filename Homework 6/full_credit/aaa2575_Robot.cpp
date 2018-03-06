@@ -31,7 +31,7 @@ bool Robot::move(int x, int y)
 
 	if(battery_level - distance <= 0)
 	{
-		cout << "This move would kill the battery." << endl;
+		cout << "Battery drained please recharge." << endl;
 		return false; 
 	}
 
@@ -42,11 +42,23 @@ bool Robot::move(int x, int y)
 
 void Robot::charge() // returns battery level to max
 {
-	battery_level = 100;
+	battery_level = battery_life;
+	cout << "Battery has been fully charged." << endl;
 }
 
 double Robot::get_battery_percentage()
 {
-	double percent = (battery_level / 100)*100;
+	double percent = (battery_level * 100);
+	percent = percent / 100;
 	return percent;
+}
+
+string Robot::get_name()
+{
+	return name;
+} 
+
+void Robot::get_position()
+{
+	cout << "(" << position.first << ", " <<   position.second << ")";
 }

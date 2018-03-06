@@ -9,7 +9,7 @@ Extendable_Arm::Extendable_Arm(int mn, string n, int bl, int l, int wl,int el):A
 	battery_life = bl;
 	battery_level = bl;
 	position = make_pair(0,0);
-	length = l + el;
+	length = l;
 	weight_limit = wl;
 	is_holding = false;
 	extend_length = el;
@@ -19,48 +19,49 @@ Extendable_Arm::Extendable_Arm(int mn, string n, int bl, int l, int wl,int el):A
 bool Extendable_Arm::move(int x, int y)
 {
 
-	double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
-	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
+	int tempX = (x-position.first);
+	int tempY = (y-position.second);
 
-	if(distanceOrigin  > length)
-		return false;
-	
-	if(distanceOrigin > length - extend_length)
-	{	
-		if(!is_extended)
-		{
-			if(!extend())
-				return false;	
-		}
-			
-			else
-			{
-				if(is_extended);
-					if(!retract())
-						return false;
-			}
-	}
+	tempX = pow(tempX,2);
+	tempY =  pow(tempY,2);
 
+	double distance = sqrt(tempX+tempY);
+	distance = ceil(distance);
 
-	if((is_extended && battery_level - (2* distance) <= 0) || is_extended && is_holding && battery_level - (3* distance) <= 0)
-		return false;
-
-	if(Arm_Robot::move(x,y))
+	if(distance > length  && distance < (length + extend_length))
 	{
-		if(is_holding == true)
-		{
-			battery_level -= distance;
-			return true;
-		}
-
-		if(is_extended == true)
-		{
-			battery_level -=  distance;
-			return true;
-		}
+		cout << "Extending my arm" << endl;
+		extend();
+	}
+	if(distance > (length + extend_length))
+	{
+		cout << "Cannot reach" << endl;
+		return false;
+	}
+	if(battery_level - distance <= 0)
+	{
+		cout << "Battery draining, please recharge" << endl;
+		return false;
 	}
 
-	return false;
+	if(is_holding && (battery_level - (distance *2)) <= 0)
+	{
+		return false;
+	}
+
+	if(is_extended && (battery_level - (distance *2)) <= 0)
+	{
+		return false;
+	}
+
+	if(is_extended && is_holding)
+	{
+		battery_level -= distance;
+	}
+	
+	Arm_Robot:: move(x,y);
+	position = make_pair(x,y);
+	return true;
 }
 
 
@@ -75,7 +76,7 @@ bool Extendable_Arm::extend()
 	if(battery_level - 1 <= 0)
 		return false;
 	
-	cout <<"Extending my arm." << endl;
+	length = length + extend_length;
 	battery_level -= 1;
 	is_extended = true;
 	return true;

@@ -13,6 +13,8 @@ class Robot
 		Robot(int mn, string n, int bl);
 		bool move(int x, int y);
 		void charge();
+		string get_name();
+		void get_position();
 		double get_battery_percentage();
 
 	protected:

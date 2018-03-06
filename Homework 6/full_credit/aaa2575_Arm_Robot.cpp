@@ -20,6 +20,12 @@ bool Arm_Robot::move(int x, int y)
 	double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
 	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
 
+	if(distance > length)
+	{
+		cout << "This location is past my arm length of " << length << endl;
+		return false;
+	}
+
 	if( distanceOrigin  <= length || is_holding == true && battery_life - (2*distance) > 0)
 	{
 		if( Robot::move(x,y))
@@ -47,7 +53,7 @@ bool Arm_Robot::pick_up(int weight)
 		if(weight > weight_limit)
 		{
 			cout << "This object is too heavy I cannot carry it." << endl;
-			cout << "The weight limit is: " << weight_limit;
+			cout << "The weight limit is: " << weight_limit << endl;
 			is_holding = false;
 			return false;
 		}
@@ -66,15 +72,12 @@ bool Arm_Robot::pick_up(int weight)
 
 bool Arm_Robot::drop()
 {
-
-	cout << "Dropping object" << endl;
-	
 	if(is_holding == false)
 	{
 		cout << "There is no object to drop." << endl;
 		return false;
 	}
-	
+
 	if((battery_level - 1) != 0)
 	{
 		
