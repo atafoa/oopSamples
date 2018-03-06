@@ -7,7 +7,7 @@ Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl)
 	model_number = mn;
 	name = n;
 	battery_life = bl;
-	battery_level = 100; //Max battery level is 100
+	battery_level = bl; //Max battery level is 100
 	position = (0,0);
 	length = l;
 	weight_limit = wl;
@@ -16,19 +16,24 @@ Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl)
 
 bool Arm_Robot::move(int x, int y)
 {
+	double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
+	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
 
-
-	if (x < length)
+	if( distanceOrigin  <= length || is_holding == true && battery_life - (2*distance) > 0)
 	{
-		cout << "I cannot move here. This location is   past the length of my arm" << endl;
-		return false;
+		if( Robot::move(x,y))
+		{
+			battery_level -= distance;
+			return true;
+			
+		}
 	}
+
+	return false;
 }
 
 bool Arm_Robot::pick_up(int weight)
 {
-
-	cout << "Picking up object" << endl;
 
 	if(is_holding == true)
 	{
@@ -36,7 +41,7 @@ bool Arm_Robot::pick_up(int weight)
 		return false;
 	}
 
-	else
+	else if((battery_level - 1) != 0)
 	{
 		if(weight > weight_limit)
 		{
@@ -54,6 +59,8 @@ bool Arm_Robot::pick_up(int weight)
 			return true;
 		}
 	}
+
+	return false;
 }
 
 bool Arm_Robot::Drop()
@@ -66,11 +73,14 @@ bool Arm_Robot::Drop()
 		cout << "There is no object to drop." << endl;
 		return false;
 	}
-	else
+	else if((battery_level - 1) != 0)
 	{
+		
 		cout << "Dropping Object" << endl;
 		is_holding = false;
 		battery_level -= 1;
 		return true;
 	}
+
+	return false;
 }

@@ -2,7 +2,7 @@
 #define AAA2575_POWERED_ARM_H
 #include "aaa2575_Arm_Robot.h"
 
-class Powered_Arm: public aaa2575_Arm_Robot
+class Powered_Arm: public Arm_Robot
 {
 	public:
 		Powered_Arm(int mn, string n, int bl, int l, int wl, int ml);

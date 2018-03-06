@@ -7,7 +7,7 @@ Mobile_Arm::Mobile_Arm(int mn, string n,int bl)
 	model_number = mn;
 	name = n;
 	battery_life = bl;
-	battery_level = 100;
+	battery_level = bl;
 	position = (0,0);
 	speed_level = 1
 

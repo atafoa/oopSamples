@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <string>
-using namespace std
+#include <cmath>
+
+using namespace std;
 
 class Robot
 {
