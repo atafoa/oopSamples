@@ -49,7 +49,7 @@ void Robot::charge() // returns battery level to max
 double Robot::get_battery_percentage()
 {
 	double percent = (battery_level * 100);
-	percent = percent / 100;
+	percent = percent / battery_life;
 	return percent;
 }
 
