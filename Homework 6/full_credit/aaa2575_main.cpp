@@ -283,7 +283,7 @@ int main()
 	}
 	HK47.charge();
 	cout << endl << "Moving to (80,80) to pick up an object" << endl;
-	if(HK47.move(90,90))
+	if(HK47.move(80,80))
 	{	
 		cout << HK47.get_name() << " has successfully moved to ";
 		HK47.get_position();

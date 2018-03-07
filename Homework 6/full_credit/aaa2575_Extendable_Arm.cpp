@@ -33,6 +33,13 @@ bool Extendable_Arm::move(int x, int y)
 		cout << "Extending my arm" << endl;
 		extend();
 	}
+	
+	if(distance < length && is_extended == true)
+	{
+		cout << "Arm doesn't need to be extended" << endl;
+		retract();
+		
+	}
 	if(distance > (length + extend_length))
 	{
 		cout << "Cannot reach" << endl;
@@ -94,6 +101,7 @@ bool Extendable_Arm::retract()
 		return false;
 	
 	cout <<"Retracting my arm." << endl;
+	length = length - extend_length;
 	is_extended = false;
 	battery_level -= 1;
 	return true;
