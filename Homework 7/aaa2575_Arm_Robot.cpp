@@ -5,11 +5,6 @@ using namespace std;
 Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl):Robot(mn, n, bl)
 {
 
-	model_number = mn;
-	name = n;
-	battery_life = bl;
-	battery_level = bl; //Max battery level is 100
-	position = make_pair(0,0);
 	length = l;
 	weight_limit = wl;
 	is_holding = false;
@@ -17,75 +12,46 @@ Arm_Robot::Arm_Robot(int mn, string n, int bl, int l, int wl):Robot(mn, n, bl)
 
 bool Arm_Robot::move(int x, int y)
 {
-	double distance = ceil(sqrt(pow(x - position.first, 2)+  pow(y - position.second, 2)));
-	double distanceOrigin = ceil(sqrt(pow(x, 2)+  pow(y, 2)));
+	int distance = ceil(sqrt(pow(x-position.first,2) + pow(y-position.second,2)));
+	int distanceFromOrigin = ceil(sqrt(pow(0-x,2) + pow(0-y,2)));
 
-	if(distance > length)
-	{
-		cout << "This location is past my arm length of " << length << endl;
-		return false;
-	}
+	if(is_holding)
+		distance *= 2;
 
-	if( distanceOrigin  <= length || is_holding == true && battery_life - (2*distance) > 0)
-	{
-		if( Robot::move(x,y))
-		{
-			battery_level -= distance;
-			return true;
-			
-		}
-	}
-
-	return false;
+	 if(battery_level < distance || length < distanceFromOrigin)
+        return false;
+    
+    battery_level =- distance;
+    position = make_pair(x,y);
+    return true;
 }
 
 bool Arm_Robot::pick_up(int weight)
 {
-
-	if(is_holding == true)
+	 if(weight_limit < weight || is_holding || battery_level == 0)
 	{
-		cout << "I cannot pick up this object. I am already holding another object." << endl;
+		cout << "I cannot pick up this object." << endl;
 		return false;
 	}
 
-	if((battery_level - 1) != 0)
-	{
-		if(weight > weight_limit)
-		{
-			cout << "This object is too heavy I cannot carry it." << endl;
-			cout << "The weight limit is: " << weight_limit << endl;
-			is_holding = false;
-			return false;
-		}
-		else
-		{
-			cout << "This object is under the weight limit."<< endl;
-			cout << "I can pick up this object" << endl;
-			is_holding = true;
-			battery_level -= 1;
-			return true;
-		}
-	}
-
-	return false;
+	cout << "This object is under the weight limit."<< endl;
+	cout << "I can pick up this object" << endl;
+	is_holding = true;
+	battery_level -= 1;
+	return true;
 }
 
 bool Arm_Robot::drop()
 {
-	if(is_holding == false)
+	if(!is_holding || battery_level == 0)
 	{
 		cout << "There is no object to drop." << endl;
 		return false;
 	}
 
-	if((battery_level - 1) != 0)
-	{
-		
-		cout << "Dropping Object" << endl;
-		is_holding = false;
-		battery_level -= 1;
-		return true;
-	}
-
-	return false;
+	
+	cout << "Dropping Object" << endl;
+	is_holding = false;
+	battery_level -= 1;
+	return true;
 }

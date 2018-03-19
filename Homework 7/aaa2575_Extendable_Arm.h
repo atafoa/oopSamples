@@ -3,7 +3,7 @@
 
 #include "aaa2575_Arm_Robot.h"
 
-class Extendable_Arm : public Arm_Robot
+class Extendable_Arm : public virtual Arm_Robot
 {
 
 	public:

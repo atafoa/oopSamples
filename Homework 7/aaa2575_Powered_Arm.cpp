@@ -5,115 +5,57 @@ using namespace std;
 
 Powered_Arm::Powered_Arm(int mn, string n, int bl, int l, int wl, int ml):Arm_Robot(mn,n,bl,l,wl), Robot(mn,n,bl)
 {
-	model_number = mn;
-	name = n;
-	battery_life = bl;
-	battery_level =  bl;
-	position = make_pair(0,0);
-	length = l;
-	weight_limit = wl;
-	is_holding = false;
 	motor_limit = ml;
 	motor_on = false;
 }
 
 bool Powered_Arm::move(int x, int y)
 {
-	int tempX = (x-position.first);
-	int tempY = (y-position.second);
+	int distance = ceil(sqrt(pow(x-position.first,2) + pow(y-position.second,2)));
+	int distanceFromOrigin = ceil(sqrt(pow(0-x,2) + pow(0-y,2)));
 
-	tempX = pow(tempX,2);
-	tempY = pow(tempY,2);
-	double distance = sqrt(tempX + tempY);
-	distance = ceil(distance);
+	if(is_holding)
+        if(motor_on)
+            distance *= 4;
+        else
+            distance *= 2;
+    else
+        if(motor_on)
+            distance *= 3;
 
-	if(battery_level - distance <= 0)
-	{
-		cout << "Battery draining, please recharge" << endl;
-		return false;
-	}
-
-	if(is_holding && (battery_level -(distance * 2) <= 0))
-	{
-		cout << "Battery draining, please recharge" << endl;
-		return false;
-	}
-
-	if(motor_on && (battery_level - (2 * distance)) <= 0)
-	{
-		cout << "Battery draining, please recharge" << endl;
-		return false;
-	}
-
-	if(is_holding && motor_on)
-	{
-		battery_level -= (4 * distance);
-		position = make_pair(x,y);
-	}
-
-	else if(motor_on)
-	{
-		battery_level -= (3*distance);
-		position = make_pair(x,y);
-
-	}
-	else
-	{
-		Arm_Robot::move(x,y);
-	}
-
+	if(battery_level < distance || length < distanceFromOrigin)
+	    return false;
+	    
+	battery_level -= distance;
+	position = make_pair(x,y);
 	return true;
 }
 
 bool Powered_Arm::pick_up(int weight)
 {
-	if(is_holding == true)
-	{
-		cout << "Already Holding another object." << endl;
-		return false;
-	}
-
-	if(weight > weight_limit)
-	{
-		cout << "This object is too heavy for me to lift." << endl;
-		cout << "The motor will be turned on to lift this." << endl;
-		power_on();
-	}
-	if(weight > (weight_limit + motor_limit))
-	{
-		cout << "This object is too heavy" << endl;
-		return false;
-	}
-	else
-	{
-		is_holding = true;
-		return true;
-	}
+	if(battery_level == 0 || is_holding)
+        return false;
+    if(weight_limit < weight)
+        if(motor_limit < weight)
+            return false;
+        else
+            power_on();
+        
+    is_holding = true;
+    battery_level -= 1; 
+    return true;
 
 }
 
 bool Powered_Arm::drop()
 {
-
-	cout << "Dropping object" << endl;
-
-	if(is_holding == false)
-	{
-		cout << "There is no object to drop" << endl;
-		return false;
-	}
-
-	if(motor_on == true)
-	{
-		cout << "Turning the motor off." << endl;
-		is_holding = false;
-		power_off(); 
-		return true;
-	}
-
-	is_holding = false;
-	return true;
-
+	 if(!is_holding || battery_level == 0)
+        return false;
+    
+    is_holding = false;
+  	power_off();
+    battery_level -= 1;
+    return true;
 }
 
 void Powered_Arm::power_on()

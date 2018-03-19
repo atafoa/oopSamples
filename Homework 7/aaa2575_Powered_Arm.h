@@ -3,7 +3,7 @@
 
 #include "aaa2575_Arm_Robot.h"
 
-class Powered_Arm: public Arm_Robot
+class Powered_Arm: public virtual Arm_Robot
 {
 	public:
 		Powered_Arm(int mn, string n, int bl, int l, int wl, int ml);
