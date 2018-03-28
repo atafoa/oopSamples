@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Televison_Show_Season::Televison_Show_Season(int ry, string p, vector<string> d, vector<string> la, string t, int idNum) : Media(int idNum, int callNum, string t, string g)
+Television_Show_Season::Televison_Show_Season(int ry, string p, vector<string> d, vector<string> la,int sn, string t, int idNum, string g, string callNum) : Media(idNum,callNum,t,g)
 {
 	release_year = ry;
 	producer = p;
@@ -10,12 +10,15 @@ Televison_Show_Season::Televison_Show_Season(int ry, string p, vector<string> d,
 	leading_actors = la;
 	season_number = sn;
 	title = t;
+	genre = g;
 	id_number = idNum;
 }
 
-void Televison_Show_Season::get_info()
+void Television_Show_Season::get_info()
 {
-	cout << "Show Title: " < title << endl;
+	cout <<"Television Show" << endl;
+	cout << "Show Title: " << title << endl;
+	cout << "Genre: " << genre << endl;
 	cout << "Producer: " << producer << endl;
 	cout << "Season Number:  " << season_number << endl;
 	cout << "Id Number: " << id_number << endl;

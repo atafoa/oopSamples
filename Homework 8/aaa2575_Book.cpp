@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Book::Book(string a, int cy, string t, string g) : Media(int idNum, int callNum, string t, string g)
+Book::Book(string a, int cy, string t, string g, int idNum, string callNum) : Media(idNum,callNum,t,g)
 {
 	author = a;
 	copyright_year = cy;
@@ -14,6 +14,7 @@ Book::Book(string a, int cy, string t, string g) : Media(int idNum, int callNum,
 
 void Book::get_info()
 {
+	cout << call_number << endl;
 	cout << "Title: " << title << endl;
 	cout << "Book author: " << author << endl;
 	cout << "Genre: " << genre << endl;

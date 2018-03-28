@@ -9,7 +9,7 @@ using namespace std;
 class Book : public Media
 {
 	public:
-	Book(string a, int cy, string t, string g, int idNum);
+	Book(string a, int cy, string t, string g, int idNum, string callNum);
 	void get_info();
 	friend ostream& operator<<(ostream& ost, const Book& b_two);
 
