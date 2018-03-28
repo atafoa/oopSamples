@@ -1,8 +1,31 @@
-#include "aaa2575_Book.h"
+#include "aaa2575_Librarian.h"
 
-#inculde <iostream>
+using namespace std;
 
-Book::Book() : Media()
+Librarian::Librarian(string n, int idNum)
+{
+	name = n;
+	id = idNum;
+}
+
+void Librarian::get_info()
+{
+	cout << "Librarian name: " << name << endl;
+	cout << "ID number: " << id << endl;
+}
+
+void Librarian::check_out()
 {
 
+}
+
+void Librarian::check_in()
+{
+
+}
+
+ostream& operator<<(ostream& ost, const Librarian& lb_two)
+{
+	ost << lb_two;
+	return ost;
 }

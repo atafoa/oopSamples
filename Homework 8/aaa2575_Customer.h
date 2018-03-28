@@ -1,8 +1,26 @@
-#include "aaa2575_Book.h"
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
 
-#inculde <iostream>
+#include <iostream>
+#include <string>
 
-Book::Book() : Media()
+using namespace std;
+
+class Customer
 {
+	public:
+	Customer(string n, int idNum, int p, string e, double b);
+	void get_info();
+	void get_balance();
+	friend ostream& operator<<(ostream& ost, const Customer& c_two);
 
-}
+	private:
+	string name;
+	int id;
+	int phone;
+	string email;
+	double balance;
+
+};
+
+#endif
