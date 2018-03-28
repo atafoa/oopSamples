@@ -18,7 +18,7 @@ class Television_Show_Season: public Media
 	private:
 	int release_year;
 	string producer;
-	vector<string> director
+	vector<string> director;
 	vector<string> leading_actors;
 	int season_number;
 	string title;

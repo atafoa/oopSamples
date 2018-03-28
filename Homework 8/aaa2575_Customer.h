@@ -9,7 +9,7 @@ using namespace std;
 class Customer
 {
 	public:
-	Customer(string n, int idNum, int p, string e, double b);
+	Customer(string n, int idNum, string p, string e, double b);
 	void get_info();
 	void get_balance();
 	friend ostream& operator<<(ostream& ost, const Customer& c_two);
@@ -17,7 +17,7 @@ class Customer
 	private:
 	string name;
 	int id;
-	int phone;
+	string phone;
 	string email;
 	double balance;
 

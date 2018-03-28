@@ -8,7 +8,7 @@ Bundle::Bundle(string n , int idNum, string callNum, string t, string g) : Media
 	checked_out = false;
 }
 
-void Media::get_info()
+void Bundle::get_info()
 {
 	cout << "Bundle" << endl;
 	cout << "Id Number: " << id_number << endl;
@@ -27,14 +27,16 @@ void Bundle::add_to_bundle(Media media)
 
 void Bundle::remove_from_bundle(int id)
 {
-	auto i = medias.find(id);
+	/*auto i = medias.begin();
 	if(i != medias.end())
 	{
-		medias.erase(i);
-		cout << "Item removed from bundle" << endl;
+		if(i.id_number == id)
+		{	medias.erase(i);
+			cout << "Item removed from bundle" << endl;
+		}
 	}
 	else
-		cout << "Item cannot be removed" << endl;
+		cout << "Item cannot be removed" << endl;*/
 }
 
 void Bundle::list_items()
@@ -45,21 +47,21 @@ void Bundle::list_items()
 		return;
 	}
 
-	auto it = medias.begin();
+	/*auto it = medias.begin();
 	for(;it != medias.end(); it++)
 	{
-		it.Media::get_info();
-	}
+		it.get_info();
+	}*/
 }
 
-bool Bundle::is_checked_out()
+/*bool Bundle::is_checked_out()
 {
-	if(Media::check_out() == true)
+	if(Media::is_checked_out() == true)
 	{
-		cheked_out = true;
+		checked_out = true;
 		return true;
 	}
 
 	return false;
 
-}
+}*/

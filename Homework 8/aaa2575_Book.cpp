@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Book::Book(string a, int cy, string t, string g, int idNum, string callNum) : Media(idNum,callNum,t,g)
+Book::Book(string a, int cy, string t, string g, int idNum, string callNum):Media(idNum,callNum,t,g)
 {
 	author = a;
 	copyright_year = cy;

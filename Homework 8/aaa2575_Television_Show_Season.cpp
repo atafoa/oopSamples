@@ -1,12 +1,12 @@
 #include "aaa2575_Television_Show_Season.h"
-
 #include <iostream>
+using namespace std;
 
-Television_Show_Season::Televison_Show_Season(int ry, string p, vector<string> d, vector<string> la,int sn, string t, int idNum, string g, string callNum) : Media(idNum,callNum,t,g)
+Television_Show_Season::Television_Show_Season(int ry, string p, vector<string> d, vector<string> la,int sn, string t, int idNum, string g, string callNum) : Media(idNum,callNum,t,g)
 {
 	release_year = ry;
 	producer = p;
-	director = d
+	director = d;
 	leading_actors = la;
 	season_number = sn;
 	title = t;
@@ -24,7 +24,7 @@ void Television_Show_Season::get_info()
 	cout << "Id Number: " << id_number << endl;
 }
  
-ostream& operator<<(ostream& ost, const Televison_Show_Season& tss_two)
+ostream& operator<<(ostream& ost, const Television_Show_Season& tss_two)
 {
 	ost << tss_two;
 	return ost;

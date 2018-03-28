@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Music_Album::Music_Album(int ry, string a, vector<string> tr, string t, int id_number, string g, string callNum) : Media(idNum,callNum,t,g)
+Music_Album::Music_Album(int ry, string a, vector<string> tr, string t, int idNum, string g, string callNum) : Media(idNum,callNum,t,g)
 {
 	release_year = ry;
 	artist = a;
@@ -15,7 +15,7 @@ Music_Album::Music_Album(int ry, string a, vector<string> tr, string t, int id_n
 void Music_Album::get_info()
 {
 	cout << call_number << endl;
-	cout << "Album Title: " < title << endl;
+	cout << "Album Title: " << title << endl;
 	cout << "Artist: " << artist << endl;
 	cout << "Genre: " << genre << endl;
 	cout << "Release Year: " << release_year << endl;

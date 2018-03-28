@@ -1,5 +1,5 @@
-#ifndef MEDIA_H
-#define MEDIA_H
+#ifndef BUNDLE_H
+#define BUNDLE_H
 
 #include "aaa2575_Media.h"
 

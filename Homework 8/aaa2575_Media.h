@@ -1,7 +1,6 @@
 #ifndef MEDIA_H
 #define MEDIA_H
 
-#include "aaa2575_Librarian.h"
 #include <vector>
 #include <iostream>
 
@@ -23,6 +22,6 @@ class Media
 	string call_number;
 	string title;
 	string genre;
-}
+};
 
 #endif

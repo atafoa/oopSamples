@@ -2,6 +2,7 @@
 #define BOOK_H
 
 #include <iostream>
+#include "aaa2575_Media.h"
 #include <string>
 
 using namespace std;

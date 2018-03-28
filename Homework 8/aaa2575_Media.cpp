@@ -7,7 +7,7 @@ Media::Media(int idNum, string callNum, string t, string g)
 	id_number = idNum;
 	call_number = callNum;
 	title = t;
-	genre = g
+	genre = g;
 	checked_out = false;
 }
 
@@ -26,14 +26,14 @@ ostream& operator<<(ostream& ost, const Media& media_two)
 	return ost;
 }
 
-bool Media::is_checked_out()
+/*bool Media::is_checked_out()
 {
 	if(Librarian::check_out() == true)
 	{
-		cheked_out = true;
+		checked_out = true;
 		return true;
 	}
 
 	return false;
 
-}
+}*/

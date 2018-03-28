@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Customer::Customer(string n, int idNum, int p, string e, double b)
+Customer::Customer(string n, int idNum, string p, string e, double b)
 {
 	name = n;
 	id = idNum;

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Video_Game::Video_Game(int ry, string s, int idNumm, string t, string g, string callNum) : Media(idNum,callNum,t,g)
+Video_Game::Video_Game(int ry, string s, int idNum, string t, string g, string callNum) : Media(idNum,callNum,t,g)
 {
 	release_year = ry;
 	studio = s;
