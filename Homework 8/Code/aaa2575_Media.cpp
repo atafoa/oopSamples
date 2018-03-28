@@ -26,14 +26,14 @@ ostream& operator<<(ostream& ost, const Media& media_two)
 	return ost;
 }
 
-/*bool Media::is_checked_out()
+bool Media::check_out()
 {
-	if(Librarian::check_out() == true)
-	{
-		checked_out = true;
-		return true;
-	}
+	checked_out = true;
+	return true;
+}
 
-	return false;
-
-}*/
+bool Media::check_in()
+{
+	checked_out = false;
+	return true;
+}

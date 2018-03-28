@@ -54,14 +54,9 @@ void Bundle::list_items()
 	}*/
 }
 
-/*bool Bundle::is_checked_out()
+bool Bundle::check_out()
 {
-	if(Media::is_checked_out() == true)
-	{
-		checked_out = true;
-		return true;
-	}
+	checked_out = true;
+	return true;
 
-	return false;
-
-}*/
+}

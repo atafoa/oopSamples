@@ -11,7 +11,7 @@ class Bundle : public Media
 {
 	public:
 	Bundle(string n, int idNum, string callNum, string t, string g);
-	bool is_checked_out();
+	bool check_out();
 	void get_info();
 	void list_items();
 	void add_to_bundle(Media media);

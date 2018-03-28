@@ -10,7 +10,8 @@ class Media
 {
 	public:
 	Media(int idNum, string callNum, string t, string g);
-	bool is_checked_out();
+	bool check_out();
+	bool check_in();
 	void get_info();
 	friend ostream& operator<<(ostream& ost, const Media& media_two);
 
