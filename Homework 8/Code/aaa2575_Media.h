@@ -12,6 +12,7 @@ class Media
 	Media(int idNum, string callNum, string t, string g);
 	bool check_out();
 	bool check_in();
+	int get_id();
 	void get_info();
 	friend ostream& operator<<(ostream& ost, const Media& media_two);
 

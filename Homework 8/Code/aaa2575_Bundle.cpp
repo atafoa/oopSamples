@@ -12,7 +12,7 @@ void Bundle::get_info()
 {
 	cout << "Bundle" << endl;
 	cout << "Id Number: " << id_number << endl;
-	cout << "Name:" << name << endl;
+	cout << "Name: " << name << endl;
 }
  
 ostream& operator<<(ostream& ost, const Bundle& bundle_two)
@@ -23,20 +23,20 @@ ostream& operator<<(ostream& ost, const Bundle& bundle_two)
 void Bundle::add_to_bundle(Media media)
 {
 	medias.push_back(media);
+	cout << "Media with id " << media.get_id() << " has been added to the bundle." << endl;
+
 }
 
 void Bundle::remove_from_bundle(int id)
 {
-	/*auto i = medias.begin();
-	if(i != medias.end())
+	for(int i = 0; i < medias.size(); i++)
 	{
-		if(i.id_number == id)
-		{	medias.erase(i);
-			cout << "Item removed from bundle" << endl;
+		if(medias[i].get_id() == id)
+		{
+			medias.pop_back();
+			cout << "Media with id " << medias[i].get_id() << " has been removed from the bundle." << endl;
 		}
 	}
-	else
-		cout << "Item cannot be removed" << endl;*/
 }
 
 void Bundle::list_items()
@@ -47,11 +47,13 @@ void Bundle::list_items()
 		return;
 	}
 
-	/*auto it = medias.begin();
-	for(;it != medias.end(); it++)
+	cout << endl << "Bundle Information" << endl << endl;
+
+	for(int i = 0; i < medias.size(); i++)
 	{
-		it.get_info();
-	}*/
+		medias[i].get_info();
+		cout << endl; 
+	}
 }
 
 bool Bundle::check_out()

@@ -11,13 +11,22 @@ Media::Media(int idNum, string callNum, string t, string g)
 	checked_out = false;
 }
 
+int Media::get_id()
+{
+	return id_number;
+}
+
 void Media::get_info()
 {
 	cout << "Id Number: " << id_number << endl;
 	cout << "Title: " << title << endl;
 	cout << "Genre: " << genre << endl;
 	cout << "Call Number: " << call_number << endl;
-	cout << "Status: " << checked_out << endl;
+
+	if(checked_out == true)
+		cout << "Status: Checked out " << endl;
+	else
+		cout << "Status: Has not been checked out  " << endl;
 }
  
 ostream& operator<<(ostream& ost, const Media& media_two)

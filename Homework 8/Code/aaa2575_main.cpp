@@ -51,8 +51,10 @@ int main()
 	Book fiction1{"Ernst Hemingway",1926, "The Sun Also Rises", "Fiction",8, "Book"};
 	Book fiction2{"Ernst Hemingway",1952, "The Old Man and the Sea", "Fiction",9, "Book"};
 	bundle.get_info();
+	cout << endl;
 	bundle.add_to_bundle(fiction1);
 	bundle.add_to_bundle(fiction2);
+	cout << endl;
 	bundle.list_items();
 	bundle.remove_from_bundle(9);
 	cout << endl;
