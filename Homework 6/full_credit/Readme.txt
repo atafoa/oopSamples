@@ -1,2 +1,1 @@
-Fix all move functions
-Fix extend and retract function 
+To run use Makefile Provided
