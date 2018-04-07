@@ -10,7 +10,6 @@ Bundle::Bundle(string n , int idNum, string callNum, string t, string g) : Media
 
 void Bundle::get_info()
 {
-	cout << "Bundle" << endl;
 	cout << "Id Number: " << id_number << endl;
 	cout << "Name: " << name << endl;
 }

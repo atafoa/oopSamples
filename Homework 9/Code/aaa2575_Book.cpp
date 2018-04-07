@@ -14,7 +14,6 @@ Book::Book(string a, int cy, string t, string g, int idNum, string callNum):Medi
 
 void Book::get_info()
 {
-	cout << call_number << endl;
 	cout << "Title: " << title << endl;
 	cout << "Book author: " << author << endl;
 	cout << "Genre: " << genre << endl;

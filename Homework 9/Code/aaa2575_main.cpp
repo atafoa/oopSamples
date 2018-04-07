@@ -47,7 +47,7 @@ int main()
 	customer.get_balance();
 	cout << endl;
 
-	Bundle bundle{"Cole's Bundle", 007, "Book", "Historical Fiction Books", "Fiction"};
+	Bundle bundle{"Hemingway books", 007, "Book", "Historical Fiction Books", "Fiction"};
 	Book fiction1{"Ernst Hemingway",1926, "The Sun Also Rises", "Fiction",8, "Book"};
 	Book fiction2{"Ernst Hemingway",1952, "The Old Man and the Sea", "Fiction",9, "Book"};
 	bundle.get_info();
