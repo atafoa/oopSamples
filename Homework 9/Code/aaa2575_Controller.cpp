@@ -106,7 +106,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << "ID number: ";
 				cin >> id;
 
-				library.create_new_movie(ry, producer, director, la, t, id,g,"Movie");
+				library.create_new_movie(ry, producer, d, la, t, id,g,"Movie");
 				break;
 
 				case 3:
@@ -196,7 +196,7 @@ void Controller:: execute_cmd(int cmd)
 			cout << "What is the genre of items in this bundle: ";
 			cin >> g;
 			library.create_new_bundle(n,id,"Bundle",t,g);
-			library.add_to_bundle();
+			library.add_to_bundle(n,id,"Bundle",t,g);
 			cout << view.bundles_header() << endl;
 			library.browse_bundles();
 			break;

@@ -10,7 +10,7 @@ Librarian::Librarian(string n, int idNum)
 
 string Librarian::to_string() const
 {
-	return << "Librarian name: " + name + " ID number: " + std::to_string(id);
+	return "Librarian name: " + name + " ID number: " + std::to_string(id);
 }
 
 void Librarian::get_info()

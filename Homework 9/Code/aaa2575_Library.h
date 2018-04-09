@@ -7,6 +7,12 @@
 #include "aaa2575_Librarian.h"
 #include "aaa2575_Customer.h"
 #include "aaa2575_Transaction.h"
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <string.h>
+#include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -26,7 +32,7 @@ class Library
 	void create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
 	void create_new_transaction(int transactionNumber, Librarian libraian, Customer customer, Date check_in, Date due);
-	void add_to_bundle();
+	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in();
 	void check_out();
 	void pay_balance();

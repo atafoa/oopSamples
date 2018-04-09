@@ -99,15 +99,17 @@ void Library::create_new_television_show_season(int releaseYear, string producer
 	medias.pusk_back(tvShow);	
 }
 
-void Library::create_new_bundle(string name, int idNum, string callNum, string title, string genre)
+Bundle Library::create_new_bundle(string name, int idNum, string callNum, string title, string genre)
 {
 	Bundle bundle{name,idNum, callNum, title, genre};
 	bundle.get_info();
 	bundles.push_back(bundles);
+	return bundle;
 }
 
-void Library::add_to_bundle()
+void Library::add_to_bundle(string name, int idNum, string callNum, string title, string genre)
 {
+	Bundle bundle = create_new_bundle(string name, int idNum, string callNum, string title, string genre);
 	int id; string type; string titleM; string genreM; int size;
 	cout << "How many items are you adding to the bundle: ";
 	cin  >> size;
@@ -139,7 +141,7 @@ void Library::create_new_librarian(string name, int id)
 Customer Library::create_new_customer(string name, int id, string phoneNum, string email, double balance)
 {
 	Customer customer{name, id, phoneNum, email, balance};
-	customer.get_infor();
+	customer.get_info();
 	customers.push_back(customer);
 	return customer;
 
@@ -163,7 +165,7 @@ void Library::save(string file_name)
 
 	)";
 
-	otfile << mediaPrompt;
+	outfile << mediaPrompt;
 
 	if(medias.empty())
 	{
@@ -237,9 +239,9 @@ void Library::save(string file_name)
 
 	outfile << transactionsPrompt;
 
-	for(int i = 0; i < transations.size(); i++)
+	for(int i = 0; i < transactions.size(); i++)
 	{
-		outfile << transations[i].to_string();
+		outfile << transactions[i].to_string();
 		outfile << endl;
 	}
 
@@ -282,7 +284,7 @@ void Library::load_media(string file_name)
 
 				media = create_new_media(idNum, callNum, title, genre);
 			}
-				if(inFile.bad())
+				if(infile.bad())
 					throw runtime_error("Bad");
 	}
 }
@@ -321,7 +323,7 @@ void Library::load_bundle(string file_name)
 
 				create_new_bundle(name,idNum, callNum, title, genre);
 			}
-				if(inFile.bad())
+				if(infile.bad())
 					throw runtime_error("Bad");
 	}
 }
@@ -354,7 +356,7 @@ void Library::load_librarian(string file_name)
 
 				create_new_librarian(name,id);
 			}
-				if(inFile.bad())
+				if(infile.bad())
 					throw runtime_error("Bad");
 	}
 
@@ -396,7 +398,7 @@ void Library::load_customer(string file_name)
 
 				customer = create_new_customer(name,id, phoneNum, email, balance);
 			}
-				if(inFile.bad())
+				if(infile.bad())
 					throw runtime_error("Bad");
 	} 
 }
