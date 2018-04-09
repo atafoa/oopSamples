@@ -73,7 +73,7 @@ void Library::create_new_book(string author, int copyrightYear, string title, st
 
 void Library::create_new_movie(int releaseYear, string producer, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum)
 {
-	Movie movie{releaseYear, producer, director, leadingActors, title, idNum, callNum};
+	Movie movie{releaseYear, producer, director, leadingActors, title, idNum, genre,callNum};
 	movie.get_info();
 	medias.push_back(movie);	
 }
