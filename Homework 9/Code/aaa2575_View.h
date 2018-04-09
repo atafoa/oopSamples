@@ -1,8 +1,9 @@
 #include "aaa2575_Library.h"
 
-class View{
 
-public:
+class View
+{
+	public:
 	View(Library& l) : library(l) {}
 	string get_menu();
 	string media_submenu();
@@ -13,6 +14,6 @@ public:
 	string load_header();
 
 	
-private:
+	private:
 	Library& library;
 };

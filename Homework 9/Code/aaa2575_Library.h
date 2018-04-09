@@ -21,8 +21,8 @@ class Library
 	void create_new_movie(int releaseYear, string producer, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum);
 	void create_new_video_game(int releaseYear, string studio, int idNum, string title, string genre, string callNum);
 	void create_new_music_album(int releaseYear, string artist, vector<string> tracks, string title, int idNum, string genre, string callNum);
-	void create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, string idNum, string genre, string callNum);
-	void create_new_bundle(string name, int idNum, string callNum, string title, string genre, Media media, int id, int subMenu);
+	void create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, int idNum, string genre, string callNum);
+	void create_new_bundle(string name, int idNum, string callNum, string title, string genre);
 	void create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
 	void create_new_transaction(int transactionNumber, Librarian libraian, Customer customer, Date check_in, Date due);
@@ -40,10 +40,10 @@ class Library
 
 	private:
 	vector<Media> medias;
-	vector<Transactions> transactions;
+	vector<Transaction> transactions;
 	vector<Customer> customers;
 	vector<Librarian> librarians;
-	vector<Bundles> bundles;
+	vector<Bundle> bundles;
 };
 
 #endif

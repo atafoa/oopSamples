@@ -12,7 +12,7 @@ using namespace std;
 class Transaction
 {
 	public:
-	Transaction(int tNum, Librarian l, Customer c, Date check_in, Date due)
+	Transaction(int tNum, Librarian l, Customer c, Date check_in, Date due);
 	double calculate_fee();
 	void get_info();
 	void check_in();

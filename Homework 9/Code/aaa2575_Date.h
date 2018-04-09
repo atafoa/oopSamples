@@ -12,7 +12,6 @@ class Date
 	Date(int m, int d, int y);
 	string to_string() const;
 	double to_julianDate();
-	bool operator<(const Date& date_two) const
 	friend ostream& operator<<(ostream& ost, const Date& date_two);
 
 	private:

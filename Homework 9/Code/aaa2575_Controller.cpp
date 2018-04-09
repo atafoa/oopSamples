@@ -16,7 +16,7 @@ void Controller:: execute_cmd(int cmd)
 {
 	string t; string g; int id;
 	string a; int cy;
-	int ry; string studio; string d; vector<string> la; int size;
+	int ry; string studio; string d; vector<string> la; int size; vector<string> la2;
 	string artist; vector<string> tracks;
 	string producer; vector<string> director; int seasonNum;
 	string n; string temp;
@@ -106,7 +106,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << "ID number: ";
 				cin >> id;
 
-				library.create_new_movie(ry, producer, director, la, title, id,g,"Movie");
+				library.create_new_movie(ry, producer, director, la, t, id,g,"Movie");
 				break;
 
 				case 3:
@@ -129,7 +129,7 @@ void Controller:: execute_cmd(int cmd)
 				cout  << "Who is the artist: ";
 				cin >> artist;
 				cout  << "When is the release year: ";
-				cin >> ry
+				cin >> ry;
 				cout << "What is the genre of this album: ";
 				cin >> g;
 				cout << "How many tracks are in this album: ";
@@ -144,7 +144,7 @@ void Controller:: execute_cmd(int cmd)
 
 				cout << "ID number: ";
 				cin >> id;
-				library.create_new_music_album(ry, artist, tracks, t, g, "Music Album");
+				library.create_new_music_album(ry, artist, tracks, t, id, g, "Music Album");
 				break;
 
 				case 5:
@@ -153,7 +153,7 @@ void Controller:: execute_cmd(int cmd)
 				cout  << "Who is the producer: ";
 				cin >> producer;
 				cout  << "When is the release year: ";
-				cin >> ry
+				cin >> ry;
 				cout << "What is the genre of this show: ";
 				cin >> g;
 				cout << "What is the season number: ";
@@ -175,13 +175,13 @@ void Controller:: execute_cmd(int cmd)
 				{
 					cout << "Enter a leading actor's name: ";
 					cin >> temp;
-					la.push_back(temp);
+					la2.push_back(temp);
 				}
 
 
 				cout << "ID number: ";
 				cin >> id;
-				library.create_new_television_show_season(ry, producer, director, la,seasonNum,t, id, g, "Television Show");
+				library.create_new_television_show_season(ry, producer, director, la2,seasonNum,t, id, g, "Television Show");
 				break;
 			}
 			break;
@@ -218,7 +218,7 @@ void Controller:: execute_cmd(int cmd)
 			cin >> balance;
 			cout << "ID Number: ";
 			cin >> id;
-			library.create_new_customer(name,id,phone,email,balance);
+			library.create_new_customer(n,id,phone,email,balance);
 			break;
 		case 6:
 			library.check_in();
@@ -258,7 +258,7 @@ void Controller::save(int choice)
 	{
 		cout << " What would you like to name the save file: ";
 		cin >> file_name;
-		library.save(file_name)
+		library.save(file_name);
 	}
 	else
 	{
