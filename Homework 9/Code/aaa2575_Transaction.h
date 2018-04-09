@@ -17,7 +17,6 @@ class Transaction
 	void get_info();
 	void check_in();
 	void check_out();
-	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Transaction& transaction_two);
 
 	private:
