@@ -103,7 +103,7 @@ Bundle Library::create_new_bundle(string name, int idNum, string callNum, string
 {
 	Bundle bundle{name,idNum, callNum, title, genre};
 	bundle.get_info();
-	bundles.push_back(bundles);
+	bundles.push_back(bundle);
 	return bundle;
 }
 
