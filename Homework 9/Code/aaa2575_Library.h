@@ -1,6 +1,12 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+
+#include "aaa2575_Book.h"
+#include "aaa2575_Movie.h"
+#include "aaa2575_Video_Game.h"
+#include "aaa2575_Music_Album.h"
+#include "aaa2575_Television_Show_Season.h"
 #include "aaa2575_Bundle.h"
 #include "aaa2575_Media.h"
 #include "aaa2575_Date.h"
@@ -28,14 +34,14 @@ class Library
 	void create_new_video_game(int releaseYear, string studio, int idNum, string title, string genre, string callNum);
 	void create_new_music_album(int releaseYear, string artist, vector<string> tracks, string title, int idNum, string genre, string callNum);
 	void create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, int idNum, string genre, string callNum);
-	void create_new_bundle(string name, int idNum, string callNum, string title, string genre);
+	Bundle create_new_bundle(string name, int idNum, string callNum, string title, string genre);
 	void create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
 	void create_new_transaction(int transactionNumber, Librarian libraian, Customer customer, Date check_in, Date due);
 	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in();
 	void check_out();
-	void pay_balance();
+	void pay_balance(string name, int id, string phoneNum, string email, double balance);
 	void save(string file_name);
 	void load_media(string file_name);
 	void load_bundle(string file_name);

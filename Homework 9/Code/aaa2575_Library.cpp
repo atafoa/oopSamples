@@ -1,7 +1,7 @@
 #include "aaa2575_Library.h"
 #include <iostream>
 
-void Library::Library()
+Library::Library()
 {
 
 }
@@ -68,35 +68,35 @@ void Library::create_new_book(string author, int copyrightYear, string title, st
 {
 	Book book{author, copyrightYear, title, genre, idNum, callNum};
 	book.get_info();
-	medias.pusk_back(book);	
+	medias.push_back(book);	
 }
 
-void Library::create_new_movie(int releaseYear, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum)
+void Library::create_new_movie(int releaseYear, string producer, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum)
 {
 	Movie movie{releaseYear, producer, director, leadingActors, title, idNum, callNum};
 	movie.get_info();
-	medias.pusk_back(movie);	
+	medias.push_back(movie);	
 }
 
 void Library::create_new_video_game(int releaseYear, string studio, int idNum, string title, string genre, string callNum)
 {
 	Video_Game videoGame{releaseYear, studio, idNum, title, genre, callNum};
 	videoGame.get_info();
-	medias.pusk_back(videoGame);	
+	medias.push_back(videoGame);	
 }
 
 void Library::create_new_music_album(int releaseYear, string artist, vector<string> tracks, string title, int idNum, string genre, string callNum)
 {
 	Music_Album musicAlbum{releaseYear, artist, tracks, title, idNum, genre, callNum};
 	musicAlbum.get_info();
-	medias.pusk_back(musicAlbum);
+	medias.push_back(musicAlbum);
 }
 
 void Library::create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, int idNum, string genre, string callNum)
 {
 	Television_Show_Season tvShow{releaseYear, producer, director, leadingActors, seasonNum, title, idNum, genre, callNum};
 	tvShow.get_info();
-	medias.pusk_back(tvShow);	
+	medias.push_back(tvShow);	
 }
 
 Bundle Library::create_new_bundle(string name, int idNum, string callNum, string title, string genre)
@@ -109,7 +109,7 @@ Bundle Library::create_new_bundle(string name, int idNum, string callNum, string
 
 void Library::add_to_bundle(string name, int idNum, string callNum, string title, string genre)
 {
-	Bundle bundle = create_new_bundle(string name, int idNum, string callNum, string title, string genre);
+	Bundle bundle = create_new_bundle(name,idNum,callNum,title,genre);
 	int id; string type; string titleM; string genreM; int size;
 	cout << "How many items are you adding to the bundle: ";
 	cin  >> size;

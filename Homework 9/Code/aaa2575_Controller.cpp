@@ -229,7 +229,7 @@ void Controller:: execute_cmd(int cmd)
 			break;
 
 		case 8:
-			library.pay_balance();
+			library.pay_balance(n,id,phone,email,balance);
 			break;
 
 		case 9:
