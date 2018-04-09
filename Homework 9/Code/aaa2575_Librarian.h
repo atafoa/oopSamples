@@ -13,6 +13,7 @@ class Librarian
 	void check_out();
 	void check_in();
 	void get_info();
+	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Librarian& lb_two);
 
 

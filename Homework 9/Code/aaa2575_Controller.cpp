@@ -14,217 +14,281 @@ void Controller:: cli()
 
 void Controller:: execute_cmd(int cmd)
 {
-	string userInput;
-	stringstream ss;
-	char removeChar;
-	double average;
-	int y; int m; int d; int h; int min; int sec; double p; string n;
-	Date date{0,0,0,0,0,0};
-	Transaction t{0,""};
-	string employeeName;
+	string t; string g; int id;
+	string a; int cy;
+	int ry; string studio; string d; vector<string> la; int size;
+	string artist; vector<string> tracks;
+	string producer; vector<string> director; int seasonNum;
+	string n; string temp;
+	string phone; string email; double balance;
 
+	int subMenu;
 	int choice = 0;
 
-	if( cmd < 0 || cmd > 8)
+	if( cmd < 0 || cmd > 10)
 	{
-		throw runtime_error("Input invalid Number has to be from 0 to 6");
+		throw runtime_error("Input invalid Number has to be from 0 to 8");
 	}
 
 	switch (cmd)
 	{
 		case 1:
-			cout <<view.view_all_transactions() << endl;
-			transactions.list_transactions();
-			break;
-		case 2:
-			cout << "Before adding a new transaction I need a little more information \n";
-			input_transaction_date();
-			cout <<view.view_all_transactions() << endl;
-			transactions.list_transactions();
-			cout << endl;
+			cout << view.browse_submenu() << endl;
+			cout << "What would you like to do: ";
+			cin >> subMenu;
 
+			if(subMenu < 1 || subMenu  > 2)
+			{
+				throw runtime_error("Input invalid Number has to be either 1 or 2");
+			}
+
+			switch(subMenu)
+			{
+				case 1:
+				cout << view.media_header() << endl;
+				library.browse_media();
+				break;
+
+				case 2:
+				cout << view.bundles_header() << endl;
+				library.browse_bundles();
+				break;
+			}
 			break;
+
+		case 2:
+			cout << view.media_submenu() << endl;
+			cout << "What would you like to do: ";
+			cin >> subMenu;
+
+			if(subMenu < 1 || subMenu  > 5)
+			{
+				throw runtime_error("Input invalid Number has to be from 1 to 5");
+			}
+
+			switch(subMenu)
+			{
+				case 1:
+				cout << "What is the title of this book: ";
+				cin >> t;
+				cout << "Who is the author of this book: ";
+				cin >> a;
+				cout  << "What is the copyright year: ";
+				cin >> cy;
+				cout << "What is the genre of this book: ";
+				cin >> g;
+				cout << "ID number: ";
+				cin >> id;
+				library.create_new_book(a,cy,t,g,id, "Book");
+				break;
+
+				case 2:
+				cout << "What is the title of this movie: ";
+				cin >> t;
+				cout  << "When is the release year: ";
+				cin >> ry;
+				cout << "Who produced this movie: ";
+				cin >> producer;
+				cout << "What is the genre of this movie: ";
+				cin >> g;
+				cout << "Who is the director of this movie: ";
+				cin >> d;
+				cout << "How many leading actors: ";
+				cin >> size;
+
+				for(int i = 0; i < size; i++)
+				{
+					cout << "Enter a leading actor's name: ";
+					cin >> temp;
+					la.push_back(temp);
+				}
+
+				cout << "ID number: ";
+				cin >> id;
+
+				library.create_new_movie(ry, producer, director, la, title, id,g,"Movie");
+				break;
+
+				case 3:
+				cout << "What is the title of this video game: ";
+				cin >> t;
+				cout  << "When is the release year: ";
+				cin >> ry;
+				cout << "What studio produced this movie: ";
+				cin >> studio;
+				cout << "What is the genre of this movie: ";
+				cin >> g;
+				cout << "ID number: ";
+				cin >> id;
+				library.create_new_video_game(ry, studio, id, t,g, "Video Game");
+				break;
+
+				case 4:
+				cout << "What is the title of this album: ";
+				cin >> t;
+				cout  << "Who is the artist: ";
+				cin >> artist;
+				cout  << "When is the release year: ";
+				cin >> ry
+				cout << "What is the genre of this album: ";
+				cin >> g;
+				cout << "How many tracks are in this album: ";
+				cin >> size;
+
+				for(int i = 0; i < size; i++)
+				{
+					cout << "Track " << i+1 << ": ";
+					cin >> temp;
+					tracks.push_back(temp);
+				}
+
+				cout << "ID number: ";
+				cin >> id;
+				library.create_new_music_album(ry, artist, tracks, t, g, "Music Album");
+				break;
+
+				case 5:
+				cout << "What is the title of this show: ";
+				cin >> t;
+				cout  << "Who is the producer: ";
+				cin >> producer;
+				cout  << "When is the release year: ";
+				cin >> ry
+				cout << "What is the genre of this show: ";
+				cin >> g;
+				cout << "What is the season number: ";
+				cin >> seasonNum;
+				cout << "How many directors directed this show ";
+				cin >> size;
+
+				for(int i = 0; i < size; i++)
+				{
+					cout << "Name a director: ";
+					cin >> temp;
+					director.push_back(temp);
+				}
+
+				cout << "How many leading actors: ";
+				cin >> size;
+
+				for(int i = 0; i < size; i++)
+				{
+					cout << "Enter a leading actor's name: ";
+					cin >> temp;
+					la.push_back(temp);
+				}
+
+
+				cout << "ID number: ";
+				cin >> id;
+				library.create_new_television_show_season(ry, producer, director, la,seasonNum,t, id, g, "Television Show");
+				break;
+			}
+			break;
+
 		case 3:
-			cout << "Before deleting a new transaction I need a little more information" << endl;
-			delete_transaction_by_date();
-			cout <<view.view_all_transactions() << endl;
-			transactions.list_transactions();
+			cout << "What is the name of this bundle: ";
+			cin >> n;
+			cout << "ID Number: ";
+			cin >> id;
+			cout << "What is the type of this bundle: ";
+			cin >> t;
+			cout << "What is the genre of items in this bundle: ";
+			cin >> g;
+			library.create_new_bundle(n,id,"Bundle",t,g);
+			library.add_to_bundle();
+			cout << view.bundles_header() << endl;
+			library.browse_bundles();
 			break;
 		case 4:
-			cout << view.prompt_for_employeeName();
-			cin >> employeeName;
-			transactions.delete_transactions_by_name(employeeName);
-			cout <<view.view_all_transactions() << endl;
-			transactions.list_transactions();
+			cout << "What is the name of the librarian: ";
+			cin >> n;
+			cout << "ID number: ";
+			cin >> id;
+			library.create_new_librarian(n,id);
 			break;
 		case 5:
-			average = transactions.get_average_transaction();
-			cout << "The average of all transactions is: " << average << endl;
+			cout << "What is the customer's name: ";
+			cin >> n;
+			cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
+			cin >>  phone;
+			cout << "What is the cutomer's email: ";
+			cin >> email;
+			cout << "Customer's balance: ";
+			cin >> balance;
+			cout << "ID Number: ";
+			cin >> id;
+			library.create_new_customer(name,id,phone,email,balance);
 			break;
 		case 6:
-			cout << "The winner of the bonus is: " << transactions.bonus() << endl;
+			library.check_in();
 			break;
+
 		case 7:
-			cout << "Would you like to turn on load functionality: " << endl;
-			cout << "Enter 1 for yes and 0 for no: ";
-			cin >> choice;
-			load(choice);
+			library.check_out();
 			break;
+
 		case 8:
-			cout << "Would you like to turn on save functionality: " << endl;
-			cout << "Enter 1 for yes and 0 for no: ";
+			library.pay_balance();
+			break;
+
+		case 9:
+			cout << view.save_header()<< endl;
 			cin >> choice;
 			save(choice);
 			break;
+
+		case 10:
+			cout << view.load_header()<< endl;
+			cin >> choice;
+			load(choice);
+			break;
+
 		case 0:
 			cout << "Now exiting the program\n";
 			break;
 	}
 }
 
-void Controller::delete_transaction_by_date()
+void Controller::save(int choice)
 {
-	cout << view.prompt_for_date() << endl;
-	string userInput;
-	stringstream ss;
-	char removeChar;
-	int y; int m; int d; int h; int min; int sec;
-	Date date{0,0,0,0,0,0};
-	cin >> userInput;
-	ss << userInput;
-	ss >> m;
-	ss >> removeChar;
-	ss >> d;
-	ss >> removeChar;
-	ss >> y;
-	ss >> removeChar;
-	ss.str("");
-	ss.clear();
+	string file_name;
 
-	cin >> userInput;
-	ss << userInput;
-	ss >> h;
-	ss >> removeChar;
-	ss >> min;
-	ss >> removeChar;
-	ss >> sec;
-	date = Date(y,m,d,h,min,sec);
-	ss.str("");
-	ss.clear();
-	transactions.delete_transaction_by_date(date);
-}
-
-void Controller:: input_transaction_date()
-{
-	cout << view.prompt_for_date()<< endl;
-	string userInput;
-	stringstream ss;
-	char removeChar;
-	int y; int m; int d; int h; int min; int sec; double p; string n;
-	Date date{0,0,0,0,0,0};
-	Transaction t{0,""};
-	cin >> userInput;
-	ss << userInput;
-	ss >> m;
-	ss >> removeChar;
-	ss >> d;
-	ss >> removeChar;
-	ss >> y;
-	ss >> removeChar;
-	ss.str("");
-	ss.clear();
-	cin >> userInput;
-	ss << userInput;
-	ss >> h;
-	ss >> removeChar;
-	ss >> min;
-	ss >> removeChar;
-	ss >> sec;
-	date = Date(y,m,d,h,min,sec);
-	ss.str("");
-	ss.clear();
-
-	cout << "What was the amount of the transaction: ";
-	cin >> p;
-	cout << "What is the name of the employee who handled the transaction: ";
-	cin >> n;
-	t = Transaction(p,n);
-	if(!transactions.add_transaction(date,t))
-		cout << "\nThe list of transactions could not be updated\n";
-	else
-		cout << "\n Transaction List Updated\n";
-	cout << endl;
-}
-
-void Controller:: save(int choice)
-{
 	if(choice == 1)
 	{
-		cout << "Now saving these transactions " << endl << endl;
-		transactions.list_transactions();
-		transactions.save_to_file();
+		cout << " What would you like to name the save file: ";
+		cin >> file_name;
+		library.save(file_name)
 	}
 	else
 	{
-		cout << "Save functionality will be turned off" << endl;
+		cout  << "Save functionality disabled, Information will not be saved" << endl;
 	}
 }
 
-void Controller:: load(int choice)
+
+void Controller::load(int choice)
 {
+
+	string file_name;
+
 	if(choice == 1)
 	{
-		cout << "Now loading these transactions " << endl << endl;
+		cout << "What is the name of the file where the list of media stored: ";
+		cin >> file_name;
+		library.load_media(file_name);
 
+		cout << "What is the name of the file where the list of bundles is stored: ";
+		cin >> file_name;
+		library.load_bundle(file_name);
 
-		int onfileY,onfileM, onfileD,onfileH,onfileMin,onfileSec;
-		string nameOnFile; double priceOnFile;
-		string line;
-		char removeChar;
-		stringstream iss;
+		cout << "What is the name of the file where the list of librarians are stored: ";
+		cin >> file_name;
+		library.load_librarian(file_name);
 
-		Date d{0,0,0,0,0,0};
-		Transaction t{0,""};
-
-
-		inFile.open("aaa2575_save_file.txt");
-		if(inFile.is_open())
-		{
-			if(inFile.eof())
-			{
-				inFile.close();
-			}
-
-			while(!inFile.eof())
-			{
-				getline(inFile,line);
-				iss << line;
-				iss >> onfileM;
-				iss >> removeChar;
-				iss >> onfileD;
-				iss >> removeChar;
-				iss >> onfileY;
-				iss >> removeChar;
-				iss >> onfileH;
-				iss >> removeChar;
-				iss >> onfileMin;
-				iss >> removeChar;
-				iss >> onfileSec;
-				iss >> removeChar;
-				iss >> priceOnFile;
-				iss >> removeChar;
-				iss >> nameOnFile;
-				iss.str("");
-				iss.clear();
-
-				d = Date(onfileY,onfileM,onfileD,onfileH,onfileMin,onfileSec);
-				t = Transaction(priceOnFile,nameOnFile);
-				transactions.add_transaction(d,t);
-			}
-				if(inFile.bad())
-					throw runtime_error("Bad");
-		}
-		transactions.list_transactions();
+		cout << "What is the name of the file where the list of customers are stored: ";
+		cin >> file_name;
+		library.load_customer(file_name);
 	}
 	else
 		cout << "Load functionality will be turned off" << endl;

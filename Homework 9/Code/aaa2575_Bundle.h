@@ -16,6 +16,7 @@ class Bundle : public Media
 	void list_items();
 	void add_to_bundle(Media media);
 	void remove_from_bundle(int id);
+	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Bundle& bundle_two);
 
 	private:

@@ -12,11 +12,12 @@ using namespace std;
 class Transaction
 {
 	public:
-	Transaction(int tNum, Librarian l, Customer c)
+	Transaction(int tNum, Librarian l, Customer c, Date check_in, Date due)
 	double calculate_fee();
 	void get_info();
 	void check_in();
 	void check_out();
+	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Transaction& transaction_two);
 
 	private:

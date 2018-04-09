@@ -12,6 +12,8 @@ class Customer
 	Customer(string n, int idNum, string p, string e, double b);
 	void get_info();
 	void get_balance();
+	void pay_balance();
+	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Customer& c_two);
 
 	private:

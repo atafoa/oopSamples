@@ -11,6 +11,18 @@ Media::Media(int idNum, string callNum, string t, string g)
 	checked_out = false;
 }
 
+string Media::to_string() const
+{
+	string temp;
+
+	temp = "Title: " + title + " Id Number: " + std::to_string(id_number) + " Genre: " + genre + " Call Number: " + call_number;
+
+	if(checked_out == true)
+		return temp + "Status: Checked out \n";
+	else
+		return temp + "Status: Has not been checked out \n";
+}
+
 int Media::get_id()
 {
 	return id_number;
@@ -18,8 +30,8 @@ int Media::get_id()
 
 void Media::get_info()
 {
-	cout << "Id Number: " << id_number << endl;
 	cout << "Title: " << title << endl;
+	cout << "Id Number: " << id_number << endl;
 	cout << "Genre: " << genre << endl;
 	cout << "Call Number: " << call_number << endl;
 

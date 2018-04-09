@@ -14,6 +14,7 @@ class Media
 	bool check_in();
 	int get_id();
 	void get_info();
+	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Media& media_two);
 
 	private:

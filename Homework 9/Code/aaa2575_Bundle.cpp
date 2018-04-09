@@ -2,10 +2,17 @@
 
 #include <iostream>
 
+
 Bundle::Bundle(string n , int idNum, string callNum, string t, string g) : Media(idNum,callNum,t,g)
 {
 	name = n;
 	checked_out = false;
+}
+
+string Bundle::to_string() const
+{
+	string bundleInfo =  "Id Number: " + std::to_string(id_number) + " Name: " + name + "\n";
+	string temp = "Title: " + title + " Id Number: " + std::to_string(id_number) + " Genre: " + genre + " Call Number: " + call_number;
 }
 
 void Bundle::get_info()

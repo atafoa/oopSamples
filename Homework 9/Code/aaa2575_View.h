@@ -1,14 +1,18 @@
-#include "aaa2575_Transaction_List.h"
+#include "aaa2575_Library.h"
 
 class View{
 
 public:
-	View(Transaction_List& t) : transactions(t) {}
+	View(Library& l) : library(l) {}
 	string get_menu();
-	string view_all_transactions();
-	string prompt_for_date();
-	string prompt_for_employeeName();
+	string media_submenu();
+	string browse_submenu();
+	string media_header();
+	string bundles_header();
+	string save_header();
+	string load_header();
 
+	
 private:
-	Transaction_List& transactions;
+	Library& library;
 };
