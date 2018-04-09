@@ -13,6 +13,14 @@ Transaction::Transaction(int tNum, Librarian l, Customer c, Date check_in, Date 
 	due_date =  due;
 }
 
+string Transaction::to_string() const
+{
+	string librarianInfo = librarian.Librarian::to_string();
+	string customerInfo = customer.Customer::to_string();
+
+	return "Transaction ID: " +  std::to_string(transaction_number) + librarianInfo + customerInfo;
+
+}
 
 void Transaction::get_info()
 {
