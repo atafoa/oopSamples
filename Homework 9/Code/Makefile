@@ -5,6 +5,7 @@ all: executable
 
 executable: aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o 
 	${CC} ${FLAGS} aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o 
+	./a.out
 
 aaa2575_Book.o: aaa2575_Book.cpp
 	${CC} ${FLAGS} -c aaa2575_Book.cpp -o aaa2575_Book.o

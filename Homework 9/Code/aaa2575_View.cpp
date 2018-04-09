@@ -15,8 +15,6 @@ string View::get_menu(){
 	6: Check in Media
 	7: Check out Media
 	8: Pay Balance
-	9: Save records
-	10: Load records
 	0: Exit the program
 
 	)";
@@ -59,7 +57,7 @@ string View:: browse_submenu()
 	return header;
 }
 
-string view:: media_header()
+string View:: media_header()
 {
 	string header = R"(
 	==========
@@ -71,7 +69,7 @@ string view:: media_header()
 	return header;
 }
 
-string view:: bundles_header()
+string View:: bundles_header()
 {
 	string header = R"(
 	============
@@ -83,7 +81,7 @@ string view:: bundles_header()
 	return header;
 }
 
-string view:: save_header()
+string View:: save_header()
 {
 	string header = R"(
 	===================
@@ -98,7 +96,7 @@ string view:: save_header()
 	return header;
 }
 
-string view:: load_header()
+string View:: load_header()
 {
 	string header = R"(
 	===================

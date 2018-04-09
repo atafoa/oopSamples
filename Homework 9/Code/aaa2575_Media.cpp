@@ -33,7 +33,7 @@ void Media::get_info()
 	cout << "Title: " << title << endl;
 	cout << "Id Number: " << id_number << endl;
 	cout << "Genre: " << genre << endl;
-	cout << "Call Number: " << call_number << endl;
+	cout << "Type: " << call_number << endl;
 
 	if(checked_out == true)
 		cout << "Status: Checked out " << endl;

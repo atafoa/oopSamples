@@ -37,7 +37,7 @@ class Library
 	Bundle create_new_bundle(string name, int idNum, string callNum, string title, string genre);
 	void create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
-	void create_new_transaction(int trasactionNumber, Librarian librarian(string name, int id), Customer customer(string n, int idC, string phone, string email, double balance), Date check_in(int m, int d, int y), Date due(int m,int d, int y));
+	void create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due);
 	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in();
 	void check_out();

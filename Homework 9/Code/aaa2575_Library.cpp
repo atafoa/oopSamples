@@ -147,7 +147,7 @@ Customer Library::create_new_customer(string name, int id, string phoneNum, stri
 
 }
 
-void Library::create_new_transaction(int trasactionNumber, Librarian librarian(string name, int id), Customer customer(string n, int idC, string phone, string email, double balance), Date check_in(int m, int d, int y), Date due(int m,int d, int y))
+void Library::create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due)
 {
 	Transaction transaction{trasactionNumber, librarian, customer, check_in, due};
 	transaction.get_info();

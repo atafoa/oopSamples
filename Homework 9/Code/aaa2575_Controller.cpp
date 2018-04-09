@@ -79,6 +79,7 @@ void Controller:: execute_cmd(int cmd)
 				cin >> g;
 				cout << "ID number: ";
 				cin >> id;
+				cout << endl;
 				library.create_new_book(a,cy,t,g,id, "Book");
 				break;
 
@@ -105,7 +106,7 @@ void Controller:: execute_cmd(int cmd)
 
 				cout << "ID number: ";
 				cin >> id;
-
+				cout << endl;
 				library.create_new_movie(ry, producer, d, la, t, id,g,"Movie");
 				break;
 
@@ -120,6 +121,7 @@ void Controller:: execute_cmd(int cmd)
 				cin >> g;
 				cout << "ID number: ";
 				cin >> id;
+				cout << endl;
 				library.create_new_video_game(ry, studio, id, t,g, "Video Game");
 				break;
 
@@ -144,6 +146,7 @@ void Controller:: execute_cmd(int cmd)
 
 				cout << "ID number: ";
 				cin >> id;
+				cout << endl;
 				library.create_new_music_album(ry, artist, tracks, t, id, g, "Music Album");
 				break;
 
@@ -181,6 +184,7 @@ void Controller:: execute_cmd(int cmd)
 
 				cout << "ID number: ";
 				cin >> id;
+				cout << endl;
 				library.create_new_television_show_season(ry, producer, director, la2,seasonNum,t, id, g, "Television Show");
 				break;
 			}
@@ -195,6 +199,7 @@ void Controller:: execute_cmd(int cmd)
 			cin >> t;
 			cout << "What is the genre of items in this bundle: ";
 			cin >> g;
+			
 			library.create_new_bundle(n,id,"Bundle",t,g);
 			library.add_to_bundle(n,id,"Bundle",t,g);
 			cout << view.bundles_header() << endl;
@@ -205,6 +210,7 @@ void Controller:: execute_cmd(int cmd)
 			cin >> n;
 			cout << "ID number: ";
 			cin >> id;
+			cout << endl;
 			library.create_new_librarian(n,id);
 			break;
 		case 5:
@@ -218,6 +224,7 @@ void Controller:: execute_cmd(int cmd)
 			cin >> balance;
 			cout << "ID Number: ";
 			cin >> id;
+			cout << endl;
 			library.create_new_customer(n,id,phone,email,balance);
 			break;
 		case 6:
