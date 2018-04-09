@@ -29,10 +29,6 @@ void Transaction::get_info()
 	librarian.get_info();
 	cout << "Bill To: " << endl;
 	customer.get_info();
-	cout << "Description: " << endl;
-	bundle.get_info();
-	media.get_info();
-
 }
 
 void Transaction::check_in()
