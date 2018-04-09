@@ -12,7 +12,7 @@ using namespace std;
 class Transaction
 {
 	public:
-	Transaction(int tNum, Librarian l, Customer c, Date check_in, Date due);
+	Transaction(int tNum, Librarian lb, Customer c, Date check_in, Date due);
 	double calculate_fee();
 	void get_info();
 	void check_in();
@@ -29,6 +29,10 @@ class Transaction
 	vector<Bundle> bundle;
 	Date check_in_date;
 	Date due_date;
+	Librarian lb;
+	Customer c;
+	Date check_in;
+	Date due;
 
 };
 

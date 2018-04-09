@@ -37,19 +37,12 @@ class Library
 	Bundle create_new_bundle(string name, int idNum, string callNum, string title, string genre);
 	void create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
-	void create_new_transaction(int transactionNumber, Librarian libraian, Customer customer, Date check_in, Date due);
+	void create_new_transaction(int trasactionNumber, Librarian librarian(string name, int id), Customer customer(string n, int idC, string phone, string email, double balance), Date check_in(int m, int d, int y), Date due(int m,int d, int y));
 	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in();
 	void check_out();
 	void pay_balance(string name, int id, string phoneNum, string email, double balance);
-	void save(string file_name);
-	void load_media(string file_name);
-	void load_bundle(string file_name);
-	void load_librarian(string file_name);
-	void load_customer(string file_name);
-	ofstream outfile;
-	ifstream infile;
-
+	
 	private:
 	vector<Media> medias;
 	vector<Transaction> transactions;

@@ -25,7 +25,7 @@ void Controller:: execute_cmd(int cmd)
 	int subMenu;
 	int choice = 0;
 
-	if( cmd < 0 || cmd > 10)
+	if( cmd < 0 || cmd > 8)
 	{
 		throw runtime_error("Input invalid Number has to be from 0 to 8");
 	}
@@ -231,65 +231,12 @@ void Controller:: execute_cmd(int cmd)
 		case 8:
 			library.pay_balance(n,id,phone,email,balance);
 			break;
-
-		case 9:
-			cout << view.save_header()<< endl;
-			cin >> choice;
-			save(choice);
-			break;
-
-		case 10:
-			cout << view.load_header()<< endl;
-			cin >> choice;
-			load(choice);
-			break;
-
+		
 		case 0:
 			cout << "Now exiting the program\n";
 			break;
 	}
 }
 
-void Controller::save(int choice)
-{
-	string file_name;
-
-	if(choice == 1)
-	{
-		cout << " What would you like to name the save file: ";
-		cin >> file_name;
-		library.save(file_name);
-	}
-	else
-	{
-		cout  << "Save functionality disabled, Information will not be saved" << endl;
-	}
-}
 
 
-void Controller::load(int choice)
-{
-
-	string file_name;
-
-	if(choice == 1)
-	{
-		cout << "What is the name of the file where the list of media stored: ";
-		cin >> file_name;
-		library.load_media(file_name);
-
-		cout << "What is the name of the file where the list of bundles is stored: ";
-		cin >> file_name;
-		library.load_bundle(file_name);
-
-		cout << "What is the name of the file where the list of librarians are stored: ";
-		cin >> file_name;
-		library.load_librarian(file_name);
-
-		cout << "What is the name of the file where the list of customers are stored: ";
-		cin >> file_name;
-		library.load_customer(file_name);
-	}
-	else
-		cout << "Load functionality will be turned off" << endl;
-}

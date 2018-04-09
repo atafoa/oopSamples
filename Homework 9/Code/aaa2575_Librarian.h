@@ -15,6 +15,7 @@ class Librarian
 	void get_info();
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Librarian& lb_two);
+	
 
 
 	private:

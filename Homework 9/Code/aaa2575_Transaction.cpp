@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Transaction::Transaction(int tNum, Librarian l, Customer c, Date check_in, Date due)
+Transaction::Transaction(int tNum, Librarian lb, Customer c, Date check_in, Date due)
 {
 	transaction_number = tNum;
 	check_out_date = {0,0,0};
