@@ -47,7 +47,7 @@ double Transaction::calculate_fee()
 	double julianDate1 = due_date.to_julianDate();
 	double julianDate2 = check_in_date.to_julianDate();
 	double difference = julianDate2 - julianDate1;
-	if (difference <= -)
+	if (difference <= 0)
 		return 0;
 	else
 		return 2 * difference;
