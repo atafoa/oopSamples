@@ -26,12 +26,3 @@ ostream& operator<<(ostream& ost, const Date& date_two)
 	ost << date_two.to_string();
 	return ost;
 }
-
-Date Date::operator = (Date const &date_two)
-{
-	Date d1{0,0,0};
-	d1.month = date_two.month;
-	d1.day = date_two.day;
-	d1.year =  date_two.year;
-	return d1;
-}
