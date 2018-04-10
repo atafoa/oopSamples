@@ -19,52 +19,6 @@ void Librarian::get_info()
 	cout << "ID number: " << id << endl;
 }
 
-void Librarian::check_out_media(int mediaID, vector<Media> media)
-{
-	for(int i = 0; i < media.size(); i++)
-	{
-		if(media[i].get_id() == mediaID)
-		{
-			media[i].check_out();
-		}
-	}
-}
-void Librarian::check_out_bundle(int bundleID, vector<Bundle> bundle)
-{
-	for(int i = 0; i < bundle.size(); i++)
-	{
-		if(bundle[i].get_id() == bundleID)
-		{
-			bundle[i].check_out();
-		}
-
-	}
-}
-
-void Librarian::check_in_media(int mediaID, vector<Media> media)
-{
-	for(int i = 0; i < media.size(); i++)
-	{
-		if(media[i].get_id() == mediaID)
-		{
-			media[i].check_in();
-		}
-	}
-
-}
-
-void Librarian::check_in_bundle(int bundleID, vector<Bundle> bundle)
-{
-	for(int i = 0; i < bundle.size(); i++)
-	{
-		if(bundle[i].get_id() == bundleID)
-		{
-			bundle[i].check_in();
-		}
-
-	}
-
-}
 
 ostream& operator<<(ostream& ost, const Librarian& lb_two)
 {

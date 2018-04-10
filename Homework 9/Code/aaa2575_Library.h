@@ -27,8 +27,6 @@ class Library
 	public:
 	Library();
 	void browse_media();
-	vector<Media> get_medias();
-	vector<Bundle> get_bundles();
 	void browse_bundles();
 	Media create_new_media(int idNum, string callNum, string title, string genre);
 	void create_new_book(string author, int copyrightYear, string title, string genre ,int idNum, string callNum);

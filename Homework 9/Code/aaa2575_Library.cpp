@@ -40,21 +40,11 @@ void Library::browse_bundles()
 	}
 }
 
-vector<Media> Library::get_medias()
-{
-	return medias;
-}
-
-vector<Bundle> Library::get_bundles()
-{
-	return bundles;
-}
 
 void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
 	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
 	int diff = t.calculate_fee();
-	vector<Media> media = get_medias();
 
 	if(diff >= 0)
 	{
@@ -63,7 +53,13 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 		return;
 	}
 
-	l.check_in_media(id,media);
+	for(int i = 0; i < media.size(); i++)
+	{
+		if(media[i].get_id() == id)
+		{
+			media[i].check_in();
+		}
+	}
 
 }
 
@@ -80,17 +76,40 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 		return;
 	}
 
-	l.check_in_media(id,bundle);
+	for(int i = 0; i < bundle.size(); i++)
+	{
+		if(bundle[i].get_id() == id)
+		{
+			bundle[i].check_out();
+		}
+
+	}
 }
 
 void Library::check_out_media()
 {
 
+	for(int i = 0; i < bundle.size(); i++)
+	{
+		if(bundle[i].get_id() == bundleID)
+		{
+			bundle[i].check_out();
+		}
+
+	}
 }
 
 void Library::check_out_bundle()
 {
 
+	for(int i = 0; i < bundle.size(); i++)
+	{
+		if(bundle[i].get_id() == bundleID)
+		{
+			bundle[i].check_out();
+		}
+
+	}
 }
 
 void Library::pay_balance(string name, int id, string phoneNum, string email, double balance)
