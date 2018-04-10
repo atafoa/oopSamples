@@ -25,7 +25,7 @@ void Controller:: execute_cmd(int cmd)
 	string n; string temp;
 	string phone; string email; double balance;
 
-	Librarian l; Customer c; int month; int day; int year; int tNum;
+	Librarian l{"",0}; Customer c{"",0,"","",0.0}; int month; int day; int year; int tNum;
 
 	int subMenu;
 	int choice = 0;
