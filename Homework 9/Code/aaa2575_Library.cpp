@@ -79,21 +79,54 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 	{
 		if(bundles[i].get_id() == id)
 		{
-			bundles[i].check_out();
+			bundles[i].check_in();
 		}
 
 	}
 }
 
-void Library::check_out_media()
+void Library::check_out_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
 
-	
+	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
+	int diff = t.calculate_fee();
+
+	if(diff >= 0)
+	{
+		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
+		cout  << "Please pay outstanding fees" << endl;
+		return;
+	}
+
+	for(int i = 0; i < medias.size(); i++)
+	{
+		if(medias[i].get_id() == id)
+		{
+			medias[i].check_in();
+		}
+	}
 }
 
-void Library::check_out_bundle()
+void Library::check_out_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
+	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
+	int diff = t.calculate_fee();
 
+	if(diff >= 0)
+	{
+		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
+		cout  << "Please pay outstanding fees" << endl;
+		return;
+	}
+
+	for(int i = 0; i < bundles.size(); i++)
+	{
+		if(bundles[i].get_id() == id)
+		{
+			bundles[i].check_in();
+		}
+
+	}
 }
 
 void Library::pay_balance(string name, int id, string phoneNum, string email, double balance)

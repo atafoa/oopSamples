@@ -335,6 +335,8 @@ void Controller:: execute_cmd(int cmd)
 
 				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
 				}
+				else
+					cout << "invalid option";
 			break;
 
 		case 7:
@@ -342,13 +344,106 @@ void Controller:: execute_cmd(int cmd)
 			cout << view.check_out_submenu() << endl;
 			cout  << "What would you like to check out: ";
 			cin >> subMenu;
-			switch(subMenu)
+			if(subMenu == 1)
 			{
-				case 1: 
-				break;
-				case 2:
-				break;
+				cout << "What is the ID of the media you want to check in: ";
+				cin >> id;
+				cout << "What is the name of the librarian: ";
+				cin >> n;
+				cout << "ID number: ";
+				cin >> id;
+				cout << endl;
+				l = library.create_new_librarian(n,id);
+
+				cout << "What is the customer's name: ";
+				cin >> n;
+				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
+				cin >>  phone;
+				cout << "What is the cutomer's email: ";
+				cin >> email;
+				cout << "Customer's balance: ";
+				cin >> balance;
+				cout << "ID Number: ";
+				cin >> id;
+				cout << endl;
+				c = library.create_new_customer(n,id,phone,email,balance);
+
+				cout << "What is the check in date " << endl;
+				cout  << "Month: ";
+				cin >> month;
+				cout << "Day: ";
+				cin >> day;
+				cout << "Year: ";
+				cin >> year;
+
+				Date check_in1{month, day, year};
+
+				cout << "What is the check in date " << endl;
+				cout  << "Month: ";
+				cin >> month;
+				cout << "Day: ";
+				cin >> day;
+				cout << "Year: ";
+				cin >> year;
+				Date due1{month, day, year};
+
+				cout << "What is the transaction number";
+				cin >> tNum;
+
+				library.check_out_media(l,c,id,check_in1,due1,tNum);
 			}
+
+			if(subMenu == 2)
+			{
+				cout << "What is the ID of the bundle you want to check in: ";
+				cin >> id;
+				cout << "What is the name of the librarian: ";
+				cin >> n;
+				cout << "ID number: ";
+				cin >> id;
+				cout << endl;
+				l = library.create_new_librarian(n,id);
+
+				cout << "What is the customer's name: ";
+				cin >> n;
+				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
+				cin >>  phone;
+				cout << "What is the customer's email: ";
+				cin >> email;
+				cout << "Customer's balance: ";
+				cin >> balance;
+				cout << "ID Number: ";
+				cin >> id;
+				cout << endl;
+				c = library.create_new_customer(n,id,phone,email,balance);
+
+				cout << "What is the check in date " << endl;
+				cout  << "Month: ";
+				cin >> month;
+				cout << "Day: ";
+				cin >> day;
+				cout << "Year: ";
+				cin >> year;
+
+				Date check_in2{month, day, year};
+
+				cout << "What is the check in date " << endl;
+				cout  << "Month: ";
+				cin >> month;
+				cout << "Day: ";
+				cin >> day;
+				cout << "Year: ";
+				cin >> year;
+				Date due2{month, day, year};
+
+				cout << "What is the transaction number";
+				cin >> tNum;
+
+				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
+			}
+
+			else
+					cout << "invalid option";
 			break;
 
 		case 8:

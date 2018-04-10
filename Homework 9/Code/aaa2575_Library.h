@@ -41,8 +41,8 @@ class Library
 	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
 	void check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
-	void check_out_media();
-	void check_out_bundle();
+	void check_out_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
+	void check_out_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
 	void pay_balance(string name, int id, string phoneNum, string email, double balance);
 	
 	protected:
