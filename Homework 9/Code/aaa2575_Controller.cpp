@@ -1,4 +1,5 @@
 #include "aaa2575_Controller.h"
+#include "aaa2575_Date.h"
 
 void Controller:: cli()
 {
@@ -235,9 +236,8 @@ void Controller:: execute_cmd(int cmd)
 			cout  << "What would you like to check in: ";
 			cin >> subMenu;
 
-			switch(subMenu)
-			{
-				case 1:
+			if(subMenu == 1)
+			{	
 				cout << "What is the ID of the media you want to check in: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
@@ -283,9 +283,10 @@ void Controller:: execute_cmd(int cmd)
 				cin >> tNum;
 
 				library.check_in_media(l,c,id,check_in1,due1,tNum);
-				break;
+			}
 
-				case 2:
+			if(subMenu == 2)
+			{	
 				cout << "What is the ID of the bundle you want to check in: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
@@ -331,8 +332,7 @@ void Controller:: execute_cmd(int cmd)
 				cin >> tNum;
 
 				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
-				break;
-			}
+				}
 			break;
 
 		case 7:
