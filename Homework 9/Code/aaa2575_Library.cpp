@@ -39,6 +39,16 @@ void Library::browse_bundles()
 	}
 }
 
+vector<Media> Library::get_medias()
+{
+	return medias;
+}
+
+vector<Bundle> Library::get_bundles()
+{
+	return bundles;
+}
+
 void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
 	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
@@ -51,7 +61,7 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 		return;
 	}
 
-	l.check_in_media(id,medias);
+	l.check_in_media(id,get_medias());
 
 }
 
@@ -67,10 +77,15 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 		return;
 	}
 
-	l.check_in_media(id,bundles);
+	l.check_in_media(id,get_bundles());
 }
 
-void Library::check_out()
+void Library::check_out_media()
+{
+
+}
+
+void Library::check_out_bundle()
 {
 
 }
