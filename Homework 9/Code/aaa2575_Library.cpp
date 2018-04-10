@@ -53,11 +53,11 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 		return;
 	}
 
-	for(int i = 0; i < media.size(); i++)
+	for(int i = 0; i < medias.size(); i++)
 	{
-		if(media[i].get_id() == id)
+		if(medias[i].get_id() == id)
 		{
-			media[i].check_in();
+			medias[i].check_in();
 		}
 	}
 
@@ -67,7 +67,6 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 {
 	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
 	int diff = t.calculate_fee();
-	vector<Bundle> bundle = get_bundles();
 
 	if(diff >= 0)
 	{
@@ -76,11 +75,11 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 		return;
 	}
 
-	for(int i = 0; i < bundle.size(); i++)
+	for(int i = 0; i < bundles.size(); i++)
 	{
-		if(bundle[i].get_id() == id)
+		if(bundles[i].get_id() == id)
 		{
-			bundle[i].check_out();
+			bundles[i].check_out();
 		}
 
 	}
