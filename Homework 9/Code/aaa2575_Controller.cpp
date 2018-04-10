@@ -22,7 +22,7 @@ void Controller:: execute_cmd(int cmd)
 	string n; string temp;
 	string phone; string email; double balance;
 
-	Librarian l, Customer c, int month, int day, int year, int tNum
+	Librarian l; Customer c; int month; int day; int year; int tNum;
 
 	int subMenu;
 	int choice = 0;
@@ -234,6 +234,7 @@ void Controller:: execute_cmd(int cmd)
 			cout << view.check_in_submenu() << endl;
 			cout  << "What would you like to check in: ";
 			cin >> subMenu;
+
 			switch(subMenu)
 			{
 				case 1:
@@ -267,7 +268,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << "Year: ";
 				cin >> year;
 
-				Date check_in1{month, day, year}
+				Date check_in1{month, day, year};
 
 				cout << "What is the check in date " << endl;
 				cout  << "Month: ";
@@ -280,7 +281,6 @@ void Controller:: execute_cmd(int cmd)
 
 				cout << "What is the transaction number";
 				cin >> tNum;
-
 
 				library.check_in_media(l,c,id,check_in1,due1,tNum);
 				break;
@@ -316,7 +316,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << "Year: ";
 				cin >> year;
 
-				Date check_in2{month, day, year}
+				Date check_in2{month, day, year};
 
 				cout << "What is the check in date " << endl;
 				cout  << "Month: ";
