@@ -12,10 +12,10 @@ class Librarian
 {
 	public:
 	Librarian(string n, int idNum);
-	void check_out_media();
-	void check_out_bundle();
-	void check_in_media();
-	void check_in_bundle();
+	void check_out_media(int mediaID, vector<Media> media);
+	void check_out_bundle(int bundleID, vector<Bundle> bundle);
+	void check_in_media(int mediaID, vector<Media> media);
+	void check_in_bundle(int bundleID, vector<Bundle> bundle);
 	void get_info();
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Librarian& lb_two);
