@@ -45,7 +45,7 @@ class Library
 	void check_out_bundle();
 	void pay_balance(string name, int id, string phoneNum, string email, double balance);
 	
-	private:
+	protected:
 	vector<Media> medias;
 	vector<Transaction> transactions;
 	vector<Customer> customers;

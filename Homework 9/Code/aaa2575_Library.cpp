@@ -51,7 +51,7 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 		return;
 	}
 
-	l.check_in_media(id, medias);
+	l.check_in_media(id,medias);
 
 }
 
@@ -67,7 +67,7 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 		return;
 	}
 
-	l.check_in_media(id, bundles);
+	l.check_in_media(id,bundles);
 }
 
 void Library::check_out()
