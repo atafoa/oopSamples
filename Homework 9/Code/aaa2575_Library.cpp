@@ -39,9 +39,35 @@ void Library::browse_bundles()
 	}
 }
 
-void Library::check_in()
+void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
+	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
+	int diff = t.calculate_fee();
 
+	if(diff >= 0)
+	{
+		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
+		cout  << "Please pay outstanding fees" << endl;
+		return;
+	}
+
+	l.check_in_media(id, medias);
+
+}
+
+void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
+{
+	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
+	int diff = t.calculate_fee();
+
+	if(diff >= 0)
+	{
+		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
+		cout  << "Please pay outstanding fees" << endl;
+		return;
+	}
+
+	l.check_in_media(id, bundles);
 }
 
 void Library::check_out()
@@ -130,11 +156,12 @@ void Library::add_to_bundle(string name, int idNum, string callNum, string title
 }
 
 
-void Library::create_new_librarian(string name, int id)
+Librarian Library::create_new_librarian(string name, int id)
 {
 	Librarian librarian{name,id};
 	librarian.get_info();
 	librarians.push_back(librarian);
+	return librarian;
 
 }
 
@@ -147,10 +174,11 @@ Customer Library::create_new_customer(string name, int id, string phoneNum, stri
 
 }
 
-void Library::create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due)
+Transaction Library::create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due)
 {
 	Transaction transaction{trasactionNumber, librarian, customer, check_in, due};
 	transaction.get_info();
 	transactions.push_back(transaction);
+	return transaction;
 }
 

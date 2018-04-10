@@ -16,15 +16,13 @@ class Media
 	void get_info();
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Media& media_two);
-
-	private:
-	bool checked_out;
-
+	
 	protected:
 	int id_number;
 	string call_number;
 	string title;
 	string genre;
+	bool checked_out;
 };
 
 #endif

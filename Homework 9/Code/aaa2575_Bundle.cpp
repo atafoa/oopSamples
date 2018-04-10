@@ -21,6 +21,10 @@ void Bundle::get_info()
 	cout << "Name: " << name << endl;
 }
  
+ int Bundle::get_id()
+ {
+ 	return id_number;
+ }
 ostream& operator<<(ostream& ost, const Bundle& bundle_two)
 {
 	ost << bundle_two;

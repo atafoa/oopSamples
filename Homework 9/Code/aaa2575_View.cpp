@@ -12,8 +12,8 @@ string View::get_menu(){
 	3: Add Bundle
 	4: Create Customer Account
 	5: Create Librarian Account
-	6: Check in Media
-	7: Check out Media
+	6: Check in Media and Bundles
+	7: Check out Media and Bundles
 	8: Pay Balance
 	0: Exit the program
 
@@ -23,6 +23,34 @@ string View::get_menu(){
 
 }
 
+
+string View:: check_in_submenu()
+{
+	string header = R"(
+	=================
+	Check In
+	=================
+
+	1: Check in Media
+	2: Check in Bundle
+
+	)";
+	return header;
+}
+
+string View:: check_out_submenu()
+{
+	string header = R"(
+	=================
+	Check Out
+	=================
+
+	1: Check out Media
+	2: Check out Bundle
+	
+	)";
+	return header;
+}
 string View:: media_submenu()
 {
 

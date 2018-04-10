@@ -22,26 +22,22 @@ void Transaction::get_info()
 	customer.get_info();
 }
 
-void Transaction::check_in()
-{
-
-}
-
-void Transaction::check_out()
-{
-
-}
-
-
 double Transaction::calculate_fee()
 {
 	double julianDate1 = due_date.to_julianDate();
 	double julianDate2 = check_in_date.to_julianDate();
 	double difference = julianDate2 - julianDate1;
 	if (difference <= 0)
+	{	customer.set_balance(0);
 		return 0;
+	}
+
 	else
+	{
+		customer.set_balance(2*difference);
 		return 2 * difference;
+	}	
+		
 }
 
 ostream& operator<<(ostream& ost, const Transaction& transaction_two)

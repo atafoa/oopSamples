@@ -12,6 +12,8 @@ class View
 	string bundles_header();
 	string save_header();
 	string load_header();
+	string check_in_submenu();
+	string check_out_submenu();
 
 	
 	private:
