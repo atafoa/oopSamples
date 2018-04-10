@@ -1,5 +1,7 @@
 #include "aaa2575_Controller.h"
 #include "aaa2575_Date.h"
+#include "aaa2575_Librarian.h"
+#include "aaa2575_Customer.h"
 
 void Controller:: cli()
 {
