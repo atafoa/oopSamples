@@ -89,27 +89,12 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 void Library::check_out_media()
 {
 
-	for(int i = 0; i < bundle.size(); i++)
-	{
-		if(bundle[i].get_id() == bundleID)
-		{
-			bundle[i].check_out();
-		}
-
-	}
+	
 }
 
 void Library::check_out_bundle()
 {
 
-	for(int i = 0; i < bundle.size(); i++)
-	{
-		if(bundle[i].get_id() == bundleID)
-		{
-			bundle[i].check_out();
-		}
-
-	}
 }
 
 void Library::pay_balance(string name, int id, string phoneNum, string email, double balance)
