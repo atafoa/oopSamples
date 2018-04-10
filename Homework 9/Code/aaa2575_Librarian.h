@@ -5,6 +5,7 @@
 #include "aaa2575_Bundle.h"
 #include "aaa2575_Media.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
