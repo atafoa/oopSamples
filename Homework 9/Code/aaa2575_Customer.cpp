@@ -29,7 +29,7 @@ void Customer::get_balance()
 {
 	cout << name << " has a balance of " << balance << endl;
 }
-void Customer::set_balance(bal)
+void Customer::set_balance(double bal)
 {
 	balance = bal;
 }
