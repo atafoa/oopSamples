@@ -382,7 +382,7 @@ void Controller:: execute_cmd(int cmd)
 
 			if(subMenu == 2)
 			{
-				cout << "What is the ID of the bundle you want to check in: ";
+				cout << "What is the ID of the bundle you want to check out: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
 				cin >> n;
