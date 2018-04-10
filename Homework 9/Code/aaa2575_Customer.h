@@ -13,7 +13,7 @@ class Customer
 	void get_info();
 	void get_balance();
 	void pay_balance();
-	void set_balance();
+	void set_balance(double bal);
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Customer& c_two);
 
