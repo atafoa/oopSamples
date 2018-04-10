@@ -53,6 +53,8 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 		return;
 	}
 
+	t.get_info();
+
 	for(int i = 0; i < medias.size(); i++)
 	{
 		if(medias[i].get_id() == id)
@@ -65,16 +67,17 @@ void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Dat
 
 void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
-	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
+	Transaction t = create_new_transaction(tNum,l,c,check_in,due);
 	int diff = t.calculate_fee();
 
 	if(diff >= 0)
 	{
-		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
+		cout << endl << "Unable to check this book in as you are checking it in past the due date." << endl;
 		cout  << "Please pay outstanding fees" << endl;
 		return;
 	}
 
+	t.get_info();
 	for(int i = 0; i < bundles.size(); i++)
 	{
 		if(bundles[i].get_id() == id)
@@ -85,19 +88,8 @@ void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Da
 	}
 }
 
-void Library::check_out_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
-{
-
-	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
-	int diff = t.calculate_fee();
-
-	if(diff >= 0)
-	{
-		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
-		cout  << "Please pay outstanding fees" << endl;
-		return;
-	}
-
+void Library::check_out_media(Librarian l, Customer c, int id)
+{	
 	for(int i = 0; i < medias.size(); i++)
 	{
 		if(medias[i].get_id() == id)
@@ -107,17 +99,8 @@ void Library::check_out_media(Librarian l, Customer c, int id, Date check_in, Da
 	}
 }
 
-void Library::check_out_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
+void Library::check_out_bundle(Librarian l, Customer c, int id)
 {
-	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
-	int diff = t.calculate_fee();
-
-	if(diff >= 0)
-	{
-		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
-		cout  << "Please pay outstanding fees" << endl;
-		return;
-	}
 
 	for(int i = 0; i < bundles.size(); i++)
 	{
@@ -231,7 +214,6 @@ Customer Library::create_new_customer(string name, int id, string phoneNum, stri
 Transaction Library::create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due)
 {
 	Transaction transaction{trasactionNumber, librarian, customer, check_in, due};
-	transaction.get_info();
 	transactions.push_back(transaction);
 	return transaction;
 }

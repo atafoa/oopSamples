@@ -249,6 +249,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				l = library.create_new_librarian(n,id);
 
+				cout << endl;
 				cout << "What is the customer's name: ";
 				cin >> n;
 				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
@@ -262,6 +263,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				c = library.create_new_customer(n,id,phone,email,balance);
 
+				cout << endl;
 				cout << "What is the check in date " << endl;
 				cout  << "Month: ";
 				cin >> month;
@@ -272,7 +274,8 @@ void Controller:: execute_cmd(int cmd)
 
 				Date check_in1{month, day, year};
 
-				cout << "What is the check in date " << endl;
+				cout << endl;
+				cout << "What is the due date " << endl;
 				cout  << "Month: ";
 				cin >> month;
 				cout << "Day: ";
@@ -281,6 +284,7 @@ void Controller:: execute_cmd(int cmd)
 				cin >> year;
 				Date due1{month, day, year};
 
+				cout << endl;
 				cout << "What is the transaction number";
 				cin >> tNum;
 
@@ -298,6 +302,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				l = library.create_new_librarian(n,id);
 
+				cout << endl;
 				cout << "What is the customer's name: ";
 				cin >> n;
 				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
@@ -311,6 +316,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				c = library.create_new_customer(n,id,phone,email,balance);
 
+				cout << endl;
 				cout << "What is the check in date " << endl;
 				cout  << "Month: ";
 				cin >> month;
@@ -321,7 +327,8 @@ void Controller:: execute_cmd(int cmd)
 
 				Date check_in2{month, day, year};
 
-				cout << "What is the check in date " << endl;
+				cout << endl;
+				cout << "What is the due date " << endl;
 				cout  << "Month: ";
 				cin >> month;
 				cout << "Day: ";
@@ -330,6 +337,7 @@ void Controller:: execute_cmd(int cmd)
 				cin >> year;
 				Date due2{month, day, year};
 
+				cout << endl;
 				cout << "What is the transaction number";
 				cin >> tNum;
 
@@ -346,7 +354,7 @@ void Controller:: execute_cmd(int cmd)
 			cin >> subMenu;
 			if(subMenu == 1)
 			{
-				cout << "What is the ID of the media you want to check in: ";
+				cout << "What is the ID of the media you want to check out: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
 				cin >> n;
@@ -355,6 +363,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				l = library.create_new_librarian(n,id);
 
+				cout << endl;
 				cout << "What is the customer's name: ";
 				cin >> n;
 				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
@@ -367,30 +376,8 @@ void Controller:: execute_cmd(int cmd)
 				cin >> id;
 				cout << endl;
 				c = library.create_new_customer(n,id,phone,email,balance);
-
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-
-				Date check_in1{month, day, year};
-
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-				Date due1{month, day, year};
-
-				cout << "What is the transaction number";
-				cin >> tNum;
-
-				library.check_out_media(l,c,id,check_in1,due1,tNum);
+				
+				library.check_out_media(l,c,id);
 			}
 
 			if(subMenu == 2)
@@ -404,6 +391,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				l = library.create_new_librarian(n,id);
 
+				cout << endl;
 				cout << "What is the customer's name: ";
 				cin >> n;
 				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
@@ -417,29 +405,7 @@ void Controller:: execute_cmd(int cmd)
 				cout << endl;
 				c = library.create_new_customer(n,id,phone,email,balance);
 
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-
-				Date check_in2{month, day, year};
-
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-				Date due2{month, day, year};
-
-				cout << "What is the transaction number";
-				cin >> tNum;
-
-				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
+				library.check_out_bundle(l,c,id);
 			}
 
 			else
