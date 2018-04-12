@@ -35,7 +35,7 @@ double Transaction::calculate_fee()
 	else
 	{
 		customer.set_balance(2*difference);
-		return 0.5* difference;
+		return 0.5 * difference;
 	}	
 		
 }
