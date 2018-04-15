@@ -3,5 +3,8 @@ GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 hello: hello_world.o
 	$(CXX) $(CXXFLAGS) -o hello hello_world.cpp $(GTKFLAGS)
+	./hello
 hello_world.o: hello_world.cpp
 	$(CXX) $(CXXFLAGS) -c hello_world.cpp $(GTKFLAGS)
+clean:
+	rm -f hello *.o a.out

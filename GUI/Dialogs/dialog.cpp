@@ -1,5 +1,9 @@
 #include "dialog.h"
 
+
+
+
+//message prints out information for the user
 void Dialogs::message(std::string msg, std::string title)
 {
     Gtk::MessageDialog *dialog = new Gtk::MessageDialog(title);
@@ -13,7 +17,8 @@ void Dialogs::message(std::string msg, std::string title)
     delete dialog;
 }
 
-std::string Dialogs::input(std::string msg, std::string title, std::string default_text,std::string cancel_text)
+//input allows the user to enter input as text and use it
+std::string Dialogs::input(std::string msg, std::string title, std::string default_text, std::string cancel_text)
 {
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title(title);
@@ -50,6 +55,8 @@ std::string Dialogs::input(std::string msg, std::string title, std::string defau
         return  cancel_text;
 }
 
+
+//question allows us to get user input in form of an option
 int Dialogs::question(std::string msg, std::string title,std::vector<std::string> buttons)
 {
     Gtk::Dialog *dialog = new Gtk::Dialog();
