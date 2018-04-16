@@ -1,3 +1,7 @@
+#ifndef DIALOG_H
+#define DIALOG_H
+
+
 #include <vector>
 #include <iostream>
 #include <gtkmm.h>
@@ -10,4 +14,6 @@ class Dialogs
    		static int question(std::string msg,std::string title,std::vector<std::string> buttons);
    private:
 
-}
+};
+
+#endif

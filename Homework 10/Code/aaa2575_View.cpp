@@ -25,7 +25,7 @@ string View::get_menu(){
 
 	)";
 
-	return Dialogs::message(menu,header);
+	Dialogs::message(menu,header);
 
 }
 

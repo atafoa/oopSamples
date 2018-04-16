@@ -8,7 +8,7 @@ void Controller:: cli()
 	int cmd = -1;
 	while(cmd != 0)
 	{
-		cout << view.get_menu() << endl;
+		view.get_menu();
 		cout << "What would you like to do: ";
 		cin >> cmd;
 		execute_cmd(cmd);
