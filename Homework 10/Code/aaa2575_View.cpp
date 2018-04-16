@@ -1,6 +1,6 @@
 #include "aaa2575_View.h"
 
-string View::get_menu(){
+void View::get_menu(){
 
 
 
@@ -76,19 +76,21 @@ string View:: media_submenu()
 return header;
 }
 
-string View:: browse_submenu()
+void View:: browse_submenu()
 {
+
 	string header = R"(
 	================
 	Browse Catalog
 	================
-
+	)";
+	
+	string menu = R"(
 	1: Browse Media
 	2: Browse Bundles
-
 	)";
 
-	return header;
+	Dialogs::message(menu,header);
 }
 
 string View:: media_header()

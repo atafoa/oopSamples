@@ -6,9 +6,9 @@ class View
 {
 	public:
 	View(Library& l) : library(l) {}
-	string get_menu();
+	void get_menu();
 	string media_submenu();
-	string browse_submenu();
+	void browse_submenu();
 	string media_header();
 	string bundles_header();
 	string save_header();
