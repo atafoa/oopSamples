@@ -12,14 +12,9 @@ Music_Album::Music_Album(int ry, string a, vector<string> tr, string t, int idNu
 	genre = g;
 }
 
-void Music_Album::get_info()
+string Music_Album::get_info()
 {
-	cout << call_number << endl;
-	cout << "Album Title: " << title << endl;
-	cout << "Artist: " << artist << endl;
-	cout << "Genre: " << genre << endl;
-	cout << "Release Year: " << release_year << endl;
-	cout << "Id Number: " << id_number << endl;
+	return "Album Title: " + title + "Artist: " + artist + "Genre: " + genre +"Release Year: " + std::to_string(release_year) + "Id Number: " + std::to_string(id_number)+ "\n";
 }
  
 ostream& operator<<(ostream& ost, const Music_Album& ma_two)

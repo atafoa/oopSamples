@@ -13,15 +13,10 @@ Movie::Movie(int ry, string p, string d, vector<string> la, string t, int idNum,
 	genre = g;
 }
 
-void Movie::get_info()
+string Movie::get_info()
 {
-	cout << call_number << endl;
-	cout << "Title: " << title << endl;
-	cout << "Movie director: " << director << endl;
-	cout << "Genre: " << genre << endl;
-	cout << "Release Year: " << release_year << endl;
-	cout << "Producer: " << producer << endl;
-	cout << "Id Number: " << id_number << endl;
+	
+	return  "Title: " + title + "Movie director: " + director + "Genre: " + genre + "Release Year: " + std::to_string(release_year) + "Producer: " + producer + "Id Number: " +  std::to_string(id_number) + "\n";
 }
  
 ostream& operator<<(ostream& ost, const Movie& m_two)

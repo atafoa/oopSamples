@@ -12,7 +12,7 @@ class Video_Game : public Media
 {
 	public:
 	Video_Game(int ry, string s, int idNum, string t, string g, string callNum);
-	void get_info();
+	string get_info();
 	friend ostream& operator<<(ostream& ost, const Video_Game& v_two);
 
 	private:

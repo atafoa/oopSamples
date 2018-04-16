@@ -14,14 +14,9 @@ Television_Show_Season::Television_Show_Season(int ry, string p, vector<string> 
 	id_number = idNum;
 }
 
-void Television_Show_Season::get_info()
+string Television_Show_Season::get_info()
 {
-	cout <<"Television Show" << endl;
-	cout << "Show Title: " << title << endl;
-	cout << "Genre: " << genre << endl;
-	cout << "Producer: " << producer << endl;
-	cout << "Season Number:  " << season_number << endl;
-	cout << "Id Number: " << id_number << endl;
+	return "Show Title: " + title + "Genre: " + genre + "Producer: " + producer + "Season Number:  " + std::to_string(season_number) + "Id Number: " + std::to_string(id_number)+ "\n";
 }
  
 ostream& operator<<(ostream& ost, const Television_Show_Season& tss_two)
