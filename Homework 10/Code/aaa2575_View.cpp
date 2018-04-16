@@ -2,6 +2,15 @@
 
 string View::get_menu(){
 
+
+
+	string header = R"(
+	==================================
+	Arlington Public Library System
+	==================================
+
+	)";
+
 	string menu = R"(
 	==================================
 	Arlington Public Library System
@@ -19,7 +28,7 @@ string View::get_menu(){
 
 	)";
 
-	return menu;
+	return Dialogs::message(menu,header);
 
 }
 
