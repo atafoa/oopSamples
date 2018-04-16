@@ -1,15 +1,7 @@
 #include "aaa2575_View.h"
 
-void View::get_menu(){
-
-
-
-	string header = R"(
-	==================================
-	Arlington Public Library System
-	==================================
-
-	)";
+string View::get_menu(){
+	
 
 	string menu = R"(
 	
@@ -25,7 +17,7 @@ void View::get_menu(){
 
 	)";
 
-	Dialogs::message(menu,header);
+	return menu;
 
 }
 
@@ -61,9 +53,6 @@ string View:: media_submenu()
 {
 
 	string header = R"(
-		=========
-		Media
-		=========
 
 		1: Add Books
 		2: Add Movies
@@ -76,21 +65,16 @@ string View:: media_submenu()
 return header;
 }
 
-void View:: browse_submenu()
+string View:: browse_submenu()
 {
-
 	string header = R"(
-	================
-	Browse Catalog
-	================
-	)";
-	
-	string menu = R"(
+
 	1: Browse Media
 	2: Browse Bundles
+
 	)";
 
-	Dialogs::message(menu,header);
+	return header;
 }
 
 string View:: media_header()
@@ -116,34 +100,3 @@ string View:: bundles_header()
 
 	return header;
 }
-
-string View:: save_header()
-{
-	string header = R"(
-	===================
-	Save Functionality
-	===================
-
-	1: Yes Save this information
-	0: Do not save this information
-
-	)";
-
-	return header;
-}
-
-string View:: load_header()
-{
-	string header = R"(
-	===================
-	Load Functionality
-	===================
-
-	1: Yes Load this information
-	0: Do not load this information
-
-	)";
-
-	return header;
-}
-

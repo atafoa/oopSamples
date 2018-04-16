@@ -10,7 +10,7 @@ void Controller:: cli()
 	while(cmd != 0)
 	{
 		view.get_menu();
-		cmd = Dialogs::input("What would you like to do: ", "Input")
+		cmd = std::stoi( (std:: string) Dialogs::input(view.get_menu(),"Arlington Public Library"));
 		execute_cmd(cmd);
 	}
 }
@@ -24,7 +24,8 @@ void Controller:: execute_cmd(int cmd)
 	string producer; vector<string> director; int seasonNum;
 	string n; string temp;
 	string phone; string email; double balance;
-	vector<string> options = {"Browse Media", "Browse Bundles"};
+	vector<string> options = {"Cancel","Browse Media", "Browse Bundles"};
+	string trackNumber;
 
 	Librarian l{"",0}; Customer c{"",0,"","",0.0}; int month; int day; int year; int tNum;
 
@@ -38,178 +39,135 @@ void Controller:: execute_cmd(int cmd)
 
 	switch (cmd)
 	{
-		case 1:
-			view.browse_submenu();
-			subMenu = Dialogs::question("What would you like to do?","Input", options);
-
-			if(subMenu < 0 || subMenu  > 1)
+			case 1:
+			subMenu = std::stoi((std::string) Dialogs::input(view.browse_submenu(),"Browse Menu"));
+			if(subMenu < 0 || subMenu  > 2)
 			{
-				throw runtime_error("Input invalid Number has to be either 1 or 2");
+				throw runtime_error("Input invalid Number has to be from 0 to 2");
 			}
 
 			switch(subMenu)
 			{
 				case 0:
-				cout << view.media_header() << endl;
-				library.browse_media();
-				break;
+					break;
 
 				case 1:
-				cout << view.bundles_header() << endl;
-				library.browse_bundles();
+				//Dialogs::message(,view.media_header() ;
+				temp = library.browse_media();
+				Dialogs::message(temp,view.media_header());
+				break;
+
+				case 2:
+				 temp = library.browse_bundles();
+				 Dialogs::message(temp,view.bundles_header());
 				break;
 				
 			}
 			break;
 
 		case 2:
-			cout << view.media_submenu() << endl;
-			cout << "What would you like to do: ";
-			cin >> subMenu;
+			view.media_submenu();
+			options = {"Cancel","Add Book", "Add Movie", "Add Video Game", "Add Music Album", "Add Television Show Season"};
+			subMenu = Dialogs::question("What would you like to do?","Add Media", options);
 
-			if(subMenu < 1 || subMenu  > 5)
+			if(subMenu < 0 || subMenu  > 5)
 			{
-				throw runtime_error("Input invalid Number has to be from 1 to 5");
+				throw runtime_error("Input invalid Number has to be from 0 to 5");
 			}
 
 			switch(subMenu)
 			{
+				case 0:
+				break;
+
 				case 1:
-				cout << "What is the title of this book: ";
-				cin >> t;
-				cout << "Who is the author of this book: ";
-				cin >> a;
-				cout  << "What is the copyright year: ";
-				cin >> cy;
-				cout << "What is the genre of this book: ";
-				cin >> g;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				t = Dialogs::input("What is the title of this book: ", "Title");
+				a = Dialogs::input("Who is the author of this book: ", "Author");
+				cy = std::stoi(Dialogs::input("What is the copyright year: ", "Copyright Year"),nullptr,10);
+				g = Dialogs::input("What is the genre of this book: ", "Genre");
+				id = std::stoi(Dialogs::input("ID number: ", "ID"),nullptr, 10);
 				library.create_new_book(a,cy,t,g,id, "Book");
 				break;
 
 				case 2:
-				cout << "What is the title of this movie: ";
-				cin >> t;
-				cout  << "When is the release year: ";
-				cin >> ry;
-				cout << "Who produced this movie: ";
-				cin >> producer;
-				cout << "What is the genre of this movie: ";
-				cin >> g;
-				cout << "Who is the director of this movie: ";
-				cin >> d;
-				cout << "How many leading actors: ";
-				cin >> size;
+				t = Dialogs::input("What is the title of this movie: ", "Title");
+				ry = std::stoi(Dialogs::input("When is the release year: ", "Release Year"),nullptr,10);
+				producer = Dialogs::input("Who produced the movie: ", "Producer");
+				g = Dialogs::input("What is the genre of this movie: ", "Genre");
+				d = Dialogs::input("Who is the director of this movie: ", "Director");
+				size = std::stoi(Dialogs::input("How many leading actors are there: ", "Leading Actors"),nullptr,10);
 
 				for(int i = 0; i < size; i++)
 				{
-					cout << "Enter a leading actor's name: ";
-					cin >> temp;
+					temp = Dialogs::input("Enter a leading actors name: ", "Leading Actors");
 					la.push_back(temp);
 				}
 
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				id = std::stoi(Dialogs::input("ID number: ", "ID"),nullptr, 10);
 				library.create_new_movie(ry, producer, d, la, t, id,g,"Movie");
 				break;
 
 				case 3:
-				cout << "What is the title of this video game: ";
-				cin >> t;
-				cout  << "When is the release year: ";
-				cin >> ry;
-				cout << "What studio produced this movie: ";
-				cin >> studio;
-				cout << "What is the genre of this movie: ";
-				cin >> g;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				t = Dialogs::input("What is the title of this video game: ", "Title");
+				ry = std::stoi(Dialogs::input("When is the release year: ", "Release Year"),nullptr,10);
+				studio = Dialogs::input("What studio produced this video game", "Studio");
+				g = Dialogs::input("What is the genre of this video game: ", "Genre");
+				id = std::stoi(Dialogs::input("ID number: ", "ID"),nullptr, 10);
 				library.create_new_video_game(ry, studio, id, t,g, "Video Game");
 				break;
 
 				case 4:
-				cout << "What is the title of this album: ";
-				cin >> t;
-				cout  << "Who is the artist: ";
-				cin >> artist;
-				cout  << "When is the release year: ";
-				cin >> ry;
-				cout << "What is the genre of this album: ";
-				cin >> g;
-				cout << "How many tracks are in this album: ";
-				cin >> size;
-
+				t = Dialogs::input("What is the title of this album ", "Title");
+				artist = Dialogs::input("Who is the artist ", "Artist");
+				ry = std::stoi(Dialogs::input("When is the release year ", "Release Year"),nullptr,10);
+				g = Dialogs::input("What is the genre of this album ", "Genre");
+				size = std::stoi(Dialogs::input("How many tracks are in this album ", "Tracks"),nullptr, 10);
 				for(int i = 0; i < size; i++)
 				{
-					cout << "Track " << i+1 << ": ";
-					cin >> temp;
+					trackNumber = "Track " + std::to_string(i+1);
+					temp = Dialogs::input(trackNumber, "Tracks");
 					tracks.push_back(temp);
 				}
-
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				id = std::stoi(Dialogs::input("ID number: ", "ID"),nullptr, 10);
 				library.create_new_music_album(ry, artist, tracks, t, id, g, "Music Album");
 				break;
 
 				case 5:
-				cout << "What is the title of this show: ";
-				cin >> t;
-				cout  << "Who is the producer: ";
-				cin >> producer;
-				cout  << "When is the release year: ";
-				cin >> ry;
-				cout << "What is the genre of this show: ";
-				cin >> g;
-				cout << "What is the season number: ";
-				cin >> seasonNum;
-				cout << "How many directors directed this show ";
-				cin >> size;
+				t = Dialogs::input("What is the title of this Television Show ", "Title");
+				producer = Dialogs::input("Who is the producer ", "Producer");
+				ry = std::stoi(Dialogs::input("When is the release year ","Release Year"),nullptr,10);
+				g = Dialogs::input("What is the genre of this Television Show ", "Genre");
+				seasonNum = std::stoi(Dialogs::input("What is the season number ", "Season Number"),nullptr,10);
+				size = std::stoi(Dialogs::input("How many directors are there", "Director"),nullptr, 10);
+		
 
 				for(int i = 0; i < size; i++)
 				{
-					cout << "Name a director: ";
-					cin >> temp;
+					temp = Dialogs::input("Name a director","Director");
 					director.push_back(temp);
 				}
 
-				cout << "How many leading actors: ";
-				cin >> size;
+				size = std::stoi(Dialogs::input("How many leading actors are there ", "Leading Actors"),nullptr, 10);
 
 				for(int i = 0; i < size; i++)
 				{
-					cout << "Enter a leading actor's name: ";
-					cin >> temp;
+					temp = Dialogs::input("Name a leading actor","Leading Actors");
 					la2.push_back(temp);
 				}
 
-
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				id = std::stoi(Dialogs::input("ID number: ", "ID"),nullptr, 10);
 				library.create_new_television_show_season(ry, producer, director, la2,seasonNum,t, id, g, "Television Show");
 				break;
 			}
 			break;
 
 		case 3:
-			cout << "What is the name of this bundle: ";
-			cin >> n;
-			cout << "ID Number: ";
-			cin >> id;
-			cout << "What is the type of this bundle: ";
-			cin >> t;
-			cout << "What is the genre of items in this bundle: ";
-			cin >> g;
+			n = Dialogs::input("What is the name of this bundle", "Title");
+			id = std::stoi(Dialogs::input("ID Number","ID"),nullptr,10);
+			t = Dialogs::input("What type of bundle is this", "Type");
+			g = Dialogs::input("What is the genre of this bundle", "Genre");
 			
 			library.create_new_bundle(n,id,"Bundle",t,g);
-			library.add_to_bundle(n,id,"Bundle",t,g);
-			cout << view.bundles_header() << endl;
-			library.browse_bundles();
 			break;
 		case 4:
 			cout << "What is the name of the librarian: ";
@@ -235,7 +193,7 @@ void Controller:: execute_cmd(int cmd)
 			break;
 		case 6:
 
-			cout << view.check_in_submenu() << endl;
+			view.check_in_submenu();
 			cout  << "What would you like to check in: ";
 			cin >> subMenu;
 
@@ -350,7 +308,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 7:
 
-			cout << view.check_out_submenu() << endl;
+			view.check_out_submenu();
 			cout  << "What would you like to check out: ";
 			cin >> subMenu;
 			if(subMenu == 1)
@@ -416,9 +374,8 @@ void Controller:: execute_cmd(int cmd)
 		case 8:
 			library.pay_balance(n,id,phone,email,balance);
 			break;
-		
+
 		case 0:
-			cout << "Now exiting the program\n";
 			break;
 	}
 }

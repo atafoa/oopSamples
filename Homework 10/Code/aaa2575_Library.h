@@ -1,7 +1,7 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-
+#include "aaa2575_Dialog.h"
 #include "aaa2575_Book.h"
 #include "aaa2575_Movie.h"
 #include "aaa2575_Video_Game.h"
@@ -26,8 +26,8 @@ class Library
 {
 	public:
 	Library();
-	void browse_media();
-	void browse_bundles();
+	string browse_media();
+	string browse_bundles();
 	Media create_new_media(int idNum, string callNum, string title, string genre);
 	void create_new_book(string author, int copyrightYear, string title, string genre ,int idNum, string callNum);
 	void create_new_movie(int releaseYear, string producer, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum);
@@ -38,7 +38,6 @@ class Library
 	Librarian create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
 	Transaction create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due);
-	void add_to_bundle(string name, int idNum, string callNum, string title, string genre);
 	void check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
 	void check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
 	void check_out_media(Librarian l, Customer c, int id);

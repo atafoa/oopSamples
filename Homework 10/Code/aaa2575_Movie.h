@@ -10,7 +10,7 @@ class Movie: public Media
 {
 	public:
 	Movie(int ry, string p, string d, vector<string> la, string t, int idNum, string g, string callNum);
-	void get_info();
+	string get_info();
 	friend ostream& operator<<(ostream& ost, const Movie& m_two);
 
 	private:

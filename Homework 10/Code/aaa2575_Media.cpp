@@ -15,12 +15,12 @@ string Media::to_string() const
 {
 	string temp;
 
-	temp = "Title: " + title + " Id Number: " + std::to_string(id_number) + " Genre: " + genre + " Call Number: " + call_number;
+	temp = "Title: " + title + " Id Number: " + std::to_string(id_number) + " Genre: " + genre + " Type: " + call_number;
 
 	if(checked_out == true)
-		return temp + "Status: Checked out \n";
+		return temp + " Status: Checked out \n";
 	else
-		return temp + "Status: Has not been checked out \n";
+		return temp + " Status: Has not been checked out \n";
 }
 
 int Media::get_id()

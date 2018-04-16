@@ -12,7 +12,7 @@ class Music_Album : public Media
 {
 	public:
 	Music_Album(int ry, string a, vector<string> tr, string t, int idNum, string g, string callNum);
-	void get_info();
+	string get_info();
 	friend ostream& operator<<(ostream& ost, const Music_Album& ma_two);
 
 	private:

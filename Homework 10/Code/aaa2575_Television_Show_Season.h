@@ -12,7 +12,7 @@ class Television_Show_Season: public Media
 {
 	public:
 	Television_Show_Season(int ry, string p, vector<string> d, vector<string> la, int sn, string t, int idNum, string g, string callNum);
-	void get_info();
+	string get_info();
 	friend ostream& operator<<(ostream& ost, const Television_Show_Season& tss_two);
 
 	private:

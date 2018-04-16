@@ -1,5 +1,5 @@
 #include "aaa2575_Dialog.h"
-
+#include <stdlib.h>
 
 //message prints out information for the user
 void Dialogs::message(std::string msg, std::string title)
@@ -17,7 +17,7 @@ void Dialogs::message(std::string msg, std::string title)
 }
 
 //input allows the user to enter input as text and use it
-int Dialogs::input(std::string msg, std::string title, std::string default_text, std::string cancel_text)
+std::string Dialogs::input(std::string msg, std::string title, std::string default_text, std::string cancel_text)
 {
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title(title);
@@ -26,7 +26,7 @@ int Dialogs::input(std::string msg, std::string title, std::string default_text,
     dialog->get_content_area()->pack_start(*label);
     label->show();
     
-    dialog->add_button("Cancel", 0);
+    dialog->add_button("Exit", 0);
     dialog->add_button("OK",1);
     dialog->set_default_response(1);
     
@@ -36,7 +36,7 @@ int Dialogs::input(std::string msg, std::string title, std::string default_text,
     entry->show();
     dialog->get_vbox()->pack_start(*entry);
     
-    int result = dialog->run();
+   int result = dialog->run();
     std::string text = entry->get_text();
         
     
@@ -47,10 +47,12 @@ int Dialogs::input(std::string msg, std::string title, std::string default_text,
     delete dialog;
     delete label;
     delete entry;
-    
-   return result;
-}
 
+    if(result == 0)
+        text = "0";
+    
+   return text;
+}
 
 //question allows us to get user input in form of an option
 int Dialogs::question(std::string msg, std::string title,std::vector<std::string> buttons)

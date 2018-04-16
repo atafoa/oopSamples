@@ -7,37 +7,43 @@ Library::Library()
 
 }
 
-void Library::browse_media()
+string Library::browse_media()
 {
+	string temp;
+
 	if(medias.empty())
 	{
-		cout << "UH-OH. we are temporarily out of stock" << endl;
+		temp = "UH-OH. we are temporarily out of stock";
 	}
 	else
 	{
 		for(int i = 0; i  < medias.size(); i++)
 		{
-			medias[i].get_info();
-			cout << endl;
+			temp  += medias[i].to_string();
 		}
 	}
+	return temp;
 }
 
 
-void Library::browse_bundles()
+string Library::browse_bundles()
 {
+
+	string temp;
 	if(bundles.empty())
 	{
-		cout << "UH-OH. we are temporarily out of stock" << endl;
+		temp =  "UH-OH. we are temporarily out of stock";
 	}
 	else
 	{
+		
 		for(int i = 0; i < bundles.size(); i++)
 		{
-			cout << bundles[i].to_string();
-			cout << endl;
+			temp += bundles[i].to_string();
 		}
 	}
+
+	return temp;
 }
 
 
@@ -121,7 +127,6 @@ void Library::pay_balance(string name, int id, string phoneNum, string email, do
 Media Library::create_new_media(int idNum, string callNum, string title, string genre)
 {
 	Media media{idNum, callNum, title, genre};
-	media.get_info();
 	medias.push_back(media);
 	return media;
 
@@ -130,7 +135,6 @@ Media Library::create_new_media(int idNum, string callNum, string title, string 
 void Library::create_new_book(string author, int copyrightYear, string title, string genre ,int idNum, string callNum)
 {
 	Book book{author, copyrightYear, title, genre, idNum, callNum};
-	book.get_info();
 	medias.push_back(book);	
 }
 
@@ -144,52 +148,40 @@ void Library::create_new_movie(int releaseYear, string producer, string director
 void Library::create_new_video_game(int releaseYear, string studio, int idNum, string title, string genre, string callNum)
 {
 	Video_Game videoGame{releaseYear, studio, idNum, title, genre, callNum};
-	videoGame.get_info();
 	medias.push_back(videoGame);	
 }
 
 void Library::create_new_music_album(int releaseYear, string artist, vector<string> tracks, string title, int idNum, string genre, string callNum)
 {
 	Music_Album musicAlbum{releaseYear, artist, tracks, title, idNum, genre, callNum};
-	musicAlbum.get_info();
 	medias.push_back(musicAlbum);
 }
 
 void Library::create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, int idNum, string genre, string callNum)
 {
 	Television_Show_Season tvShow{releaseYear, producer, director, leadingActors, seasonNum, title, idNum, genre, callNum};
-	tvShow.get_info();
 	medias.push_back(tvShow);	
 }
 
 Bundle Library::create_new_bundle(string name, int idNum, string callNum, string title, string genre)
 {
 	Bundle bundle{name,idNum, callNum, title, genre};
-	bundle.get_info();
 	bundles.push_back(bundle);
-	return bundle;
-}
-
-void Library::add_to_bundle(string name, int idNum, string callNum, string title, string genre)
-{
-	Bundle bundle = create_new_bundle(name,idNum,callNum,title,genre);
+	
 	int id; string type; string titleM; string genreM; int size;
-	cout << "How many items are you adding to the bundle: ";
-	cin  >> size;
+	Dialogs::message("Now adding items to bundle","Add to Bundle");
+	size = std::stoi(Dialogs::input("How many items are you adding to the bundle", "Add to Bundle"));
 
 	for(int i = 0; i < size; i++)
 	{
-		cout << "What is the title of this item: ";
-		cin >> titleM;
-		cout << "What is the genre of this item: ";
-		cin >> genreM;
-		cout << "ID number: ";
-		cin >> id;
-		cout << "What is the type of this item: ";
-		cin >> type;
+		titleM = Dialogs::input("What is the title of this item","Title");
+		genreM = Dialogs::input("What is the genre of this item", "Genre");
+		id = std::stoi(Dialogs::input("ID number","ID"));
+		type = Dialogs::input("What is the type of media","Type");
 		bundle.add_to_bundle(create_new_media(id, type, titleM,genreM));
 	}
-	bundle.list_items();
+
+	return bundle;
 }
 
 

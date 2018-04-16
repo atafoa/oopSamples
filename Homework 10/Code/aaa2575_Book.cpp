@@ -12,13 +12,9 @@ Book::Book(string a, int cy, string t, string g, int idNum, string callNum):Medi
 	id_number = idNum;
 }
 
-void Book::get_info()
+string Book::get_info()
 {
-	cout << "Title: " << title << endl;
-	cout << "Book author: " << author << endl;
-	cout << "Genre: " << genre << endl;
-	cout << "Id Number: " << id_number << endl;
-	cout << "Copyright Year: " << copyright_year << endl;
+	 return "Title: " + title + "Book author: " + author + "Genre: " + genre + "Id Number: " + std::to_string(id_number) + "Copyright Year: " + std::to_string(copyright_year) + "\n";
 }
  
 ostream& operator<<(ostream& ost, const Book& b_two)
