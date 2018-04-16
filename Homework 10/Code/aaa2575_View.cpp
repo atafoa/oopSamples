@@ -1,6 +1,6 @@
 #include "aaa2575_View.h"
 
-string View::get_menu(){
+void View::get_menu(){
 
 
 
