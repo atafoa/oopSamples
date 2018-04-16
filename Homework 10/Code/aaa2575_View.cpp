@@ -12,10 +12,7 @@ string View::get_menu(){
 	)";
 
 	string menu = R"(
-	==================================
-	Arlington Public Library System
-	==================================
-
+	
 	1: Browse Catalog
 	2: Add Media
 	3: Add Bundle

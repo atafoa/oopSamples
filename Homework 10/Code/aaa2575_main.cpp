@@ -5,6 +5,7 @@
 #include "aaa2575_Television_Show_Season.h"
 #include "aaa2575_Book.h"
 #include "aaa2575_Movie.h"
+#include "aaa2575_Dialog.h"
 #include "aaa2575_Music_Album.h"
 #include "aaa2575_Video_Game.h"
 #include "aaa2575_Controller.h"
@@ -13,10 +14,13 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
+	Gtk::Main kit(argc, argv);
+
 	Library library{};
 	View view (library);
 	Controller controller (library, view);
 	controller.cli();
+	return 0;
 }
