@@ -2,15 +2,15 @@
 #include "aaa2575_Date.h"
 #include "aaa2575_Librarian.h"
 #include "aaa2575_Customer.h"
+#include <vector>
 
 void Controller:: cli()
 {
 	int cmd = -1;
 	while(cmd != 0)
 	{
-		cout << view.get_menu() << endl;
-		cout << "What would you like to do: ";
-		cin >> cmd;
+		view.get_menu();
+		cmd = Dialogs::input("What would you like to do: ", "Input")
 		execute_cmd(cmd);
 	}
 }
@@ -24,6 +24,7 @@ void Controller:: execute_cmd(int cmd)
 	string producer; vector<string> director; int seasonNum;
 	string n; string temp;
 	string phone; string email; double balance;
+	vector<string> options = {"Browse Media", "Browse Bundles"};
 
 	Librarian l{"",0}; Customer c{"",0,"","",0.0}; int month; int day; int year; int tNum;
 
@@ -38,26 +39,26 @@ void Controller:: execute_cmd(int cmd)
 	switch (cmd)
 	{
 		case 1:
-			cout << view.browse_submenu() << endl;
-			cout << "What would you like to do: ";
-			cin >> subMenu;
+			view.browse_submenu();
+			subMenu = Dialogs::question("What would you like to do?","Input", options);
 
-			if(subMenu < 1 || subMenu  > 2)
+			if(subMenu < 0 || subMenu  > 1)
 			{
 				throw runtime_error("Input invalid Number has to be either 1 or 2");
 			}
 
 			switch(subMenu)
 			{
-				case 1:
+				case 0:
 				cout << view.media_header() << endl;
 				library.browse_media();
 				break;
 
-				case 2:
+				case 1:
 				cout << view.bundles_header() << endl;
 				library.browse_bundles();
 				break;
+				
 			}
 			break;
 

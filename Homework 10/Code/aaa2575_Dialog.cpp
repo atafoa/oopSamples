@@ -8,6 +8,7 @@ void Dialogs::message(std::string msg, std::string title)
     dialog->set_secondary_text(msg, true);
     dialog->run();
     
+    
     dialog->close();
     while (Gtk::Main::events_pending())
         Gtk::Main::iteration();
@@ -16,7 +17,7 @@ void Dialogs::message(std::string msg, std::string title)
 }
 
 //input allows the user to enter input as text and use it
-std::string Dialogs::input(std::string msg, std::string title, std::string default_text, std::string cancel_text)
+int Dialogs::input(std::string msg, std::string title, std::string default_text, std::string cancel_text)
 {
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title(title);
@@ -47,10 +48,7 @@ std::string Dialogs::input(std::string msg, std::string title, std::string defau
     delete label;
     delete entry;
     
-    if(result == 1)
-    return text;
-    else
-        return  cancel_text;
+   return result;
 }
 
 
