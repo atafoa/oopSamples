@@ -146,10 +146,16 @@ string Library::check_out_bundle(Librarian l, Customer c, int id)
 	return output;
 }
 
-void Library::pay_balance(string name, int id, string phoneNum, string email, double balance)
+void Library::pay_balance(int id)
 {
-	Customer customer = create_new_customer(name, id, phoneNum, email, balance);
-	customer.pay_balance();
+	for(int i = 0; i < customers.size();i++)
+	{
+		if(customers[i].id == id)
+		{
+			Dialogs::message(customers[i].get_balance(),"Customer balance");
+			customers[i].pay_balance();
+		}		
+	}
 }
 
 Media Library::create_new_media(int idNum, string callNum, string title, string genre)

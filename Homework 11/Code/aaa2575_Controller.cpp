@@ -314,11 +314,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 8:
 			Dialogs::message("Customer information", "Pay Balance");
-			n = Dialogs::input("What is the name of the customer", "Name");
-			phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
-			email = Dialogs::input("What is the customer's email", "Email");
-			balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
-			id = std::stoi(Dialogs::input("ID number","ID"));
+			id = std::stoi(Dialogs::input("What is the ID number of the customer","ID"));
 			library.pay_balance(n,id,phone,email,balance);
 			break;
 
