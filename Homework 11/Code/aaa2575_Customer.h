@@ -17,7 +17,7 @@ class Customer
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Customer& c_two);
 
-	private:
+	protected:
 	string name;
 	int id;
 	string phone;
