@@ -217,13 +217,13 @@ void Controller:: execute_cmd(int cmd)
 				day = std::stoi(Dialogs::input("On what day was the media checked in", "Day"));
 				year = std::stoi(Dialogs::input("In what year was the media checked in","Year"));
 				tNum = std::stoi(Dialogs::input("What is the transaction number", "Transaction number"));
-				check_in = set_date(month, day, year);
+				check_in = check_in.set_date(month, day, year);
 
 				Dialogs::message("Due date", "Media check in");
 				month = std::stoi(Dialogs::input("In what month was the media due", "Month"));
 				day = std::stoi(Dialogs::input("On what day was the media due", "Day"));
 				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
-				due = set_date(month, day, year)
+				due = due.set_date(month, day, year);
 
 				Dialogs::message(library.check_in_media(l,c,id,check_in,due,tNum),"Checked in status");
 				break;
@@ -249,15 +249,15 @@ void Controller:: execute_cmd(int cmd)
 				day = std::stoi(Dialogs::input("On what day was the bundle checked in", "Day"));
 				year = std::stoi(Dialogs::input("In what year was the bundle checked in","Year"));
 				tNum = std::stoi(Dialogs::input("What is the transaction number", "Transaction number"));
-				check_in = set_date(month,day,year);
+				check_in = check_in.set_date(month,day,year);
 
 				Dialogs::message("Due date", "Bundle check in");
 				month = std::stoi(Dialogs::input("In what month was the media due", "Month"));
 				day = std::stoi(Dialogs::input("On what day was the media due", "Day"));
 				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
-				due = set_date(month,day,year);
+				due = due.set_date(month,day,year);
 
-				Dialogs::message(library.check_in_bundle(l,c,id,check_in,due,tNum,"Checked in status");
+				Dialogs::message(library.check_in_bundle(l,c,id,check_in,due,tNum),"Checked in status");
 				break;
 			}
 			break;
