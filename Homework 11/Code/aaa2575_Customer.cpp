@@ -14,7 +14,7 @@ Customer::Customer(string n, int idNum, string p, string e, double b)
 
 string Customer::to_string() const
 {
-	return "Customer Name: " + name + " ID Number: " +  std::to_string(id) + " Phone Number: " + phone + " Email: " + email + " Balance: " + std::to_string(balance);
+	return "Customer Name: " + name + "\n ID Number: " +  std::to_string(id) + "\n Phone Number: " + phone + "\n Email: " + email + "\n Balance: " + std::to_string(balance);
 }
 
 void Customer::get_info()
