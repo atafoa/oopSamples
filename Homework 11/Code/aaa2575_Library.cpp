@@ -150,7 +150,7 @@ void Library::pay_balance(int id)
 {
 	for(int i = 0; i < customers.size();i++)
 	{
-		if(customers[i].id == id)
+		if(customers[i].get_id() == id)
 		{
 			Dialogs::message(customers[i].get_balance(),"Customer balance");
 			customers[i].pay_balance();

@@ -25,6 +25,11 @@ void Customer::get_info()
 	cout << "Email: " << email << endl;
 }
 
+int Customer::get_id()
+{
+	return id;
+}
+
 string Customer::get_balance()
 {
 	return name + " has a balance of " + std::to_string(balance);

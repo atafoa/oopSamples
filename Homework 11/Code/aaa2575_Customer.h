@@ -13,11 +13,12 @@ class Customer
 	void get_info();
 	string get_balance();
 	void pay_balance();
+	int get_id();
 	void set_balance(double bal);
 	string to_string() const;
 	friend ostream& operator<<(ostream& ost, const Customer& c_two);
 
-	protected:
+	private:
 	string name;
 	int id;
 	string phone;
