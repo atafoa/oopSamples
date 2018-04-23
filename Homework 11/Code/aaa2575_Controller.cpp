@@ -311,7 +311,7 @@ void Controller:: execute_cmd(int cmd)
 				Dialogs::message(library.check_out_bundle(l,c,id),"Checked out status");
 			}
 		break;
-
+	
 		case 8:
 			Dialogs::message("Customer information", "Pay Balance");
 			id = std::stoi(Dialogs::input("What is the ID number of the customer","ID"));

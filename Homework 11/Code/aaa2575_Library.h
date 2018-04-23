@@ -42,7 +42,7 @@ class Library
 	string check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
 	string check_out_media(Librarian l, Customer c, int id);
 	string check_out_bundle(Librarian l, Customer c, int id);
-	void pay_balance(string name, int id, string phoneNum, string email, double balance);
+	void pay_balance(int id);
 	
 	protected:
 	vector<Media> medias;
