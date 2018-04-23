@@ -21,12 +21,12 @@ Main_Window::Main_Window() {
     Gtk::Menu *browseSubmenu = Gtk::manage(new Gtk::Menu());
     browse -> set_submenu(*browseSubmenu);
 
-    Gtk::MenuItem *browseMedia = Gtk::manage(new Gtk::MenuItem("_Browse Media", true));
+    Gtk::MenuItem *browse_media = Gtk::manage(new Gtk::MenuItem("_Browse Media", true));
     browse_media -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::browse_media_clicked));
     browseSubmenu -> append(*browse_media);
 
-    Gtk::MenuItem *browseBundles= Gtk::manage(new Gtk::MenuItem("_Browse Bundles", true));
-    browse_media -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::browse_bundles_clicked));
+    Gtk::MenuItem *browse_bundles= Gtk::manage(new Gtk::MenuItem("_Browse Bundles", true));
+    browse_bundles -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::browse_bundles_clicked));
     browseSubmenu -> append(*browse_bundles);
 
 
