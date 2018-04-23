@@ -12,6 +12,7 @@ class Date
 	Date(int m, int d, int y);
 	string to_string() const;
 	double to_julianDate();
+	Date set_date(int m,int d,int y);
 	friend ostream& operator<<(ostream& ost, const Date& date_two);
 
 	private:
