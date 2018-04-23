@@ -315,7 +315,7 @@ void Controller:: execute_cmd(int cmd)
 		case 8:
 			Dialogs::message("Customer information", "Pay Balance");
 			id = std::stoi(Dialogs::input("What is the ID number of the customer","ID"));
-			library.pay_balance(n,id,phone,email,balance);
+			library.pay_balance(id);
 			break;
 
 		case 0:
