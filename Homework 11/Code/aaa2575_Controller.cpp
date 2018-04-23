@@ -181,7 +181,7 @@ void Controller:: execute_cmd(int cmd)
 			n = Dialogs::input("What is the name of the customer", "Name");
 			phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 			email = Dialogs::input("What is the customer's email", "Email");
-			balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+			balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
 			id = std::stoi(Dialogs::input("ID number","ID"));
 			c = library.create_new_customer(n,id,phone,email,balance);
 			break;
@@ -206,7 +206,7 @@ void Controller:: execute_cmd(int cmd)
 				n = Dialogs::input("What is the name of the customer", "Name");
 				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 				email = Dialogs::input("What is the customer's email", "Email");
-				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
 				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 
@@ -238,7 +238,7 @@ void Controller:: execute_cmd(int cmd)
 				n = Dialogs::input("What is the name of the customer", "Name");
 				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 				email = Dialogs::input("What is the customer's email", "Email");
-				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
 				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 
@@ -283,7 +283,7 @@ void Controller:: execute_cmd(int cmd)
 				n = Dialogs::input("What is the name of the customer", "Name");
 				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 				email = Dialogs::input("What is the customer's email", "Email");
-				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
 				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 				
@@ -302,7 +302,7 @@ void Controller:: execute_cmd(int cmd)
 				n = Dialogs::input("What is the name of the customer", "Name");
 				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 				email = Dialogs::input("What is the customer's email", "Email");
-				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				balance = std::stod(Dialogs::input("What is the customers balance","Customers balance"));
 				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 				
@@ -310,7 +310,7 @@ void Controller:: execute_cmd(int cmd)
 				Dialogs::message(library.check_out_bundle(l,c,id),"Checked out status");
 			}
 		break;
-		
+
 		case 8:
 			library.pay_balance(n,id,phone,email,balance);
 			break;
