@@ -9,7 +9,6 @@ void Controller:: cli()
 	int cmd = -1;
 	while(cmd != 0)
 	{
-		view.get_menu();
 		cmd = std::stoi( (std:: string) Dialogs::input(view.get_menu(),"Arlington Public Library"));
 		execute_cmd(cmd);
 	}
@@ -52,7 +51,6 @@ void Controller:: execute_cmd(int cmd)
 					break;
 
 				case 1:
-				//Dialogs::message(,view.media_header() ;
 				temp = library.browse_media();
 				Dialogs::message(temp,view.media_header());
 				break;
@@ -66,7 +64,7 @@ void Controller:: execute_cmd(int cmd)
 			break;
 
 		case 2:
-			view.media_submenu();
+			Dialogs::message(view.media_submenu(),"Media");
 			options = {"Cancel","Add Book", "Add Movie", "Add Video Game", "Add Music Album", "Add Television Show Season"};
 			subMenu = Dialogs::question("What would you like to do?","Add Media", options);
 
@@ -81,6 +79,7 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 1:
+				Dialogs::message("Adding book to library","Adding book");
 				t = Dialogs::input("What is the title of this book: ", "Title");
 				a = Dialogs::input("Who is the author of this book: ", "Author");
 				cy = std::stoi(Dialogs::input("What is the copyright year: ", "Copyright Year"),nullptr,10);
@@ -90,6 +89,7 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 2:
+				Dialogs::message("Adding movie to library","Adding movie");
 				t = Dialogs::input("What is the title of this movie: ", "Title");
 				ry = std::stoi(Dialogs::input("When is the release year: ", "Release Year"),nullptr,10);
 				producer = Dialogs::input("Who produced the movie: ", "Producer");
@@ -108,6 +108,7 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 3:
+				Dialogs::message("Adding video game to library","Adding video game");
 				t = Dialogs::input("What is the title of this video game: ", "Title");
 				ry = std::stoi(Dialogs::input("When is the release year: ", "Release Year"),nullptr,10);
 				studio = Dialogs::input("What studio produced this video game", "Studio");
@@ -117,6 +118,7 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 4:
+				Dialogs::message("Adding album to library","Adding album");
 				t = Dialogs::input("What is the title of this album ", "Title");
 				artist = Dialogs::input("Who is the artist ", "Artist");
 				ry = std::stoi(Dialogs::input("When is the release year ", "Release Year"),nullptr,10);
@@ -133,6 +135,7 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 5:
+				Dialogs::message("Adding Television show season to library","Adding Television show season");
 				t = Dialogs::input("What is the title of this Television Show ", "Title");
 				producer = Dialogs::input("Who is the producer ", "Producer");
 				ry = std::stoi(Dialogs::input("When is the release year ","Release Year"),nullptr,10);
@@ -162,19 +165,21 @@ void Controller:: execute_cmd(int cmd)
 			break;
 
 		case 3:
+			Dialogs::message("Adding bundle to library","Adding bundle");
 			n = Dialogs::input("What is the name of this bundle", "Title");
 			id = std::stoi(Dialogs::input("ID Number","ID"),nullptr,10);
 			t = Dialogs::input("What type of bundle is this", "Type");
 			g = Dialogs::input("What is the genre of this bundle", "Genre");
-			
 			library.create_new_bundle(n,id,"Bundle",t,g);
 			break;
 		case 4:
+			Dialogs::message("Creating Librarian account","Creating Librarian");
 			n = Dialogs::input("What is the name of the librarian", "Name");
 			id = std::stoi(Dialogs::input("ID Number","ID"));
 			l = library.create_new_librarian(n,id);
 			break;
 		case 5:
+			Dialogs::message("Creating customer account","Creating customer");
 			n = Dialogs::input("What is the name of the customer", "Name");
 			phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 			email = Dialogs::input("What is the customer's email", "Email");
@@ -183,10 +188,9 @@ void Controller:: execute_cmd(int cmd)
 			c = library.create_new_customer(n,id,phone,email,balance);
 			break;
 		case 6:
-
-			view.check_in_submenu();
-			options = {"Cancel","", "Check in Media", "Check in Bundles"};
-			subMenu = Dialogs::question("What would you like to do?","Check in", options);
+			Dialogs::message(view.check_in_submenu(),"Check in");
+			options = {"Cancel","Check in Media", "Check in Bundles"};
+			subMenu = Dialogs::question("What would you like to do","Check in", options);
 
 			switch(subMenu)
 			{
@@ -194,10 +198,13 @@ void Controller:: execute_cmd(int cmd)
 				break;
 
 				case 1:
+				Dialogs::message("Checking in media", "Media check in");
+				Dialogs::message("Librarian Information", "Media check in");
 				n = Dialogs::input("What is the name of the librarian", "Name");
 				id = std::stoi(Dialogs::input("ID Number","ID"));
 				l = library.create_new_librarian(n,id);
 
+				Dialogs::message("Customer information", "Media check in");
 				n = Dialogs::input("What is the name of the customer", "Name");
 				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 				email = Dialogs::input("What is the customer's email", "Email");
@@ -205,29 +212,18 @@ void Controller:: execute_cmd(int cmd)
 				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 
-
-				cout << "What is the ID of the media you want to check in: ";
-				cin >> id;
-
-				cout << endl;
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-
+				Dialogs::message("Check in date", "Media check in");
+				id = std::stoi(Dialogs::input("What is the id of the media you want to check in", "Media ID"));
+				month = std::stoi(Dialogs::input("In what month was the media checked in", "Month"));
+				day = std::stoi(Dialogs::input("On what day was the media checked in", "Day"));
+				year = std::stoi(Dialogs::input("In what year was the media checked in","Year"));
+				tNum = std::stoi(Dialogs::input("What is the transaction number", "Transaction number"));
 				Date check_in1{month, day, year};
 
-				cout << endl;
-				cout << "What is the due date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
+				Dialogs::message("Due date", "Media check in");
+				month = std::stoi(Dialogs::input("In what month was the media due", "Month"));
+				day = std::stoi(Dialogs::input("On what day was the media due", "Day"));
+				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
 				Date due1{month, day, year};
 
 				cout << endl;

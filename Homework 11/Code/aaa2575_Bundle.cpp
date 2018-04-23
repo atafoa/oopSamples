@@ -12,7 +12,7 @@ Bundle::Bundle(string n , int idNum, string callNum, string t, string g) : Media
 string Bundle::to_string() const
 {
 	string bundleInfo =  "Id Number: " + std::to_string(id_number) + " Name: " + name + "\n";
-	return bundleInfo
+	return bundleInfo;
 }
 
 void Bundle::get_info()

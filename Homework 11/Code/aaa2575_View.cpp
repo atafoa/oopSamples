@@ -8,8 +8,8 @@ string View::get_menu(){
 	1: Browse Catalog
 	2: Add Media
 	3: Add Bundle
-	4: Create Customer Account
-	5: Create Librarian Account
+	4: Create Librarian Account
+	5: Create Customer Account
 	6: Check in Media and Bundles
 	7: Check out Media and Bundles
 	8: Pay Balance
