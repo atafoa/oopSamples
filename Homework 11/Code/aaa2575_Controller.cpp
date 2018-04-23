@@ -170,57 +170,44 @@ void Controller:: execute_cmd(int cmd)
 			library.create_new_bundle(n,id,"Bundle",t,g);
 			break;
 		case 4:
-			cout << "What is the name of the librarian: ";
-			cin >> n;
-			cout << "ID number: ";
-			cin >> id;
-			cout << endl;
+			n = Dialogs::input("What is the name of the librarian", "Name");
+			id = std::stoi(Dialogs::input("ID Number","ID"));
 			l = library.create_new_librarian(n,id);
 			break;
 		case 5:
-			cout << "What is the customer's name: ";
-			cin >> n;
-			cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
-			cin >>  phone;
-			cout << "What is the cutomer's email: ";
-			cin >> email;
-			cout << "Customer's balance: ";
-			cin >> balance;
-			cout << "ID Number: ";
-			cin >> id;
-			cout << endl;
+			n = Dialogs::input("What is the name of the customer", "Name");
+			phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
+			email = Dialogs::input("What is the customer's email", "Email");
+			balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+			id = std::stoi(Dialogs::input("ID number","ID"));
 			c = library.create_new_customer(n,id,phone,email,balance);
 			break;
 		case 6:
 
 			view.check_in_submenu();
-			cout  << "What would you like to check in: ";
-			cin >> subMenu;
+			options = {"Cancel","", "Check in Media", "Check in Bundles"};
+			subMenu = Dialogs::question("What would you like to do?","Check in", options);
 
-			if(subMenu == 1)
-			{	
-				cout << "What is the ID of the media you want to check in: ";
-				cin >> id;
-				cout << "What is the name of the librarian: ";
-				cin >> n;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+			switch(subMenu)
+			{
+				case 0;
+				break;
+
+				case 1:
+				n = Dialogs::input("What is the name of the librarian", "Name");
+				id = std::stoi(Dialogs::input("ID Number","ID"));
 				l = library.create_new_librarian(n,id);
 
-				cout << endl;
-				cout << "What is the customer's name: ";
-				cin >> n;
-				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
-				cin >>  phone;
-				cout << "What is the cutomer's email: ";
-				cin >> email;
-				cout << "Customer's balance: ";
-				cin >> balance;
-				cout << "ID Number: ";
-				cin >> id;
-				cout << endl;
+				n = Dialogs::input("What is the name of the customer", "Name");
+				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
+				email = Dialogs::input("What is the customer's email", "Email");
+				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
+
+
+				cout << "What is the ID of the media you want to check in: ";
+				cin >> id;
 
 				cout << endl;
 				cout << "What is the check in date " << endl;
@@ -248,10 +235,9 @@ void Controller:: execute_cmd(int cmd)
 				cin >> tNum;
 
 				library.check_in_media(l,c,id,check_in1,due1,tNum);
-			}
+				break;
 
-			if(subMenu == 2)
-			{	
+				case 2:
 				cout << "What is the ID of the bundle you want to check in: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
@@ -301,9 +287,8 @@ void Controller:: execute_cmd(int cmd)
 				cin >> tNum;
 
 				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
-				}
-				else
-					cout << "invalid option";
+				break;
+			}
 			break;
 
 		case 7:
