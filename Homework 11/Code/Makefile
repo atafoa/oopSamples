@@ -3,10 +3,13 @@ GTKFLAGS = `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 
 all: executable
 
-executable: aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o aaa2575_Dialog.o
-	${CXX} ${CXXFLAGS} aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o aaa2575_Dialog.o $(GTKFLAGS) 
+executable: aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o aaa2575_Dialog.o aaa2575_Main_Window.o
+	${CXX} ${CXXFLAGS} aaa2575_Book.o aaa2575_Bundle.o aaa2575_Controller.o aaa2575_Customer.o aaa2575_Date.o aaa2575_Librarian.o aaa2575_Library.o aaa2575_Media.o aaa2575_Movie.o aaa2575_Music_Album.o aaa2575_Television_Show_Season.o aaa2575_Transaction.o aaa2575_Video_Game.o aaa2575_View.o aaa2575_main.o aaa2575_Dialog.o aaa2575_Main_Window.o $(GTKFLAGS) 
 	./a.out
 
+
+aaa2575_Main_Window.o: aaa2575_Main_Window.cpp
+	${CXX} ${CXXFLAGS} -c aaa2575_Main_Window.cpp -o aaa2575_Main_Window.o $(GTKFLAGS)
 aaa2575_Book.o: aaa2575_Book.cpp
 	${CXX} ${CXXFLAGS} -c aaa2575_Book.cpp -o aaa2575_Book.o $(GTKFLAGS)
 
