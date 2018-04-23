@@ -51,13 +51,11 @@ void Controller:: execute_cmd(int cmd)
 					break;
 
 				case 1:
-				temp = library.browse_media();
-				Dialogs::message(temp,view.media_header());
+				Dialogs::message(library.browse_media(),view.media_header());
 				break;
 
 				case 2:
-				 temp = library.browse_bundles();
-				 Dialogs::message(temp,view.bundles_header());
+				 Dialogs::message(library.browse_bundles(),view.bundles_header());
 				break;
 				
 			}
@@ -226,133 +224,93 @@ void Controller:: execute_cmd(int cmd)
 				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
 				Date due1{month, day, year};
 
-				library.check_in_media(l,c,id,check_in1,due1,tNum);
+				Dialogs::message(library.check_in_media(l,c,id,check_in1,due1,tNum),"Checked in status");
 				break;
 
 				case 2:
 				Dialogs::message("Checking in Bundles","Bundle check in");
-				id = std::stoi(Dialogs::input("What is the ID of the bundle you want to check in","ID number"));
-
-
-
-				cout << "What is the ID of the bundle you want to check in: ";
-				cin >> id;
-				cout << "What is the name of the librarian: ";
-				cin >> n;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				Dialogs::message("Librarian Information", "Bundle check in");
+				n = Dialogs::input("What is the name of the librarian", "Name");
+				id = std::stoi(Dialogs::input("ID Number","ID"));
 				l = library.create_new_librarian(n,id);
 
-				cout << endl;
-				cout << "What is the customer's name: ";
-				cin >> n;
-				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
-				cin >>  phone;
-				cout << "What is the customer's email: ";
-				cin >> email;
-				cout << "Customer's balance: ";
-				cin >> balance;
-				cout << "ID Number: ";
-				cin >> id;
-				cout << endl;
+				Dialogs::message("Customer information", "Bundle check in");
+				n = Dialogs::input("What is the name of the customer", "Name");
+				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
+				email = Dialogs::input("What is the customer's email", "Email");
+				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 
-				cout << endl;
-				cout << "What is the check in date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
-
+				Dialogs::message("Check in date", "Bundle check in");
+				id = std::stoi(Dialogs::input("What is the id of the bundle you want to check in", "Bundle ID"));
+				month = std::stoi(Dialogs::input("In what month was the bundle checked in", "Month"));
+				day = std::stoi(Dialogs::input("On what day was the bundle checked in", "Day"));
+				year = std::stoi(Dialogs::input("In what year was the bundle checked in","Year"));
+				tNum = std::stoi(Dialogs::input("What is the transaction number", "Transaction number"))
 				Date check_in2{month, day, year};
 
-				cout << endl;
-				cout << "What is the due date " << endl;
-				cout  << "Month: ";
-				cin >> month;
-				cout << "Day: ";
-				cin >> day;
-				cout << "Year: ";
-				cin >> year;
+				Dialogs::message("Due date", "Bundle check in");
+				month = std::stoi(Dialogs::input("In what month was the media due", "Month"));
+				day = std::stoi(Dialogs::input("On what day was the media due", "Day"));
+				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
 				Date due2{month, day, year};
 
-				cout << endl;
-				cout << "What is the transaction number";
-				cin >> tNum;
-
-				library.check_in_bundle(l,c,id,check_in2,due2,tNum);
+				Dialogs::message(library.check_in_bundle(l,c,id,check_in2,due2,tNum,"Checked in status");
 				break;
 			}
 			break;
 
 		case 7:
 
-			view.check_out_submenu();
-			cout  << "What would you like to check out: ";
-			cin >> subMenu;
-			if(subMenu == 1)
+			Dialogs::message(view.check_out_submenu(),"Check out");
+			options = {"Cancel","Check out Media", "Check out Bundles"};
+			subMenu = Dialogs::question("What would you like to do","Check in", options);
+
+			switch(subMenu)
 			{
-				cout << "What is the ID of the media you want to check out: ";
-				cin >> id;
-				cout << "What is the name of the librarian: ";
-				cin >> n;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				case 0:
+				break;
+
+				case 1:
+				Dialogs::message("Checking out media", "Media check out");
+				Dialogs::message("Librarian Information", "Media check out");
+				n = Dialogs::input("What is the name of the Librarian", "Librarian name");
+				id = std::stoi(Dialogs::input("What is the librarians ID","ID number"));
 				l = library.create_new_librarian(n,id);
 
-				cout << endl;
-				cout << "What is the customer's name: ";
-				cin >> n;
-				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
-				cin >>  phone;
-				cout << "What is the cutomer's email: ";
-				cin >> email;
-				cout << "Customer's balance: ";
-				cin >> balance;
-				cout << "ID Number: ";
-				cin >> id;
-				cout << endl;
+				Dialogs::message("Customer information", "Media check out");
+				n = Dialogs::input("What is the name of the customer", "Name");
+				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
+				email = Dialogs::input("What is the customer's email", "Email");
+				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
 				
-				library.check_out_media(l,c,id);
-			}
+				id = std::stoi(Dialogs::input("What is the id of the media you want to check out", "Media ID"));
+				Dialogs::message(library.check_out_media(l,c,id),"Checked out status");
+				break;
 
-			if(subMenu == 2)
-			{
-				cout << "What is the ID of the bundle you want to check out: ";
-				cin >> id;
-				cout << "What is the name of the librarian: ";
-				cin >> n;
-				cout << "ID number: ";
-				cin >> id;
-				cout << endl;
+				case 2:
+				Dialogs::message("Checking out media", "Bundle check out");
+				Dialogs::message("Librarian Information", "Bundle check out");
+				n = Dialogs::input("What is the name of the Librarian", "Librarian name");
+				id = std::stoi(Dialogs::input("What is the librarians ID","ID number"));
 				l = library.create_new_librarian(n,id);
 
-				cout << endl;
-				cout << "What is the customer's name: ";
-				cin >> n;
-				cout << "What is the customer's phone number. Enter in the form 361-550-2335: ";
-				cin >>  phone;
-				cout << "What is the customer's email: ";
-				cin >> email;
-				cout << "Customer's balance: ";
-				cin >> balance;
-				cout << "ID Number: ";
-				cin >> id;
-				cout << endl;
+				Dialogs::message("Customer information", "Bundle check out");
+				n = Dialogs::input("What is the name of the customer", "Name");
+				phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
+				email = Dialogs::input("What is the customer's email", "Email");
+				balance = double (std::stoi(Dialogs::input("What is the customers balance","Customers balance")));
+				id = std::stoi(Dialogs::input("ID number","ID"));
 				c = library.create_new_customer(n,id,phone,email,balance);
-
-				library.check_out_bundle(l,c,id);
+				
+				id = std::stoi(Dialogs::input("What is the id of the media you want to check out", "Media ID"));
+				Dialogs::message(library.check_out_bundle(l,c,id),"Checked out status");
 			}
-
-			else
-					cout << "invalid option";
-			break;
-
+		break;
+		
 		case 8:
 			library.pay_balance(n,id,phone,email,balance);
 			break;

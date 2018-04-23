@@ -68,7 +68,12 @@ void Bundle::list_items()
 
 bool Bundle::check_out()
 {
+	int i;
 	checked_out = true;
-	return true;
-
+	for(i = 0; i < medias.size(); i++)
+	{
+		if(medias[i].check_out() == true)
+			return true;
+	}
+	return false;
 }

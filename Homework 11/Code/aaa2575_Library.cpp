@@ -47,75 +47,103 @@ string Library::browse_bundles()
 }
 
 
-void Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
+string Library::check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
 	Transaction t =  create_new_transaction(tNum,l,c,check_in,due);
 	int diff = t.calculate_fee();
+	string output;
 
 	if(diff >= 0)
 	{
-		cout << "Unable to check this book in as you are checking it in past the due date." << endl;
-		cout  << "Please pay outstanding fees" << endl;
-		return;
+		output +=  "Unable to check this book in as you are checking it in past the due date. \n";
+		output += "Please pay outstanding fees\n";
+		return output;
 	}
-
-	t.get_info();
 
 	for(int i = 0; i < medias.size(); i++)
 	{
 		if(medias[i].get_id() == id)
 		{
-			medias[i].check_in();
+			if(medias[i].check_in() == true)
+			{
+				output += t.to_string();
+				output += " Media has been succesfully checked in \n";
+				return output;
+			}
 		}
 	}
 
+	return output;
+
 }
 
-void Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
+string Library::check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum)
 {
 	Transaction t = create_new_transaction(tNum,l,c,check_in,due);
 	int diff = t.calculate_fee();
+	string output;
 
 	if(diff >= 0)
 	{
-		cout << endl << "Unable to check this book in as you are checking it in past the due date." << endl;
-		cout  << "Please pay outstanding fees" << endl;
-		return;
+		output += "Unable to check this book in as you are checking it in past the due date. \n";
+		output += "Please pay outstanding fees\n";
+		return output;
 	}
 
-	t.get_info();
+	
 	for(int i = 0; i < bundles.size(); i++)
 	{
 		if(bundles[i].get_id() == id)
 		{
-			bundles[i].check_in();
+			if(bundles[i].check_in() == true)
+			{
+				output += t.to_string();
+				output += " Bundle has been succesfully checked in \n";
+				return output;
+			}
 		}
-
 	}
 }
 
-void Library::check_out_media(Librarian l, Customer c, int id)
+string Library::check_out_media(Librarian l, Customer c, int id)
 {	
+	string output;
 	for(int i = 0; i < medias.size(); i++)
 	{
 		if(medias[i].get_id() == id)
 		{
-			medias[i].check_in();
+			if(medias[i].check_out())
+			{	
+				output += l.to_string();
+				output += c.to_string();
+				output += "Media has been succesfully checked out";
+			}
+			else
+				output += "Unable to check out media";
 		}
 	}
+
+	return output;
 }
 
-void Library::check_out_bundle(Librarian l, Customer c, int id)
+string Library::check_out_bundle(Librarian l, Customer c, int id)
 {
-
+	string output;
 	for(int i = 0; i < bundles.size(); i++)
 	{
 		if(bundles[i].get_id() == id)
 		{
-			bundles[i].check_in();
+			if(bundles[i].check_out())
+			{
+				output += l.to_string();
+				output += c.to_string();
+				output += "Bundle has been succesfully checked out";
+			}
+			else
+				output += "Unable to check out bundle";
 		}
-
 	}
+	return output;
 }
 
 void Library::pay_balance(string name, int id, string phoneNum, string email, double balance)
@@ -188,16 +216,15 @@ Bundle Library::create_new_bundle(string name, int idNum, string callNum, string
 Librarian Library::create_new_librarian(string name, int id)
 {
 	Librarian librarian{name,id};
-	librarian.get_info();
+	Dialogs::message(librarian.to_string(),"Librarian information");
 	librarians.push_back(librarian);
 	return librarian;
-
 }
 
 Customer Library::create_new_customer(string name, int id, string phoneNum, string email, double balance)
 {
 	Customer customer{name, id, phoneNum, email, balance};
-	customer.get_info();
+	Dialogs::message(customer.to_string(), "Customer information");
 	customers.push_back(customer);
 	return customer;
 

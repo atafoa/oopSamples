@@ -38,10 +38,10 @@ class Library
 	Librarian create_new_librarian(string name, int id);
 	Customer create_new_customer(string name, int id, string phoneNum, string email, double balance);
 	Transaction create_new_transaction(int trasactionNumber, Librarian librarian, Customer customer, Date check_in, Date due);
-	void check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
-	void check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
-	void check_out_media(Librarian l, Customer c, int id);
-	void check_out_bundle(Librarian l, Customer c, int id);
+	string check_in_media(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
+	string check_in_bundle(Librarian l, Customer c, int id, Date check_in, Date due, int tNum);
+	string check_out_media(Librarian l, Customer c, int id);
+	string check_out_bundle(Librarian l, Customer c, int id);
 	void pay_balance(string name, int id, string phoneNum, string email, double balance);
 	
 	protected:
