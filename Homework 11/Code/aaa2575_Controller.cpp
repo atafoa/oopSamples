@@ -226,14 +226,15 @@ void Controller:: execute_cmd(int cmd)
 				year = std::stoi(Dialogs::input("In what year was the media due","Year"));
 				Date due1{month, day, year};
 
-				cout << endl;
-				cout << "What is the transaction number";
-				cin >> tNum;
-
 				library.check_in_media(l,c,id,check_in1,due1,tNum);
 				break;
 
 				case 2:
+				Dialogs::message("Checking in Bundles","Bundle check in");
+				id = std::stoi(Dialogs::input("What is the ID of the bundle you want to check in","ID number"));
+
+
+
 				cout << "What is the ID of the bundle you want to check in: ";
 				cin >> id;
 				cout << "What is the name of the librarian: ";
