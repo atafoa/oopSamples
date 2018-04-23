@@ -17,7 +17,7 @@ Main_Window::Main_Window() {
     file -> set_submenu(*fm);
 
     Gtk::MenuItem *browse = Gtk::manage(new Gtk::MenuItem("_Browse Catalog", true));
-    mb -> append(*browseMenu);
+    mb -> append(*browse);
     Gtk::Menu *browseSubmenu = Gtk::manage(new Gtk::Menu());
     browse -> set_submenu(*browseSubmenu);
 
