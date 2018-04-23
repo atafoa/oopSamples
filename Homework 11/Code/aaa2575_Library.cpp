@@ -154,7 +154,7 @@ void Library::pay_balance(int id)
 		{
 			Dialogs::message(customers[i].get_balance(),"Customer balance");
 			customers[i].pay_balance();
-			Dialogs::message(("New balance is "+customers[i].get_balance(),"Customers balance");
+			Dialogs::message(("New balance is "+customers[i].get_balance()),"Customers balance");
 		}		
 	}
 
