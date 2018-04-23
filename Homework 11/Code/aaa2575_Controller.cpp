@@ -2,6 +2,7 @@
 #include "aaa2575_Date.h"
 #include "aaa2575_Librarian.h"
 #include "aaa2575_Customer.h"
+#include "aaa2575_Date.h"
 #include <vector>
 
 void Controller:: cli()
@@ -216,7 +217,7 @@ void Controller:: execute_cmd(int cmd)
 				day = std::stoi(Dialogs::input("On what day was the media checked in", "Day"));
 				year = std::stoi(Dialogs::input("In what year was the media checked in","Year"));
 				tNum = std::stoi(Dialogs::input("What is the transaction number", "Transaction number"));
-				check in = set_date(month, day, year);
+				check_in = set_date(month, day, year);
 
 				Dialogs::message("Due date", "Media check in");
 				month = std::stoi(Dialogs::input("In what month was the media due", "Month"));
