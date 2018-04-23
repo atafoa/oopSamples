@@ -11,7 +11,7 @@ class Customer
 	public:
 	Customer(string n, int idNum, string p, string e, double b);
 	void get_info();
-	void get_balance();
+	string get_balance();
 	void pay_balance();
 	void set_balance(double bal);
 	string to_string() const;

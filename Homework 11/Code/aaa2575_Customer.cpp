@@ -25,9 +25,9 @@ void Customer::get_info()
 	cout << "Email: " << email << endl;
 }
 
-void Customer::get_balance()
+string Customer::get_balance()
 {
-	cout << name << " has a balance of " << balance << endl;
+	return name + " has a balance of " + std::to_string(balance);
 }
 void Customer::set_balance(double bal)
 {
