@@ -1,3 +1,6 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
+
 #include "aaa2575_View.h"
 
 class Controller{
@@ -15,3 +18,5 @@ private:
 
 
 };
+
+#endif

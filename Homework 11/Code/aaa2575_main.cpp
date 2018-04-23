@@ -9,6 +9,7 @@
 #include "aaa2575_Music_Album.h"
 #include "aaa2575_Video_Game.h"
 #include "aaa2575_Controller.h"
+#include "aaa2575_Main_Window.h"
 #include <iostream>
 #include <vector>
 
@@ -16,11 +17,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	Gtk::Main kit(argc, argv);
+	Glib::RefPtr<Gtk::Application> app = 
+    Gtk::Application::create(argc, argv, "Library");
 
-	Library library{};
-	View view (library);
-	Controller controller (library, view);
-	controller.cli();
-	return 0;
+	Main_Window main_window;
+	return app->run(main_window);
 }

@@ -1,3 +1,6 @@
+#ifndef VIEW_H
+#define VIEW_H
+
 #include "aaa2575_Library.h"
 #include "aaa2575_Dialog.h"
 
@@ -18,3 +21,5 @@ class View
 	private:
 	Library& library;
 };
+
+#endif
