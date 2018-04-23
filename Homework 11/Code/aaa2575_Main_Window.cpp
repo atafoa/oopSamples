@@ -42,3 +42,8 @@ Main_Window::~Main_Window() {}
 void Main_Window::browse_media_clicked() {
     controller.execute_cmd(2);
 }
+
+void Main_Window::browse_media_clicked() {
+    controller.execute_cmd(2);
+}
+
