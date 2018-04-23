@@ -192,7 +192,7 @@ void Controller:: execute_cmd(int cmd)
 
 			switch(subMenu)
 			{
-				case 0;
+				case 0:
 				break;
 
 				case 1:
