@@ -154,8 +154,10 @@ void Library::pay_balance(int id)
 		{
 			Dialogs::message(customers[i].get_balance(),"Customer balance");
 			customers[i].pay_balance();
+			Dialogs::message(("New balance is "+customers[i].get_balance(),"Customers balance");
 		}		
 	}
+
 }
 
 Media Library::create_new_media(int idNum, string callNum, string title, string genre)
