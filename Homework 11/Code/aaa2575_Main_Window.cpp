@@ -91,7 +91,7 @@ Main_Window::Main_Window() {
 
     Gtk::MenuItem *check_out_media = Gtk::manage(new Gtk::MenuItem("_Check out Media", true));
     check_out_media-> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_out_media_clicked));
-    check_out_submenu -> append(*check_in_media);
+    check_out_submenu -> append(*check_out_media);
 
     Gtk::MenuItem *check_out_bundles= Gtk::manage(new Gtk::MenuItem("_Check out Bundles", true));
     check_out_bundles  -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_out_bundles_clicked));
