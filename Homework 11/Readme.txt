@@ -1,2 +1,3 @@
-GUI can only do the first three functions
-To compile run make
+Fully functional menu
+To run enter make
+And make clean to clean build
