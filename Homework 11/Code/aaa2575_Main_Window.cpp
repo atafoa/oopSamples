@@ -41,7 +41,7 @@ Main_Window::Main_Window() {
     Gtk::MenuItem *add = Gtk::manage(new Gtk::MenuItem("_Add Items", true));
     mb -> append(*add);
     Gtk::Menu *add_submenu = Gtk::manage(new Gtk::Menu());
-    address -> set_submenu(*add_submenu);
+    add -> set_submenu(*add_submenu);
 
     Gtk::MenuItem *add_media = Gtk::manage(new Gtk::MenuItem("_Add Media", true));
     add_media -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::add_media_clicked));
@@ -55,7 +55,7 @@ Main_Window::Main_Window() {
     Gtk::MenuItem *create = Gtk::manage(new Gtk::MenuItem("_Accounts", true));
     mb -> append(*create);
     Gtk::Menu *create_submenu = Gtk::manage(new Gtk::Menu());
-    address -> set_submenu(*create_submenu);
+    create -> set_submenu(*create_submenu);
 
     Gtk::MenuItem *create_librarians = Gtk::manage(new Gtk::MenuItem("_Create Librarians", true));
     create_librarians-> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::create_librarians_clicked));
@@ -73,7 +73,7 @@ Main_Window::Main_Window() {
     Gtk::MenuItem *check_in = Gtk::manage(new Gtk::MenuItem("_Check in", true));
     mb -> append(*check_in);
     Gtk::Menu *check_in_submenu = Gtk::manage(new Gtk::Menu());
-    address -> set_submenu(*check_in_submenu);
+    check_in -> set_submenu(*check_in_submenu);
 
     Gtk::MenuItem *check_in_media = Gtk::manage(new Gtk::MenuItem("_Check in Media", true));
     check_in_media-> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_in_media_clicked));
@@ -87,7 +87,7 @@ Main_Window::Main_Window() {
     Gtk::MenuItem *check_out = Gtk::manage(new Gtk::MenuItem("_Check out", true));
     mb -> append(*check_out);
     Gtk::Menu *check_out_submenu = Gtk::manage(new Gtk::Menu());
-    address -> set_submenu(*check_out_submenu);
+    check_out -> set_submenu(*check_out_submenu);
 
     Gtk::MenuItem *check_out_media = Gtk::manage(new Gtk::MenuItem("_Check out Media", true));
     check_out_media-> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_out_media_clicked));
@@ -141,6 +141,7 @@ void Main_Window::create_customers_clicked()
 }
 
 void Main_Window:: check_in_media_clicked()
+{
     controller.execute_cmd(7);
 }
 

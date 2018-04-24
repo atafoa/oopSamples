@@ -16,9 +16,14 @@ protected:
     void quit_clicked();
     void browse_media_clicked();
     void browse_bundles_clicked();
+    void add_media_clicked() 
+    void add_bundles_clicked() 
     void create_librarians_clicked();
     void create_customers_clicked();
     void check_in_media_clicked();
+    void check_in_bundles_clicked();
+    void check_out_media_clicked();
+    void check_out_bundles_clicked();
     void pay_balance_clicked();
 };
 
