@@ -5,14 +5,15 @@ string View::get_menu(){
 
 	string menu = R"(
 	
-	1: Browse Catalog
-	2: Add Media
-	3: Add Bundle
-	4: Create Librarian Account
-	5: Create Customer Account
-	6: Check in Media and Bundles
-	7: Check out Media and Bundles
-	8: Pay Balance
+	1: Browse Media
+	2: Browse Bundles
+	3: Add Media
+	4: Add bundle
+	5: Create Librarian Account
+	6: Create Customer Account
+	7: Check in Media and Bundles
+	8: Check out Media and Bundles
+	9: Pay Balance
 	0: Exit the program
 
 	)";
