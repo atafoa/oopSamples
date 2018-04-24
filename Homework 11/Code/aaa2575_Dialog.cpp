@@ -49,7 +49,7 @@ std::string Dialogs::input(std::string msg, std::string title, std::string defau
     delete entry;
 
     if(result == 0)
-        text = "0";
+        return;
     
    return text;
 }

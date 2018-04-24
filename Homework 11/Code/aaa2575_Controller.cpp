@@ -43,7 +43,6 @@ void Controller:: execute_cmd(int cmd)
 		break;
 
 		case 3:
-		Dialogs::message(view.media_submenu(),"Media");
 		options = {"Cancel","Add Book", "Add Movie", "Add Video Game", "Add Music Album", "Add Television Show Season"};
 		subMenu = Dialogs::question("What would you like to do?","Add Media", options);
 
@@ -139,7 +138,6 @@ void Controller:: execute_cmd(int cmd)
 		break;
 
 		case 4:
-			Dialogs::message("Adding bundle to library","Adding bundle");
 			n = Dialogs::input("What is the name of this bundle", "Title");
 			id = std::stoi(Dialogs::input("ID Number","ID"),nullptr,10);
 			t = Dialogs::input("What type of bundle is this", "Type");
@@ -147,13 +145,11 @@ void Controller:: execute_cmd(int cmd)
 			library.create_new_bundle(n,id,"Bundle",t,g);
 			break;
 		case 5:
-			Dialogs::message("Creating Librarian account","Creating Librarian");
 			n = Dialogs::input("What is the name of the librarian", "Name");
 			id = std::stoi(Dialogs::input("ID Number","ID"));
 			l = library.create_new_librarian(n,id);
 			break;
 		case 6:
-			Dialogs::message("Creating customer account","Creating customer");
 			n = Dialogs::input("What is the name of the customer", "Name");
 			phone =  Dialogs::input("What is the customer's phone number\n Enter this in the form 361-550-2335", "Phone Number");
 			email = Dialogs::input("What is the customer's email", "Email");
@@ -163,7 +159,6 @@ void Controller:: execute_cmd(int cmd)
 			break;
 
 		case 7:
-			Dialogs::message("Checking in media", "Media check in");
 			Dialogs::message("Librarian Information", "Media check in");
 			n = Dialogs::input("What is the name of the librarian", "Name");
 			id = std::stoi(Dialogs::input("ID Number","ID"));
@@ -195,7 +190,6 @@ void Controller:: execute_cmd(int cmd)
 		break;
 
 		case 8:
-			Dialogs::message("Checking in Bundles","Bundle check in");
 			Dialogs::message("Librarian Information", "Bundle check in");
 			n = Dialogs::input("What is the name of the librarian", "Name");
 			id = std::stoi(Dialogs::input("ID Number","ID"));
@@ -227,7 +221,6 @@ void Controller:: execute_cmd(int cmd)
 		break;
 
 		case 9:
-			Dialogs::message("Checking out media", "Media check out");
 			Dialogs::message("Librarian Information", "Media check out");
 			n = Dialogs::input("What is the name of the Librarian", "Librarian name");
 			id = std::stoi(Dialogs::input("What is the librarians ID","ID number"));
@@ -246,7 +239,6 @@ void Controller:: execute_cmd(int cmd)
 		break;
 
 		case 10:
-			Dialogs::message("Checking out media", "Bundle check out");
 			Dialogs::message("Librarian Information", "Bundle check out");
 			n = Dialogs::input("What is the name of the Librarian", "Librarian name");
 			id = std::stoi(Dialogs::input("What is the librarians ID","ID number"));
@@ -265,8 +257,7 @@ void Controller:: execute_cmd(int cmd)
 		break;
 	
 		case 11:
-			Dialogs::message("Customer information", "Pay Balance");
-			id = std::stoi(Dialogs::input("What is the ID number of the customer","ID"));
+			id = std::stoi(Dialogs::input("What is the ID number of the customer whose balance you would like to pay off","ID"));
 			library.pay_balance(id);
 			break;
 
