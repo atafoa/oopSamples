@@ -1,8 +1,8 @@
-#include "aaa2575_Controller.h"
-#include "aaa2575_Date.h"
-#include "aaa2575_Librarian.h"
-#include "aaa2575_Customer.h"
-#include "aaa2575_Date.h"
+#include "include/aaa2575_Controller.h"
+#include "include/aaa2575_Date.h"
+#include "include/aaa2575_Librarian.h"
+#include "include/aaa2575_Customer.h"
+#include "include/aaa2575_Date.h"
 #include <vector>
 
 void Controller:: cli()
@@ -269,7 +269,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 13:
 			Dialogs::message("Turning on Save Functionality", "Save Function");
-			file_name = Dialogs::input("What is the file name in the form of filename.txt", "File Name");
+			file_name = Dialogs::input("What is the file name \n In the form of filename.txt", "File Name");
 			library.save(file_name);
 
 			break;

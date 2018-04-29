@@ -1,4 +1,4 @@
-#include "aaa2575_Library.h"
+#include "include/aaa2575_Library.h"
 #include <iostream>
 #include <vector>
 
@@ -285,7 +285,7 @@ void Library::save(string file_name)
 		outfile << librarians[i].to_string();
 	}
 
-
+	outfile.close();
 }
 
 void Library::load()
