@@ -273,18 +273,49 @@ string Library::stock_levels()
 void Library::save(string file_name)
 {
 	outfile.open(file_name);
-	string output = R"(
+	string output;
+
+	if(librarians.empty())
+	{
+		output = "No Librarians have been entered into the system";
+		outfile << output;
+	}
+	else
+	{
+		output = R"(
 		=================
 		Librarians
 		=================
-	)";
 
-	outfile << output;
-	for(int i = 0; i < librarians.size(); i++)
-	{
-		outfile << librarians[i].to_string();
+		)";
+
+		outfile << output;
+		for(int i = 0; i < librarians.size(); i++)
+		{
+			outfile << librarians[i].to_string() << endl;
+		}
 	}
 
+	if(customers.empty())
+	{
+		output = "No Customers have been entered into the system";
+		outfile << output;
+	}
+	else
+	{
+		output = R"(
+		=================
+		Customers
+		=================
+
+		)";
+
+		outfile << output;
+		for(int i = 0; i < customers.size(); i++)
+		{
+			outfile << customer[i].to_string() << endl;
+		}
+	}
 	outfile.close();
 }
 

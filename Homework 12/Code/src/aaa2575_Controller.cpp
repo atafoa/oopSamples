@@ -28,7 +28,7 @@ void Controller:: execute_cmd(int cmd)
 	string trackNumber;
 
 	Librarian l{"",0}; Customer c{"",0,"","",0.0}; int month; int day; int year; int tNum; Date check_in{0, 0, 0}; Date due{0, 0, 0};
-	string file_name = "library_save_file.txt";
+	string file_name = "Code/build/save_file.txt";
 
 	int subMenu;
 	int choice = 0;
@@ -269,7 +269,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 13:
 			Dialogs::message("Turning on Save Functionality", "Save Function");
-			file_name = Dialogs::input("What is the file name \n In the form of filename.txt", "File Name");
+			Dialogs::message("The save file path is "+ file_name,"Save File Path")
 			library.save(file_name);
 
 			break;
