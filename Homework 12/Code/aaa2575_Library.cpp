@@ -270,12 +270,25 @@ string Library::stock_levels()
 	}
 }
 
-void Library::save()
+void Library::save(string file_name)
 {
+	outfile.open(file_name);
+	string output = R"(
+		=================
+		Librarians
+		=================
+	)";
+
+	outfile << output;
+	for(int i = 0; i < librarians.size(); i++)
+	{
+		outfile << librarians[i].to_string();
+	}
+
 
 }
 
 void Library::load()
 {
-	
+
 }

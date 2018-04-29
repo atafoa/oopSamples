@@ -44,8 +44,9 @@ class Library
 	string check_out_bundle(Librarian l, Customer c, int id);
 	void pay_balance(int id);
 	string stock_levels();
-	void save();
+	void save(string file_name);
 	void load();
+	ofstream outfile;
 	
 	protected:
 	vector<Media> medias;
@@ -55,6 +56,7 @@ class Library
 	vector<Bundle> bundles;
 	vector<Media> checked_out;
 	vector<Customer> user_checked_out;
+	
 };
 
 #endif
