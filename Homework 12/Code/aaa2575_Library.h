@@ -43,6 +43,7 @@ class Library
 	string check_out_media(Librarian l, Customer c, int id);
 	string check_out_bundle(Librarian l, Customer c, int id);
 	void pay_balance(int id);
+	string stock_levels();
 	
 	protected:
 	vector<Media> medias;
@@ -50,6 +51,8 @@ class Library
 	vector<Customer> customers;
 	vector<Librarian> librarians;
 	vector<Bundle> bundles;
+	vector<Media> checked_out;
+	vector<Customer> user_checked_out;
 };
 
 #endif

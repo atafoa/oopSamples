@@ -117,6 +117,8 @@ string Library::check_out_media(Librarian l, Customer c, int id)
 				output += l.to_string();
 				output += c.to_string();
 				output += "Media has been succesfully checked out";
+				checked_out.push_back(medias[i]);
+				user_checked_out.push_back(c);
 			}
 			else
 				output += "Unable to check out media";
@@ -245,3 +247,15 @@ Transaction Library::create_new_transaction(int trasactionNumber, Librarian libr
 	return transaction;
 }
 
+string Library::stock_levels()
+{
+	bool flag = false;
+	string output;
+
+	for(int i = 0; i < checked_out.size(); i++)
+	{
+		output += "Item: " + checked_out[i].to_string() + " has been checked out to " + user_checked_out[i].to_string();
+	}
+
+	return output;
+}

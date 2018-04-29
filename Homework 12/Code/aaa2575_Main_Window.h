@@ -25,6 +25,7 @@ protected:
     void check_out_media_clicked();
     void check_out_bundles_clicked();
     void pay_balance_clicked();
+    void check_stock_levels();
 };
 
 #endif

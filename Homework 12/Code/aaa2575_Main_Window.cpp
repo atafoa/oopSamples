@@ -37,6 +37,10 @@ Main_Window::Main_Window() {
     browse_bundles -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::browse_bundles_clicked));
     browse_submenu -> append(*browse_bundles);
 
+    Gtk::MenuItem *stock_levels= Gtk::manage(new Gtk::MenuItem("_Checked Out Items", true));
+    stock_levels -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_stock_levels));
+    browse_submenu -> append(*stock_levels);
+
 //Add and submenu
     Gtk::MenuItem *add = Gtk::manage(new Gtk::MenuItem("_Add Items", true));
     mb -> append(*add);
@@ -162,4 +166,8 @@ void Main_Window:: check_out_bundles_clicked()
 void Main_Window:: pay_balance_clicked() 
 {
     controller.execute_cmd(11);
+}
+void Main_Window::check_stock_levels()
+{
+    controller.execute_cmd(12);
 }

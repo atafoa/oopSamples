@@ -260,6 +260,10 @@ void Controller:: execute_cmd(int cmd)
 			id = std::stoi(Dialogs::input("What is the ID number of the customer whose balance you would like to pay off","ID"));
 			library.pay_balance(id);
 			break;
+		
+		case 12:
+			Dialogs::message("Checked out Books","Status");
+			Dialogs::message(library.stock_levels(),"Checked out Media");
 
 		case 0:
 			break;
