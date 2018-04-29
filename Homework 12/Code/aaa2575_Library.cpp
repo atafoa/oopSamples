@@ -252,10 +252,20 @@ string Library::stock_levels()
 	bool flag = false;
 	string output;
 
-	for(int i = 0; i < checked_out.size(); i++)
-	{
-		output += "Item: " + checked_out[i].to_string() + " has been checked out to " + user_checked_out[i].to_string();
+	if(!checked_out.empty())
+	{	
+		flag = true;
+		for(int i = 0; i < checked_out.size(); i++)
+		{
+			output += "Item: " + checked_out[i].to_string() + " has been checked out to " + user_checked_out[i].to_string();
+		
+		}
+		return output;
 	}
 
-	return output;
+	if(flag == false)
+	{
+		output += "No items have been checked out";
+		return output;
+	}
 }
