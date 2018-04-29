@@ -270,6 +270,9 @@ void Controller:: execute_cmd(int cmd)
 			Dialogs::message("Turning on Save Functionality", "Save Function");
 			break;
 
+		case 14:
+			Dialogs::message
+
 		case 0:
 			break;
 	}
