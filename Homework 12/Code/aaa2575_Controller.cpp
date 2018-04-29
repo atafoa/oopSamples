@@ -268,6 +268,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 13:
 			Dialogs::message("Turning on Save Functionality", "Save Function");
+			
 			break;
 
 		case 14:
