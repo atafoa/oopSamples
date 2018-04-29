@@ -269,3 +269,13 @@ string Library::stock_levels()
 		return output;
 	}
 }
+
+void Library::save()
+{
+
+}
+
+void Library::load()
+{
+	
+}

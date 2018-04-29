@@ -271,7 +271,7 @@ void Controller:: execute_cmd(int cmd)
 			break;
 
 		case 14:
-			Dialogs::message
+			Dialogs::message("Turning on Load Functionality", "Load Function");
 
 		case 0:
 			break;

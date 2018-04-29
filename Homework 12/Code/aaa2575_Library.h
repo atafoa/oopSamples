@@ -44,6 +44,8 @@ class Library
 	string check_out_bundle(Librarian l, Customer c, int id);
 	void pay_balance(int id);
 	string stock_levels();
+	void save();
+	void load();
 	
 	protected:
 	vector<Media> medias;
