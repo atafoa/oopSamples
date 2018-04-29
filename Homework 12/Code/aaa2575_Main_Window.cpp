@@ -18,6 +18,14 @@ Main_Window::Main_Window() {
     Gtk::Menu *fm = Gtk::manage(new Gtk::Menu());
     file -> set_submenu(*fm);
 
+    Gtk::MenuItem *save = Gtk::manage(new Gtk::MenuItem("_Save", true));
+    save -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::save_clicked));
+    fm -> append(*save);
+
+    Gtk::MenuItem *load = Gtk::manage(new Gtk::MenuItem("_Load", true));
+    load -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::load_clicked));
+    fm -> append(*load);
+
     Gtk::MenuItem *quit = Gtk::manage(new Gtk::MenuItem("_Quit", true));
     quit -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::quit_clicked));
     fm -> append(*quit);
@@ -37,7 +45,7 @@ Main_Window::Main_Window() {
     browse_bundles -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::browse_bundles_clicked));
     browse_submenu -> append(*browse_bundles);
 
-    Gtk::MenuItem *stock_levels= Gtk::manage(new Gtk::MenuItem("_Checked Out Items", true));
+    Gtk::MenuItem *stock_levels= Gtk::manage(new Gtk::MenuItem("_Browse Checked Out Items", true));
     stock_levels -> signal_activate().connect(sigc::mem_fun(*this, &Main_Window::check_stock_levels));
     browse_submenu -> append(*stock_levels);
 
@@ -170,4 +178,14 @@ void Main_Window:: pay_balance_clicked()
 void Main_Window::check_stock_levels()
 {
     controller.execute_cmd(12);
+}
+
+void Main_Window::save_clicked()
+{
+    controller.execute_cmd(13);    
+}
+
+void Main_Window::load_clicked()
+{
+    controller.execute_cmd(14);
 }

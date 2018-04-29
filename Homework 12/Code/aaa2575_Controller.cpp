@@ -262,8 +262,13 @@ void Controller:: execute_cmd(int cmd)
 			break;
 		
 		case 12:
-			Dialogs::message("Checked out Books","Status");
+			Dialogs::message("Checked Out Media","Checked Out Status");
 			Dialogs::message(library.stock_levels(),"Checked out Media");
+			break;
+
+		case 13:
+			Dialogs::message("Turning on Save Functionality", "Save Function");
+			break;
 
 		case 0:
 			break;

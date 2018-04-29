@@ -26,6 +26,8 @@ protected:
     void check_out_bundles_clicked();
     void pay_balance_clicked();
     void check_stock_levels();
+    void save_clicked();
+    void load_clicked();
 };
 
 #endif
