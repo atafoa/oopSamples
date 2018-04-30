@@ -198,6 +198,7 @@ void Library::create_new_music_album(int releaseYear, string artist, vector<stri
 void Library::create_new_television_show_season(int releaseYear, string producer, vector<string> director, vector<string> leadingActors, int seasonNum, string title, int idNum, string genre, string callNum)
 {
 	Television_Show_Season tvShow{releaseYear, producer, director, leadingActors, seasonNum, title, idNum, genre, callNum};
+	Dialogs::message(tvShow.get_info(),"TV show information");
 	medias.push_back(tvShow);	
 }
 
