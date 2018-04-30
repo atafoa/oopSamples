@@ -281,7 +281,7 @@ void Controller:: execute_cmd(int cmd)
 
 		case 14:
 			Dialogs::message("Turning on Load Functionality", "Load Function");
-			file_name = Dialogs::input("Would you like to specify a file name","File name",options);
+			file_name = Dialogs::input("Would you like to specify a file name","File name");
 			if(choice == 1)
 			{
 				file_name = Dialogs::input("What would you like to name the save file \n In the form of save_file.txt", "Save File Name");
