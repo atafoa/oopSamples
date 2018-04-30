@@ -121,7 +121,6 @@ void Main_Window::quit_clicked()
     hide();
 }
 
-
 void Main_Window::browse_media_clicked() 
 {
     controller.execute_cmd(1);
