@@ -294,6 +294,7 @@ void Library::save(string file_name)
 		{
 			outfile << librarians[i].to_string() << endl;
 		}
+		outfile << endl;
 	}
 
 	if(customers.empty())
@@ -315,7 +316,77 @@ void Library::save(string file_name)
 		{
 			outfile << customer[i].to_string() << endl;
 		}
+		outfile << endl;
 	}
+
+	if(medias.empty())
+	{
+		output = "No Medias have been entered into the system";
+		outfile << output;
+	}
+	else
+	{
+		output = R"(
+		=================
+		Media
+		=================
+
+		)";
+
+		outfile << output;
+		for(int i = 0; i < medias.size(); i++)
+		{
+			outfile << medias[i].to_string() << endl;
+		}
+		outfile << endl;
+	}
+
+
+	if(bundles.empty())
+	{
+		output = "No Bundles have been entered into the system";
+		outfile << output;
+	}
+	else
+	{
+		output = R"(
+		=================
+		Bundles
+		=================
+
+		)";
+
+		outfile << output;
+		for(int i = 0; i < bundles.size(); i++)
+		{
+			outfile << bundles[i].to_string() << endl;
+		}
+		outfile << endl;
+	}
+
+	if(transactions.empty())
+	{
+		output = "No Transactions have been entered into the system";
+		outfile << output;
+	}
+	else
+	{
+		output = R"(
+		=================
+		Transactions
+		=================
+
+		)";
+
+		outfile << output;
+		for(int i = 0; i < transactions.size(); i++)
+		{
+			outfile << transactions[i].to_string() << endl;
+		}
+		outfile << endl;
+	}
+
+
 	outfile.close();
 }
 
