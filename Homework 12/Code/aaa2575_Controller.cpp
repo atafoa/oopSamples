@@ -291,7 +291,7 @@ void Controller:: execute_cmd(int cmd)
 			Dialogs::message(library.load_librarians(file_name),"Load Librarians");
 
 			file_name = "customers.txt";
-			choice = Dialogs::question("Would you like to specify a file name\n if no the default file of librarians.txt will be ","File name",options);
+			choice = Dialogs::question("Would you like to specify a file name\n if no the default file of customers.txt will be ","File name",options);
 			if(choice == 1)
 			{
 				file_name = Dialogs::input("What would you like to name the save file \n In the form of save_file.txt", "Save File Name");
