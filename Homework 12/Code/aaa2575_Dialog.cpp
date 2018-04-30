@@ -1,4 +1,4 @@
-#include "include/aaa2575_Dialog.h"
+#include "aaa2575_Dialog.h"
 #include <stdlib.h>
 
 //message prints out information for the user
