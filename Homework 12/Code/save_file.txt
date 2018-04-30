@@ -1,0 +1,18 @@
+
+		=================
+		Librarians
+		=================\n
+
+		Librarian name: Atafo ID number: 1
+Librarian name: Atafo ID number: 1
+Librarian name: John ID number: 2
+Librarian name: John ID number: 2
+Librarian name: Melissa ID number: 3
+Librarian name: Melissa ID number: 3
+Librarian name: Melissa ID number: 3
+Librarian name: Melissa ID number: 3
+
+No Customers have been entered into the system 
+No Medias have been entered into the system 
+No Bundles have been entered into the system 
+No Transactions have been entered into the system
