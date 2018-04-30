@@ -290,7 +290,7 @@ void Controller:: execute_cmd(int cmd)
 			}
 			Dialogs::message(library.load_librarians(file_name),"Load Librarians");
 
-			file_name = "customers.txt"
+			file_name = "customers.txt";
 			break;
 			
 
