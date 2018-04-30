@@ -15,7 +15,6 @@ Movie::Movie(int ry, string p, string d, vector<string> la, string t, int idNum,
 
 string Movie::get_info()
 {
-	
 	return  "Title: " + title + "Movie director: " + director + "Genre: " + genre + "Release Year: " + std::to_string(release_year) + "Producer: " + producer + "Id Number: " +  std::to_string(id_number) + "\n";
 }
  

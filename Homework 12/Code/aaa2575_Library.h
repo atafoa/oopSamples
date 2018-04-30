@@ -44,10 +44,8 @@ class Library
 	void pay_balance(int id);
 	string stock_levels();
 	void save(string file_name);
-	string load_media(string file_name);
 	string load_librarians(string file_name);
 	string load_customers(string file_name);
-	void load_transactions(string file_name);
 	stringstream iss;
 	ofstream outfile;
 	ifstream infile;

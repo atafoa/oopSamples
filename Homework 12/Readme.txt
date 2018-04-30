@@ -8,3 +8,5 @@ ID|Name
 
 For instance A customer's information will be stored as
 ID | Name | Phone Number | Email | Balance
+
+ 

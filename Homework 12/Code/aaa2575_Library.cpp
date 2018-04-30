@@ -174,25 +174,28 @@ Media Library::create_new_media(int idNum, string callNum, string title, string 
 void Library::create_new_book(string author, int copyrightYear, string title, string genre ,int idNum, string callNum)
 {
 	Book book{author, copyrightYear, title, genre, idNum, callNum};
+	Dialogs::message(book.get_info(),"Book information");
 	medias.push_back(book);	
 }
 
 void Library::create_new_movie(int releaseYear, string producer, string director, vector<string> leadingActors, string title, int idNum, string genre, string callNum)
 {
 	Movie movie{releaseYear, producer, director, leadingActors, title, idNum, genre,callNum};
-	movie.get_info();
+	Dialogs::message(movie.get_info(),"Movie information");
 	medias.push_back(movie);	
 }
 
 void Library::create_new_video_game(int releaseYear, string studio, int idNum, string title, string genre, string callNum)
 {
 	Video_Game videoGame{releaseYear, studio, idNum, title, genre, callNum};
+	Dialogs::message(videoGame.get_info(),"Video Game information");
 	medias.push_back(videoGame);	
 }
 
 void Library::create_new_music_album(int releaseYear, string artist, vector<string> tracks, string title, int idNum, string genre, string callNum)
 {
 	Music_Album musicAlbum{releaseYear, artist, tracks, title, idNum, genre, callNum};
+	Dialogs::message(musicAlbum.get_info(),"Music Album information");
 	medias.push_back(musicAlbum);
 }
 
