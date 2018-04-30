@@ -1,6 +1,7 @@
 #include "aaa2575_Library.h"
 #include <iostream>
 #include <vector>
+#include <string>
 
 Library::Library()
 {
@@ -463,7 +464,7 @@ string Library::load_customers(string file_name)
 			iss >> name;
 			iss >> removeChar;
 			iss >> phone;
-			phone.erase(phone.end());
+			phone.erase(phone.end()-1,phone.end());
 			iss >> email;
 			iss >> removeChar;
 			iss >> balance;
