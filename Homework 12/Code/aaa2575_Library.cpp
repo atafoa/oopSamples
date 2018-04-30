@@ -393,7 +393,7 @@ void Library::save(string file_name)
 string Library::load_librarians(string file_name)
 {
 
-	Librarian l{"",0};
+	Librarian tempLibrarian{"",0};
 	string name;
 	string output;
 	string line;
@@ -405,11 +405,12 @@ string Library::load_librarians(string file_name)
 	{
 		if(infile.eof())
 		{
+			infile.close();
 			output += "No Information is in this file\n";
 			return output;
 		}
 		
-		while(!infile.eof())
+		while(infile.eof() == false)
 		{
 			getline(infile,line);
 			iss << line;
@@ -418,11 +419,61 @@ string Library::load_librarians(string file_name)
 			iss >> name;
 			iss.str("");
 			iss.clear();
-			l = create_new_librarian(name,id);
-			librarians.push_back(l);
+			tempLibrarian = create_new_librarian(name,id);
 		}
 		output += "Load Successful";
+		infile.close();
 		return output;
+
+		if(infile.bad())
+			throw runtime_error("Bad File");
+	}
+
+}
+
+string Library::load_customers(string file_name)
+{
+	Customer tempCustomer{"",0,"","",0.0};
+	string name;
+	int id;
+	string phone;
+	string email;
+	double balance;
+	char removeChar;
+	infile.open(file_name);
+	string output;
+	string line;
+
+	if(infile.is_open())
+	{
+		if(infile.eof())
+		{
+			infile.close();
+			output += "No Information is in this file\n";
+			return output;
+		}
+		
+		while(infile.eof() == false)
+		{
+			getline(infile,line);
+			iss << line;
+			iss >> id;
+			iss >> removeChar;
+			iss >> name;
+			iss >> removeChar;
+			iss >> phone;
+			iss >> removeChar;
+			iss >> email;
+			iss >> removeChar;
+			iss >> balance;
+			iss.str("");
+			iss.clear();
+			tempCustomer = create_new_customer(name,id,phone,email,balance);
+		}
+		output += "Load Successful";
+		infile.close();
+		return output;
+
 		if(infile.bad())
 			throw runtime_error("Bad File");
 	}
