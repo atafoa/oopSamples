@@ -314,7 +314,7 @@ void Library::save(string file_name)
 		outfile << output;
 		for(int i = 0; i < customers.size(); i++)
 		{
-			outfile << customer[i].to_string() << endl;
+			outfile << customers[i].to_string() << endl;
 		}
 		outfile << endl;
 	}
