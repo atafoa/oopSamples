@@ -480,4 +480,7 @@ string Library::load_customers(string file_name)
 	}
 }
 
-string Load
+string Library::load_media()
+{
+	
+}
