@@ -265,7 +265,7 @@ string Library::stock_levels()
 
 	if(flag == false)
 	{
-		output += "No items have been checked out";
+		output += "No items have been checked out \n";
 		return output;
 	}
 }
@@ -277,7 +277,7 @@ void Library::save(string file_name)
 
 	if(librarians.empty())
 	{
-		output = "No Librarians have been entered into the system";
+		output = "No Librarians have been entered into the system \n";
 		outfile << output;
 	}
 	else
@@ -285,7 +285,7 @@ void Library::save(string file_name)
 		output = R"(
 		=================
 		Librarians
-		=================
+		=================\n
 
 		)";
 
@@ -299,7 +299,7 @@ void Library::save(string file_name)
 
 	if(customers.empty())
 	{
-		output = "No Customers have been entered into the system";
+		output = "No Customers have been entered into the system \n";
 		outfile << output;
 	}
 	else
@@ -321,7 +321,7 @@ void Library::save(string file_name)
 
 	if(medias.empty())
 	{
-		output = "No Medias have been entered into the system";
+		output = "No Medias have been entered into the system \n";
 		outfile << output;
 	}
 	else
@@ -344,7 +344,7 @@ void Library::save(string file_name)
 
 	if(bundles.empty())
 	{
-		output = "No Bundles have been entered into the system";
+		output = "No Bundles have been entered into the system \n";
 		outfile << output;
 	}
 	else
