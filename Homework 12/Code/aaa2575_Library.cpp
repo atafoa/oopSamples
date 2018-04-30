@@ -420,10 +420,9 @@ string Library::load_librarians(string file_name)
 			iss.clear();
 			l = create_new_librarian(name,id);
 			librarians.push_back(l);
-			output += "Load Successful";
-			return output;
 		}
-
+		output += "Load Successful";
+		return output;
 		if(infile.bad())
 			throw runtime_error("Bad File");
 	}

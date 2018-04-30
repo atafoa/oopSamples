@@ -289,6 +289,7 @@ void Controller:: execute_cmd(int cmd)
 				file_name = Dialogs::input("What would you like to name the save file \n In the form of save_file.txt", "Save File Name");
 			}
 			Dialogs::message(library.load_librarians(file_name),"Load Librarians");
+			break;
 			
 
 		case 0:
