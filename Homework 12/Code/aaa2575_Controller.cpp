@@ -283,6 +283,7 @@ void Controller:: execute_cmd(int cmd)
 			Dialogs::message("Turning on Load Functionality", "Load Function");
 
 		case 0:
+			Dialogs::message("Warning must save before quitting","Quit");
 			break;
 	}
 }
