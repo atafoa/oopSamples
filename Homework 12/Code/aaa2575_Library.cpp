@@ -462,7 +462,7 @@ string Library::load_customers(string file_name)
 			iss >> name;
 			iss >> removeChar;
 			iss >> phone;
-			iss >> removeChar;
+			phone.erase(phone.end());
 			iss >> email;
 			iss >> removeChar;
 			iss >> balance;
