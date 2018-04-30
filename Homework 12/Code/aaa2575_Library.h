@@ -44,8 +44,14 @@ class Library
 	void pay_balance(int id);
 	string stock_levels();
 	void save(string file_name);
-	void load();
+	void load_media(string file_name);
+	void load_bundles(string file_name);
+	string load_librarians(string file_name);
+	void load_customers(string file_name);
+	void load_transactions(string file_name);
+	stringstream iss;
 	ofstream outfile;
+	ifstream infile;
 	
 	protected:
 	vector<Media> medias;

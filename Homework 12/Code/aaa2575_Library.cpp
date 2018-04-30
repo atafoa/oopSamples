@@ -390,7 +390,42 @@ void Library::save(string file_name)
 	outfile.close();
 }
 
-void Library::load()
+string Library::load_librarians(string file_name)
 {
+
+	Librarian l{"",0};
+	string name;
+	string output;
+	string line;
+	char removeChar;
+	int id;
+	infile.open(file_name);
+
+	if(infile.is_open())
+	{
+		if(infile.eof())
+		{
+			output += "No Information is in this file\n";
+			return output;
+		}
+		
+		while(!infile.eof())
+		{
+			getline(infile,line);
+			iss << line;
+			iss >> id;
+			iss >> removeChar;
+			iss >> name;
+			iss.str("");
+			iss.clear();
+			l = create_new_librarian(name,id);
+			librarians.push_back(l);
+			output += "Load Successful";
+			return output;
+		}
+
+		if(infile.bad())
+			throw runtime_error("Bad File");
+	}
 
 }

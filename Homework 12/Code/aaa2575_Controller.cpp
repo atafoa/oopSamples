@@ -281,6 +281,15 @@ void Controller:: execute_cmd(int cmd)
 
 		case 14:
 			Dialogs::message("Turning on Load Functionality", "Load Function");
+			file_name = "librarians.txt";
+			options = {"Cancel","Yes","No"};
+			choice = Dialogs::question("Would you like to specify a file name","File name",options);
+			if(choice == 1)
+			{
+				file_name = Dialogs::input("What would you like to name the save file \n In the form of save_file.txt", "Save File Name");
+			}
+			Dialogs::message(library.load_librarians(file_name),"Load Librarians");
+			
 
 		case 0:
 			Dialogs::message("Warning must save before quitting","Quit");
