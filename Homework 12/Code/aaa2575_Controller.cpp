@@ -270,7 +270,7 @@ void Controller:: execute_cmd(int cmd)
 		case 13:
 			Dialogs::message("Turning on Save Functionality", "Save Function");
 			options = {"Cancel","Yes","No"};
-			choice = std::stoi(Dialogs::question("Would you like to specify a file name","File name",options));
+			choice = Dialogs::question("Would you like to specify a file name","File name",options);
 			if(choice == 1)
 			{
 				file_name = Dialogs::input("What would you like to name the save file \n In the form of save_file.txt", "Save File Name");
