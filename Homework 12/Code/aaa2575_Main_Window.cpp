@@ -118,7 +118,7 @@ Main_Window::~Main_Window() {}
 void Main_Window::quit_clicked()
 {
     controller.execute_cmd(0); 
-     controller.execute_cmd(13);
+    controller.execute_cmd(13);
     hide();
 }
 
