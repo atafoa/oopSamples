@@ -28,7 +28,7 @@ void Controller:: execute_cmd(int cmd)
 	string trackNumber;
 
 	Librarian l{"",0}; Customer c{"",0,"","",0.0}; int month; int day; int year; int tNum; Date check_in{0, 0, 0}; Date due{0, 0, 0};
-	string file_name = "Code/build/save_file.txt";
+	string file_name = "save_file.txt";
 
 	int subMenu;
 	int choice = 0;
